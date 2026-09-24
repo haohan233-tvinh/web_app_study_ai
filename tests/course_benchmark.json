@@ -1,0 +1,962 @@
+[
+  {
+    "id": "course-01",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 9,
+    "question": "Who invented the World Wide Web?",
+    "choices": {
+      "A": "Tim Berners-Lee",
+      "B": "Brendan Eich",
+      "C": "Vint Cerf",
+      "D": "Linus Torvalds"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-02",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 20,
+    "question": "What does a network protocol define?",
+    "choices": {
+      "A": "Only the screen resolution",
+      "B": "The price of Internet access",
+      "C": "Formats and rules for exchanging messages",
+      "D": "Only database table names"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-03",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 24,
+    "question": "What is the role of a domain name?",
+    "choices": {
+      "A": "A memorable name for an Internet node",
+      "B": "A CSS class selector",
+      "C": "A JavaScript loop",
+      "D": "An HTML closing tag"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-04",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 39,
+    "question": "Which protocol is used for communication between a Web client and Web server?",
+    "choices": {
+      "A": "CSS",
+      "B": "HTML",
+      "C": "SQL",
+      "D": "HTTP"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-05",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 40,
+    "question": "Which is a markup language rather than a communication protocol?",
+    "choices": {
+      "A": "IP",
+      "B": "HTTP",
+      "C": "HTML",
+      "D": "TCP"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-06",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 44,
+    "question": "A web browser normally acts as which participant in the client-server model?",
+    "choices": {
+      "A": "Database server",
+      "B": "DNS root server",
+      "C": "Compiler",
+      "D": "Client"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-07",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 48,
+    "question": "What does URL stand for?",
+    "choices": {
+      "A": "Uniform Resource Locator",
+      "B": "Unified Rendering Layer",
+      "C": "Universal Routing Language",
+      "D": "User Request List"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-08",
+    "topic": "1-Introduction",
+    "source": "1-Introduction.pdf",
+    "page": 57,
+    "question": "Which statement distinguishes Web 2.0 in the lecture?",
+    "choices": {
+      "A": "Users create, organize and remix content",
+      "B": "It requires every page to be a PDF",
+      "C": "Users can only read static content",
+      "D": "It replaces HTTP with SQL"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-09",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 7,
+    "question": "Where is the DOCTYPE declaration placed in an HTML document?",
+    "choices": {
+      "A": "After the closing html tag",
+      "B": "Only inside a CSS file",
+      "C": "Inside the last paragraph",
+      "D": "At the beginning"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-10",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 10,
+    "question": "Select all direct children of the html element in the basic document structure.",
+    "choices": {
+      "A": "body",
+      "B": "head",
+      "C": "li",
+      "D": "tr"
+    },
+    "answer": "A, B",
+    "multi": true
+  },
+  {
+    "id": "course-11",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 11,
+    "question": "How many levels of HTML headings are available?",
+    "choices": {
+      "A": "Four",
+      "B": "One",
+      "C": "Six",
+      "D": "Seven"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-12",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 12,
+    "question": "Which HTML element inserts a line break?",
+    "choices": {
+      "A": "<br>",
+      "B": "<hr>",
+      "C": "<h1>",
+      "D": "<p>"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-13",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 15,
+    "question": "Select all formal HTML list categories named in the lecture.",
+    "choices": {
+      "A": "Ordered list",
+      "B": "Linear list",
+      "C": "Unordered list",
+      "D": "Description list"
+    },
+    "answer": "A, C, D",
+    "multi": true
+  },
+  {
+    "id": "course-14",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 15,
+    "question": "Which HTML tag defines a list item in ordered and unordered lists?",
+    "choices": {
+      "A": "<ul>",
+      "B": "<dt>",
+      "C": "<ol>",
+      "D": "<li>"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-15",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 22,
+    "question": "Which HTML element creates a hyperlink?",
+    "choices": {
+      "A": "<link>",
+      "B": "<href>",
+      "C": "<url>",
+      "D": "<a>"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-16",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 22,
+    "question": "Thuộc tính nào của thẻ a chỉ định địa chỉ liên kết?",
+    "choices": {
+      "A": "src",
+      "B": "href",
+      "C": "class",
+      "D": "alt"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-17",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 27,
+    "question": "Which attribute specifies the source file of an img element?",
+    "choices": {
+      "A": "src",
+      "B": "lang",
+      "C": "target",
+      "D": "href"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-18",
+    "topic": "2-HTML",
+    "source": "2-HTML.pdf",
+    "page": 29,
+    "question": "Which HTML element represents a row in a table?",
+    "choices": {
+      "A": "<tr>",
+      "B": "<th>",
+      "C": "<td>",
+      "D": "<table>"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-19",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 3,
+    "question": "What is the main purpose of CSS?",
+    "choices": {
+      "A": "Replace all HTML structure",
+      "B": "Transfer IP packets",
+      "C": "Execute SQL queries",
+      "D": "Define the style and layout of HTML documents"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-20",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 4,
+    "question": "Select all CSS styles described in the lecture.",
+    "choices": {
+      "A": "Relational",
+      "B": "External",
+      "C": "Inline",
+      "D": "Embedded/internal"
+    },
+    "answer": "B, C, D",
+    "multi": true
+  },
+  {
+    "id": "course-21",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 9,
+    "question": "What are the two parts of a CSS rule?",
+    "choices": {
+      "A": "Host and port",
+      "B": "Row and column",
+      "C": "Selector and declaration",
+      "D": "Request and response"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-22",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 11,
+    "question": "Which CSS selector matches elements with class highlight?",
+    "choices": {
+      "A": "#highlight",
+      "B": "@highlight",
+      "C": ".highlight",
+      "D": "highlight()"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-23",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 13,
+    "question": "Which CSS selector matches the element with id highlight?",
+    "choices": {
+      "A": ".highlight",
+      "B": "#highlight",
+      "C": "highlight[]",
+      "D": "<highlight>"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-24",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 28,
+    "question": "Thuộc tính CSS nào thay đổi màu chữ?",
+    "choices": {
+      "A": "font-size",
+      "B": "background-color",
+      "C": "text-align",
+      "D": "color"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-25",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 29,
+    "question": "Which CSS property horizontally aligns text within its containing element?",
+    "choices": {
+      "A": "font-weight",
+      "B": "vertical-align",
+      "C": "border-collapse",
+      "D": "text-align"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-26",
+    "topic": "3-CSS",
+    "source": "3-CSS.pdf",
+    "page": 32,
+    "question": "Select all examples of CSS pseudo-classes shown for hyperlinks.",
+    "choices": {
+      "A": "a:hover",
+      "B": "a:active",
+      "C": "a.href",
+      "D": "a:visited"
+    },
+    "answer": "A, B, D",
+    "multi": true
+  },
+  {
+    "id": "course-27",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 12,
+    "question": "Which markup loads JavaScript from an external file?",
+    "choices": {
+      "A": "<style src=\"app.js\"></style>",
+      "B": "<script src=\"app.js\"></script>",
+      "C": "<js file=\"app.js\">",
+      "D": "<script href=\"app.js\"></script>"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-28",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 17,
+    "question": "Which function converts a numeric string to an integer?",
+    "choices": {
+      "A": "document.write",
+      "B": "alert",
+      "C": "String",
+      "D": "parseInt"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-29",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 23,
+    "question": "What is the JavaScript value of \"4\" + 3 + 1?",
+    "choices": {
+      "A": "\"71\"",
+      "B": "\"44\"",
+      "C": "\"431\"",
+      "D": "8"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-30",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 23,
+    "question": "What is the JavaScript value of 4 + 3 + \"1\"?",
+    "choices": {
+      "A": "\"71\"",
+      "B": "8",
+      "C": "\"44\"",
+      "D": "\"431\""
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-31",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 23,
+    "question": "What is the JavaScript value of \"35\" - 3?",
+    "choices": {
+      "A": "32",
+      "B": "NaN",
+      "C": "38",
+      "D": "\"353\""
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-32",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 42,
+    "question": "Which Date method returns the four-digit year?",
+    "choices": {
+      "A": "getHours()",
+      "B": "getMinutes()",
+      "C": "getMilliseconds()",
+      "D": "getFullYear()"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-33",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 53,
+    "question": "Select all changes JavaScript can make through DOM manipulation.",
+    "choices": {
+      "A": "Change element styles",
+      "B": "Change the physical size of the monitor",
+      "C": "Add or delete HTML elements",
+      "D": "Change element content"
+    },
+    "answer": "A, C, D",
+    "multi": true
+  },
+  {
+    "id": "course-34",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 57,
+    "question": "Which event fires when a user clicks an HTML element?",
+    "choices": {
+      "A": "onkeydown",
+      "B": "onchange",
+      "C": "onclick",
+      "D": "onload"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-35",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 57,
+    "question": "Which event fires when the browser has finished loading the page?",
+    "choices": {
+      "A": "onkeydown",
+      "B": "onchange",
+      "C": "onload",
+      "D": "onclick"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-36",
+    "topic": "4-JavaScript",
+    "source": "4-JavaScript.pdf",
+    "page": 60,
+    "question": "Which input type masks the characters entered for a password?",
+    "choices": {
+      "A": "submit",
+      "B": "password",
+      "C": "reset",
+      "D": "text"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-37",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 4,
+    "question": "Node.js is built on which JavaScript engine?",
+    "choices": {
+      "A": "Webpack",
+      "B": "V8",
+      "C": "MySQL",
+      "D": "Jinja2"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-38",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 4,
+    "question": "Which statement about Node.js is NOT correct?",
+    "choices": {
+      "A": "It is a JavaScript runtime",
+      "B": "It can execute JavaScript on the server",
+      "C": "It uses an event-driven architecture",
+      "D": "It can execute JavaScript only inside a browser"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-39",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 6,
+    "question": "What is central to Node.js non-blocking asynchronous I/O architecture?",
+    "choices": {
+      "A": "Event loop",
+      "B": "HTML parser only",
+      "C": "Relational schema",
+      "D": "CSS cascade"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-40",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 18,
+    "question": "Which CommonJS function loads a module in Node.js?",
+    "choices": {
+      "A": "require()",
+      "B": "render_template()",
+      "C": "getFullYear()",
+      "D": "querySelector()"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-41",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 18,
+    "question": "Select all built-in Node.js modules named in the lecture.",
+    "choices": {
+      "A": "fs",
+      "B": "url",
+      "C": "http",
+      "D": "react"
+    },
+    "answer": "A, B, C",
+    "multi": true
+  },
+  {
+    "id": "course-42",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 20,
+    "question": "How does the lecture export a function from a custom CommonJS module?",
+    "choices": {
+      "A": "app.template.sayHello = function() {}",
+      "B": "module.exports.sayHello = function() {}",
+      "C": "document.exports.sayHello = function() {}",
+      "D": "window.route.sayHello = function() {}"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-43",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 23,
+    "question": "Which statement describes blocking I/O?",
+    "choices": {
+      "A": "Every operation always executes at the same instant",
+      "B": "Further execution waits until the current operation completes",
+      "C": "It prevents all callbacks from existing",
+      "D": "It only changes CSS styles"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-44",
+    "topic": "6-NodeJS",
+    "source": "6-NodeJS.pdf",
+    "page": 28,
+    "question": "In fs.readFile(file, (err, data) => {...}), what should be checked before processing data?",
+    "choices": {
+      "A": "Whether the URL ends in .pdf",
+      "B": "Whether the browser supports HTML headings",
+      "C": "Whether err exists",
+      "D": "Whether data is a CSS selector"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-45",
+    "topic": "7-Front-end dev with NodeJS",
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "page": 11,
+    "question": "Which front-end framework in the lecture was developed by Google?",
+    "choices": {
+      "A": "Angular",
+      "B": "Flask",
+      "C": "React",
+      "D": "Node.js"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-46",
+    "topic": "7-Front-end dev with NodeJS",
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "page": 11,
+    "question": "Select all front-end libraries or frameworks listed in the lecture.",
+    "choices": {
+      "A": "React",
+      "B": "Vue.js",
+      "C": "MySQL",
+      "D": "Angular"
+    },
+    "answer": "A, B, D",
+    "multi": true
+  },
+  {
+    "id": "course-47",
+    "topic": "7-Front-end dev with NodeJS",
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "page": 17,
+    "question": "What is Webpack used for in the sample front-end project?",
+    "choices": {
+      "A": "Managing database users",
+      "B": "Serving as the Python interpreter",
+      "C": "Bundling front-end code",
+      "D": "Replacing the HTTP protocol"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-48",
+    "topic": "7-Front-end dev with NodeJS",
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "page": 17,
+    "question": "Which Webpack configuration property identifies the input file to bundle?",
+    "choices": {
+      "A": "output.path",
+      "B": "output.filename",
+      "C": "entry",
+      "D": "server.port"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-49",
+    "topic": "7-Front-end dev with NodeJS",
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "page": 19,
+    "question": "What kind of architecture does React use for reusable independent UI parts?",
+    "choices": {
+      "A": "Only relational tables",
+      "B": "Component-based",
+      "C": "Only operating-system processes",
+      "D": "Only static PDF pages"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-50",
+    "topic": "7-Front-end dev with NodeJS",
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "page": 19,
+    "question": "Which description of React is incorrect?",
+    "choices": {
+      "A": "Uses reusable components",
+      "B": "A JavaScript UI library",
+      "C": "A Python database driver",
+      "D": "Used for single-page applications"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-51",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 3,
+    "question": "Flask là framework web dành cho ngôn ngữ nào?",
+    "choices": {
+      "A": "C++",
+      "B": "PHP",
+      "C": "Java",
+      "D": "Python"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-52",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 3,
+    "question": "Why is Flask described as a micro framework?",
+    "choices": {
+      "A": "It cannot serve HTTP requests",
+      "B": "It includes every possible feature by default",
+      "C": "It is lightweight and does not require a particular set of tools or libraries",
+      "D": "It is only a CSS preprocessor"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-53",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 5,
+    "question": "Which template engine is named in the Flask lecture?",
+    "choices": {
+      "A": "Webpack",
+      "B": "MongoDB",
+      "C": "Jinja2",
+      "D": "V8"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-54",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 7,
+    "question": "Which command installs Flask?",
+    "choices": {
+      "A": "mysql create flask",
+      "B": "pip install flask",
+      "C": "python remove flask",
+      "D": "npm install flask"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-55",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 8,
+    "question": "Which decorator maps the homepage URL to a Flask function?",
+    "choices": {
+      "A": "@app.route('/')",
+      "B": "@app.css('/')",
+      "C": "@app.database('/')",
+      "D": "@app.template('/')"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-56",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 9,
+    "question": "Which port is used to access the Flask development app in the lecture?",
+    "choices": {
+      "A": "3306",
+      "B": "5000",
+      "C": "53",
+      "D": "3000"
+    },
+    "answer": "B",
+    "multi": false
+  },
+  {
+    "id": "course-57",
+    "topic": "8-Python Flask",
+    "source": "8-Python Flask.pdf",
+    "page": 11,
+    "question": "What does routing mean in Flask?",
+    "choices": {
+      "A": "Sorting CSS declarations alphabetically",
+      "B": "Turning Python objects into database tables",
+      "C": "Choosing the color of hyperlinks",
+      "D": "Mapping URLs to specific code functions"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-58",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 4,
+    "question": "Select all relational databases named in the lecture.",
+    "choices": {
+      "A": "PostgreSQL",
+      "B": "MySQL",
+      "C": "SQLite",
+      "D": "MongoDB"
+    },
+    "answer": "A, B, C",
+    "multi": true
+  },
+  {
+    "id": "course-59",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 4,
+    "question": "Select all NoSQL databases named in the lecture.",
+    "choices": {
+      "A": "SQLite",
+      "B": "CouchDB",
+      "C": "MongoDB",
+      "D": "MySQL"
+    },
+    "answer": "B, C",
+    "multi": true
+  },
+  {
+    "id": "course-60",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 4,
+    "question": "How do relational databases represent structured data?",
+    "choices": {
+      "A": "Tables with relationships",
+      "B": "Only CSS rules",
+      "C": "Only JavaScript callbacks",
+      "D": "Only image pixels"
+    },
+    "answer": "A",
+    "multi": false
+  },
+  {
+    "id": "course-61",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 5,
+    "question": "Which database category is identified as suitable for structured transactional applications?",
+    "choices": {
+      "A": "An HTML unordered list",
+      "B": "Only schema-less document stores",
+      "C": "Relational database",
+      "D": "A CSS stylesheet"
+    },
+    "answer": "C",
+    "multi": false
+  },
+  {
+    "id": "course-62",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 9,
+    "question": "What does SQLAlchemy ORM map Python objects to?",
+    "choices": {
+      "A": "CSS pseudo-classes",
+      "B": "Network packet headers",
+      "C": "Browser tabs",
+      "D": "Database tables"
+    },
+    "answer": "D",
+    "multi": false
+  },
+  {
+    "id": "course-63",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 9,
+    "question": "Select all benefits of ORM stated in the lecture.",
+    "choices": {
+      "A": "Removes the need for data storage",
+      "B": "Eliminates every possible database error",
+      "C": "Makes switching database types easier",
+      "D": "Reduces the need to write raw SQL"
+    },
+    "answer": "C, D",
+    "multi": true
+  },
+  {
+    "id": "course-64",
+    "topic": "9-Database",
+    "source": "9-Database.pdf",
+    "page": 13,
+    "question": "Which extension is named for creating forms in Flask?",
+    "choices": {
+      "A": "Flask-WTF",
+      "B": "React",
+      "C": "Webpack",
+      "D": "V8"
+    },
+    "answer": "A",
+    "multi": false
+  }
+]

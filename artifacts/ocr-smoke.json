@@ -1,0 +1,402 @@
+{
+  "scope": "16 synthetic images, fixed evenly spaced course subset; not real Moodle validation",
+  "correct": 16,
+  "total": 16,
+  "median_total_seconds": 4.9399999999999995,
+  "clipboard_roundtrip": {
+    "passed": true,
+    "result": {
+      "best_choice": "A, B",
+      "matched_source": "2-HTML.pdf (Slide 16)",
+      "method": "Local Qwen + course BM25",
+      "seconds": 2.749,
+      "inference_seconds": 1.204,
+      "cooling_seconds": 1.547,
+      "multi": true,
+      "cached": false,
+      "total_seconds": 5.301
+    },
+    "read_back": "A, B",
+    "ocr_lines": [
+      "1. Which of the following are valid HTML list types?",
+      "A)Ordered List",
+      "B) Unordered List",
+      "C) Bullet List",
+      "D) Linear List"
+    ]
+  },
+  "missing_option_rejected": true,
+  "rows": [
+    {
+      "id": "course-01",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 9)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 1.103,
+        "inference_seconds": 0.982,
+        "cooling_seconds": 0.125,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 3.265
+      },
+      "correct": true,
+      "ocr_lines": [
+        "1. Who invented the World Wide Web?",
+        "A) Tim Berners-Lee",
+        "B) Brendan Eich",
+        "C) Vint Cerf",
+        "D) Linus Torvalds"
+      ]
+    },
+    {
+      "id": "course-05",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 3)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 2.113,
+        "inference_seconds": 0.729,
+        "cooling_seconds": 1.375,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 4.819
+      },
+      "correct": true,
+      "ocr_lines": [
+        "5. Which is a markup language rather than a communication protocol?",
+        "A) IP",
+        "B) HTTP",
+        "C) HTML",
+        "D) TCP"
+      ]
+    },
+    {
+      "id": "course-09",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "2-HTML.pdf (Slide 7)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 2.443,
+        "inference_seconds": 0.761,
+        "cooling_seconds": 1.687,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 4.855
+      },
+      "correct": true,
+      "ocr_lines": [
+        "9. Where is the DOCTYPE declaration placed in an HTML document?",
+        "A) After the closing html tag",
+        "B) Only inside a CSS file",
+        "C) Inside the last paragraph",
+        "D) At the beginning"
+      ]
+    },
+    {
+      "id": "course-13",
+      "expected": "A, C, D",
+      "result": {
+        "best_choice": "A, C, D",
+        "matched_source": "2-HTML.pdf (Slide 16)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 3.117,
+        "inference_seconds": 0.995,
+        "cooling_seconds": 2.125,
+        "multi": true,
+        "cached": false,
+        "total_seconds": 5.097
+      },
+      "correct": true,
+      "ocr_lines": [
+        "13. Select all formal HTML list categories named in the lecture.",
+        "A) Ordered list",
+        "B) Linear list",
+        "C) Unordered list",
+        "D) Description list"
+      ]
+    },
+    {
+      "id": "course-17",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 22)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 2.885,
+        "inference_seconds": 0.806,
+        "cooling_seconds": 2.078,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 4.877
+      },
+      "correct": true,
+      "ocr_lines": [
+        "17. Which attribute specifies the source file of an img element?",
+        "A) src",
+        "B) lang",
+        "C) target",
+        "D) href"
+      ]
+    },
+    {
+      "id": "course-21",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "3-CSS.pdf (Slide 9)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 3.215,
+        "inference_seconds": 0.87,
+        "cooling_seconds": 2.328,
+        "multi": true,
+        "cached": false,
+        "total_seconds": 4.937
+      },
+      "correct": true,
+      "ocr_lines": [
+        "21. what are the two parts of a CsS rule?",
+        "A) Host and port",
+        "B) Row and column",
+        "C) Selector and declaration",
+        "D) Request and response"
+      ]
+    },
+    {
+      "id": "course-25",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "3-CSS.pdf (Slide 29)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 2.451,
+        "inference_seconds": 1.178,
+        "cooling_seconds": 1.265,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 5.247
+      },
+      "correct": true,
+      "ocr_lines": [
+        "25. Which CSS property horizontally aligns text within its containing",
+        "element?",
+        "A) font-weight",
+        "B) vertical-align",
+        "C) border-collapse",
+        "D) text-align"
+      ]
+    },
+    {
+      "id": "course-29",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "4-JavaScript.pdf (Slide 23)",
+        "method": "Restricted JavaScript expression interpreter",
+        "seconds": 0.005,
+        "inference_seconds": 0,
+        "cooling_seconds": 0,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 1.691
+      },
+      "correct": true,
+      "ocr_lines": [
+        "29. What is the JavaScript value of \"4\" + 3 + 1?",
+        "A)\"71\"",
+        "B)\"44\"",
+        "C)\"431\"",
+        "D)8"
+      ]
+    },
+    {
+      "id": "course-33",
+      "expected": "A, C, D",
+      "result": {
+        "best_choice": "A, C, D",
+        "matched_source": "4-JavaScript.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 1.015,
+        "inference_seconds": 0.894,
+        "cooling_seconds": 0.125,
+        "multi": true,
+        "cached": false,
+        "total_seconds": 3.359
+      },
+      "correct": true,
+      "ocr_lines": [
+        "33. Select all changes JavaScript can make through DoM manipulation.",
+        "A) Change element styles",
+        "B) Change the physical size of the monitor",
+        "C) Add or delete HTML elements",
+        "D) Change element content"
+      ]
+    },
+    {
+      "id": "course-37",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "6-NodeJS.pdf (Slide 17)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 3.137,
+        "inference_seconds": 0.874,
+        "cooling_seconds": 2.266,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 4.943
+      },
+      "correct": true,
+      "ocr_lines": [
+        "37. Node.js is built on which JavaScript engine?",
+        "A) Webpack",
+        "B)V8",
+        "C) MySQL",
+        "D) Jinja2"
+      ]
+    },
+    {
+      "id": "course-41",
+      "expected": "A, B, C",
+      "result": {
+        "best_choice": "A, B, C",
+        "matched_source": "6-NodeJS.pdf (Slide 30)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 3.375,
+        "inference_seconds": 1.176,
+        "cooling_seconds": 2.203,
+        "multi": true,
+        "cached": false,
+        "total_seconds": 5.254
+      },
+      "correct": true,
+      "ocr_lines": [
+        "41. Select all built-in Node.js modules named in the lecture.",
+        "A) fs",
+        "B) url",
+        "C) http",
+        "D) react"
+      ]
+    },
+    {
+      "id": "course-45",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 2.428,
+        "inference_seconds": 0.753,
+        "cooling_seconds": 1.671,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 4.829
+      },
+      "correct": true,
+      "ocr_lines": [
+        "45. which front-end framework in the lecture was developed by Google?",
+        "A) Angular",
+        "B)Flask",
+        "C) React",
+        "D) Node.js"
+      ]
+    },
+    {
+      "id": "course-49",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 19)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 1.138,
+        "inference_seconds": 1.007,
+        "cooling_seconds": 0.125,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 5.481
+      },
+      "correct": true,
+      "ocr_lines": [
+        "49. What kind of architecture does React use for reusable independent",
+        "Ul parts?",
+        "A) Only relational tables",
+        "B) Component-based",
+        "C) Only operating-system processes",
+        "D) Only static PDF pages"
+      ]
+    },
+    {
+      "id": "course-53",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "8-Python Flask.pdf (Slide 5)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 3.102,
+        "inference_seconds": 1.191,
+        "cooling_seconds": 1.906,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 5.294
+      },
+      "correct": true,
+      "ocr_lines": [
+        "53. Which template engine is named in the Flask lecture?",
+        "A) Webpack",
+        "B)MongoDB",
+        "C) Jinja2",
+        "D) V8"
+      ]
+    },
+    {
+      "id": "course-57",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "8-Python Flask.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 3.298,
+        "inference_seconds": 0.999,
+        "cooling_seconds": 2.297,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 5.091
+      },
+      "correct": true,
+      "ocr_lines": [
+        "57. What does routing mean in Flask?",
+        "A) Sorting CSS declarations alphabetically",
+        "B) Turning Python objects into database tables",
+        "C) Choosing the color of hyperlinks",
+        "D) Mapping URLs to specific code functions"
+      ]
+    },
+    {
+      "id": "course-61",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "9-Database.pdf (Slide 5)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 1.298,
+        "inference_seconds": 0.951,
+        "cooling_seconds": 0.344,
+        "multi": false,
+        "cached": false,
+        "total_seconds": 5.021
+      },
+      "correct": true,
+      "ocr_lines": [
+        "61. Which database category is identified as suitable for structured",
+        "transactional applications?",
+        "A) An HTML unordered list",
+        "B) Only schema-less document stores",
+        "C) Relational database",
+        "D) A CSS stylesheet"
+      ]
+    }
+  ]
+}

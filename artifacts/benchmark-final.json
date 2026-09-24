@@ -1,0 +1,1774 @@
+{
+  "dataset": "D:\\pop\\web_app_study_ai\\tests\\course_benchmark.json",
+  "dataset_sha256": "c4bd826e18924b5f4fa7088592a8d2072a9dcc77066107c165093c43b007cda7",
+  "solver_sha256": "a67f30d2463861e1413909c89d81fe36730b8b324b2b2a2c75b1582a9d7d7b94",
+  "knowledge_sha256": "c15da3d81d14ef7a4a17ef20879b738721d4bb2073ba6b5e6bef1d745774a389",
+  "scope": "Author-created course regression set, not an independent real-exam accuracy estimate",
+  "settings": {
+    "model": "models/qwen2.5-3b-instruct-q4_k_m.gguf",
+    "server": "runtime/cuda/llama-server.exe",
+    "knowledge": "data/course_knowledge.json",
+    "course_dir": "D:/Study/Vinh/Study/semester 3/Web Application Development",
+    "device": "CUDA0",
+    "threads": 2,
+    "context_size": 4096,
+    "context_chars": 6500,
+    "max_tokens": 48,
+    "include_internal_check": false,
+    "min_request_interval_seconds": 4,
+    "max_gpu_temperature_c": 85,
+    "thermal_wait_seconds": 20,
+    "sleep_idle_seconds": 15,
+    "expected_options": 4,
+    "top_k": 5
+  },
+  "total": 64,
+  "correct": 60,
+  "accuracy": 0.9375,
+  "wilson_95_interval": [
+    0.8500230335750312,
+    0.9754291963252071
+  ],
+  "load_seconds": 3.677,
+  "median_seconds": 5.13,
+  "p95_seconds": 20.679,
+  "by_topic": {
+    "1-Introduction": [
+      8,
+      8
+    ],
+    "2-HTML": [
+      10,
+      10
+    ],
+    "3-CSS": [
+      7,
+      8
+    ],
+    "4-JavaScript": [
+      10,
+      10
+    ],
+    "6-NodeJS": [
+      8,
+      8
+    ],
+    "7-Front-end dev with NodeJS": [
+      6,
+      6
+    ],
+    "8-Python Flask": [
+      7,
+      7
+    ],
+    "9-Database": [
+      4,
+      7
+    ]
+  },
+  "gpu_baseline": {
+    "memory_mib": 533.0,
+    "temperature_c": 82.0,
+    "power_w": 19.07,
+    "utilization_percent": 27.0
+  },
+  "gpu_after_load": {
+    "memory_mib": 2580.0,
+    "temperature_c": 85.0,
+    "power_w": 40.98,
+    "utilization_percent": 17.0
+  },
+  "model_log": "D:\\pop\\web_app_study_ai\\logs\\model-54161.log",
+  "python_external_network_blocked": true,
+  "rows": [
+    {
+      "id": "course-01",
+      "question": "Who invented the World Wide Web?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 9)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.517,
+        "inference_seconds": 0.954,
+        "cooling_seconds": 4.562,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.517,
+      "model_output": {
+        "answer": "A",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 88.0,
+        "power_w": 40.45,
+        "utilization_percent": 81.0
+      }
+    },
+    {
+      "id": "course-02",
+      "question": "What does a network protocol define?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "1-Introduction.pdf (Slide 20)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.841,
+        "inference_seconds": 0.845,
+        "cooling_seconds": 4.0,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.841,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 87.0,
+        "power_w": 39.53,
+        "utilization_percent": 78.0
+      }
+    },
+    {
+      "id": "course-03",
+      "question": "What is the role of a domain name?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 24)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.809,
+        "inference_seconds": 0.842,
+        "cooling_seconds": 3.969,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.809,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 88.0,
+        "power_w": 45.83,
+        "utilization_percent": 93.0
+      }
+    },
+    {
+      "id": "course-04",
+      "question": "Which protocol is used for communication between a Web client and Web server?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "1-Introduction.pdf (Slide 42)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.857,
+        "inference_seconds": 0.862,
+        "cooling_seconds": 4.0,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.857,
+      "model_output": {
+        "answer": "D",
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 89.0,
+        "power_w": 46.88,
+        "utilization_percent": 93.0
+      }
+    },
+    {
+      "id": "course-05",
+      "question": "Which is a markup language rather than a communication protocol?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 3)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.903,
+        "inference_seconds": 0.923,
+        "cooling_seconds": 3.984,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.903,
+      "model_output": {
+        "answer": "C",
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 88.0,
+        "power_w": 45.35,
+        "utilization_percent": 94.0
+      }
+    },
+    {
+      "id": "course-06",
+      "question": "A web browser normally acts as which participant in the client-server model?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "1-Introduction.pdf (Slide 44)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.898,
+        "inference_seconds": 0.914,
+        "cooling_seconds": 3.985,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.898,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 89.0,
+        "power_w": 47.54,
+        "utilization_percent": 88.0
+      }
+    },
+    {
+      "id": "course-07",
+      "question": "What does URL stand for?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 24)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.253,
+        "inference_seconds": 1.193,
+        "cooling_seconds": 4.062,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.253,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 89.0,
+        "power_w": 55.62,
+        "utilization_percent": 92.0
+      }
+    },
+    {
+      "id": "course-08",
+      "question": "Which statement distinguishes Web 2.0 in the lecture?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 57)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.653,
+        "inference_seconds": 1.699,
+        "cooling_seconds": 3.953,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.653,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 86.0,
+        "power_w": 58.66,
+        "utilization_percent": 68.0
+      }
+    },
+    {
+      "id": "course-09",
+      "question": "Where is the DOCTYPE declaration placed in an HTML document?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "2-HTML.pdf (Slide 7)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.856,
+        "inference_seconds": 1.12,
+        "cooling_seconds": 3.718,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.857,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 89.0,
+        "power_w": 48.7,
+        "utilization_percent": 89.0
+      }
+    },
+    {
+      "id": "course-10",
+      "question": "Select all direct children of the html element in the basic document structure.",
+      "expected": "A, B",
+      "result": {
+        "best_choice": "A, B",
+        "matched_source": "2-HTML.pdf (Slide 6)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.018,
+        "inference_seconds": 1.074,
+        "cooling_seconds": 3.937,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.018,
+      "model_output": {
+        "answer": "A, B",
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 87.0,
+        "power_w": 56.04,
+        "utilization_percent": 59.0
+      }
+    },
+    {
+      "id": "course-11",
+      "question": "How many levels of HTML headings are available?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.014,
+        "inference_seconds": 1.055,
+        "cooling_seconds": 3.969,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.014,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2590.0,
+        "temperature_c": 86.0,
+        "power_w": 48.83,
+        "utilization_percent": 6.0
+      }
+    },
+    {
+      "id": "course-12",
+      "question": "Which HTML element inserts a line break?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 12)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.175,
+        "inference_seconds": 1.276,
+        "cooling_seconds": 3.89,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.175,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 88.0,
+        "power_w": 59.44,
+        "utilization_percent": 31.0
+      }
+    },
+    {
+      "id": "course-13",
+      "question": "Select all formal HTML list categories named in the lecture.",
+      "expected": "A, C, D",
+      "result": {
+        "best_choice": "A, C, D",
+        "matched_source": "2-HTML.pdf (Slide 16)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.178,
+        "inference_seconds": 1.21,
+        "cooling_seconds": 3.954,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.178,
+      "model_output": {
+        "answer": "A, C, D",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 89.0,
+        "power_w": 44.98,
+        "utilization_percent": 73.0
+      }
+    },
+    {
+      "id": "course-14",
+      "question": "Which HTML tag defines a list item in ordered and unordered lists?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "2-HTML.pdf (Slide 16)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.326,
+        "inference_seconds": 1.323,
+        "cooling_seconds": 4.0,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.326,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 86.0,
+        "power_w": 58.15,
+        "utilization_percent": 6.0
+      }
+    },
+    {
+      "id": "course-15",
+      "question": "Which HTML element creates a hyperlink?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "2-HTML.pdf (Slide 22)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.994,
+        "inference_seconds": 1.028,
+        "cooling_seconds": 3.953,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.994,
+      "model_output": {
+        "answer": "D",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 88.0,
+        "power_w": 49.25,
+        "utilization_percent": 71.0
+      }
+    },
+    {
+      "id": "course-16",
+      "question": "Thuộc tính nào của thẻ a chỉ định địa chỉ liên kết?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "2-HTML.pdf (Slide 22)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.976,
+        "inference_seconds": 2.048,
+        "cooling_seconds": 3.922,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.976,
+      "model_output": {
+        "answer": "B",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 89.0,
+        "power_w": 62.4,
+        "utilization_percent": 92.0
+      }
+    },
+    {
+      "id": "course-17",
+      "question": "Which attribute specifies the source file of an img element?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 22)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.097,
+        "inference_seconds": 0.994,
+        "cooling_seconds": 5.109,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.097,
+      "model_output": {
+        "answer": "A",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 88.0,
+        "power_w": 47.02,
+        "utilization_percent": 20.0
+      }
+    },
+    {
+      "id": "course-18",
+      "question": "Which HTML element represents a row in a table?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 30)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.701,
+        "inference_seconds": 1.731,
+        "cooling_seconds": 3.969,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.701,
+      "model_output": {
+        "answer": "A",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 88.0,
+        "power_w": 60.2,
+        "utilization_percent": 15.0
+      }
+    },
+    {
+      "id": "course-19",
+      "question": "What is the main purpose of CSS?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "3-CSS.pdf (Slide 3)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.829,
+        "inference_seconds": 1.249,
+        "cooling_seconds": 5.578,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.829,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 87.0,
+        "power_w": 52.14,
+        "utilization_percent": 10.0
+      }
+    },
+    {
+      "id": "course-20",
+      "question": "Select all CSS styles described in the lecture.",
+      "expected": "B, C, D",
+      "result": {
+        "best_choice": "B, C, D",
+        "matched_source": "3-CSS.pdf (Slide 4)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.997,
+        "inference_seconds": 2.681,
+        "cooling_seconds": 4.313,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.997,
+      "model_output": {
+        "answer": "B, C, D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 86.0,
+        "power_w": 47.84,
+        "utilization_percent": 4.0
+      }
+    },
+    {
+      "id": "course-21",
+      "question": "What are the two parts of a CSS rule?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "3-CSS.pdf (Slide 9)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.791,
+        "inference_seconds": 1.061,
+        "cooling_seconds": 3.735,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.791,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 88.0,
+        "power_w": 52.2,
+        "utilization_percent": 44.0
+      }
+    },
+    {
+      "id": "course-22",
+      "question": "Which CSS selector matches elements with class highlight?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "3-CSS.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.043,
+        "inference_seconds": 1.111,
+        "cooling_seconds": 3.937,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.043,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 89.0,
+        "power_w": 46.63,
+        "utilization_percent": 86.0
+      }
+    },
+    {
+      "id": "course-23",
+      "question": "Which CSS selector matches the element with id highlight?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "3-CSS.pdf (Slide 14)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.991,
+        "inference_seconds": 1.107,
+        "cooling_seconds": 3.875,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.991,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 87.0,
+        "power_w": 50.84,
+        "utilization_percent": 35.0
+      }
+    },
+    {
+      "id": "course-24",
+      "question": "Thuộc tính CSS nào thay đổi màu chữ?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "3-CSS.pdf (Slide 28)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.175,
+        "inference_seconds": 1.279,
+        "cooling_seconds": 3.891,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.175,
+      "model_output": {
+        "answer": "D",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 87.0,
+        "power_w": 56.92,
+        "utilization_percent": 41.0
+      }
+    },
+    {
+      "id": "course-25",
+      "question": "Which CSS property horizontally aligns text within its containing element?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "3-CSS.pdf (Slide 29)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.745,
+        "inference_seconds": 1.734,
+        "cooling_seconds": 4.015,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.745,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 87.0,
+        "power_w": 52.79,
+        "utilization_percent": 74.0
+      }
+    },
+    {
+      "id": "course-26",
+      "question": "Select all examples of CSS pseudo-classes shown for hyperlinks.",
+      "expected": "A, B, D",
+      "result": {
+        "best_choice": "A, B",
+        "matched_source": "3-CSS.pdf (Slide 32)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.518,
+        "inference_seconds": 1.589,
+        "cooling_seconds": 3.922,
+        "multi": true,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 5.518,
+      "model_output": {
+        "answer": "A, B",
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 87.0,
+        "power_w": 51.03,
+        "utilization_percent": 5.0
+      }
+    },
+    {
+      "id": "course-27",
+      "question": "Which markup loads JavaScript from an external file?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "4-JavaScript.pdf (Slide 12)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.505,
+        "inference_seconds": 1.35,
+        "cooling_seconds": 4.156,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.506,
+      "model_output": {
+        "answer": "B",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 87.0,
+        "power_w": 53.86,
+        "utilization_percent": 4.0
+      }
+    },
+    {
+      "id": "course-28",
+      "question": "Which function converts a numeric string to an integer?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "4-JavaScript.pdf (Slide 21)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.544,
+        "inference_seconds": 1.22,
+        "cooling_seconds": 5.313,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.544,
+      "model_output": {
+        "answer": "D",
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 91.0,
+        "power_w": 52.41,
+        "utilization_percent": 89.0
+      }
+    },
+    {
+      "id": "course-29",
+      "question": "What is the JavaScript value of \"4\" + 3 + 1?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "4-JavaScript.pdf (Slide 23)",
+        "method": "Restricted JavaScript expression interpreter",
+        "seconds": 0.003,
+        "inference_seconds": 0,
+        "cooling_seconds": 0,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 0.003,
+      "model_output": null,
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 86.0,
+        "power_w": 44.69,
+        "utilization_percent": 5.0
+      }
+    },
+    {
+      "id": "course-30",
+      "question": "What is the JavaScript value of 4 + 3 + \"1\"?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "4-JavaScript.pdf (Slide 23)",
+        "method": "Restricted JavaScript expression interpreter",
+        "seconds": 0.002,
+        "inference_seconds": 0,
+        "cooling_seconds": 0,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 0.002,
+      "model_output": null,
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 86.0,
+        "power_w": 33.08,
+        "utilization_percent": 5.0
+      }
+    },
+    {
+      "id": "course-31",
+      "question": "What is the JavaScript value of \"35\" - 3?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "4-JavaScript.pdf (Slide 23)",
+        "method": "Restricted JavaScript expression interpreter",
+        "seconds": 0.004,
+        "inference_seconds": 0,
+        "cooling_seconds": 0,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 0.004,
+      "model_output": null,
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 86.0,
+        "power_w": 33.05,
+        "utilization_percent": 4.0
+      }
+    },
+    {
+      "id": "course-32",
+      "question": "Which Date method returns the four-digit year?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "4-JavaScript.pdf (Slide 38)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.219,
+        "inference_seconds": 1.779,
+        "cooling_seconds": 2.438,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.219,
+      "model_output": {
+        "answer": "D",
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 86.0,
+        "power_w": 41.98,
+        "utilization_percent": 6.0
+      }
+    },
+    {
+      "id": "course-33",
+      "question": "Select all changes JavaScript can make through DOM manipulation.",
+      "expected": "A, C, D",
+      "result": {
+        "best_choice": "A, C, D",
+        "matched_source": "4-JavaScript.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.75,
+        "inference_seconds": 1.053,
+        "cooling_seconds": 3.687,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.75,
+      "model_output": {
+        "answer": "A, C, D",
+        "source": 5
+      },
+      "gpu": {
+        "memory_mib": 2592.0,
+        "temperature_c": 88.0,
+        "power_w": 52.69,
+        "utilization_percent": 44.0
+      }
+    },
+    {
+      "id": "course-34",
+      "question": "Which event fires when a user clicks an HTML element?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "4-JavaScript.pdf (Slide 57)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.187,
+        "inference_seconds": 1.051,
+        "cooling_seconds": 3.141,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.187,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2608.0,
+        "temperature_c": 87.0,
+        "power_w": 59.07,
+        "utilization_percent": 0.0
+      }
+    },
+    {
+      "id": "course-35",
+      "question": "Which event fires when the browser has finished loading the page?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "4-JavaScript.pdf (Slide 57)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.446,
+        "inference_seconds": 0.835,
+        "cooling_seconds": 3.593,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.446,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2399.0,
+        "temperature_c": 88.0,
+        "power_w": 35.77,
+        "utilization_percent": 72.0
+      }
+    },
+    {
+      "id": "course-36",
+      "question": "Which input type masks the characters entered for a password?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "4-JavaScript.pdf (Slide 65)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.338,
+        "inference_seconds": 1.341,
+        "cooling_seconds": 3.985,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.338,
+      "model_output": {
+        "answer": "B",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2399.0,
+        "temperature_c": 87.0,
+        "power_w": 51.92,
+        "utilization_percent": 6.0
+      }
+    },
+    {
+      "id": "course-37",
+      "question": "Node.js is built on which JavaScript engine?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "6-NodeJS.pdf (Slide 17)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.085,
+        "inference_seconds": 1.098,
+        "cooling_seconds": 3.984,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.085,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 47.24,
+        "utilization_percent": 92.0
+      }
+    },
+    {
+      "id": "course-38",
+      "question": "Which statement about Node.js is NOT correct?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "6-NodeJS.pdf (Slide 17)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.038,
+        "inference_seconds": 0.902,
+        "cooling_seconds": 4.14,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.038,
+      "model_output": {
+        "answer": "D",
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 40.32,
+        "utilization_percent": 93.0
+      }
+    },
+    {
+      "id": "course-39",
+      "question": "What is central to Node.js non-blocking asynchronous I/O architecture?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "6-NodeJS.pdf (Slide 6)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.174,
+        "inference_seconds": 1.119,
+        "cooling_seconds": 4.047,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.174,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 50.81,
+        "utilization_percent": 83.0
+      }
+    },
+    {
+      "id": "course-40",
+      "question": "Which CommonJS function loads a module in Node.js?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "6-NodeJS.pdf (Slide 20)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.934,
+        "inference_seconds": 0.92,
+        "cooling_seconds": 4.016,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.934,
+      "model_output": {
+        "answer": "A",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 46.97,
+        "utilization_percent": 90.0
+      }
+    },
+    {
+      "id": "course-41",
+      "question": "Select all built-in Node.js modules named in the lecture.",
+      "expected": "A, B, C",
+      "result": {
+        "best_choice": "A, B, C",
+        "matched_source": "6-NodeJS.pdf (Slide 30)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.211,
+        "inference_seconds": 1.137,
+        "cooling_seconds": 5.078,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.211,
+      "model_output": {
+        "answer": "A, B, C",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 55.63,
+        "utilization_percent": 4.0
+      }
+    },
+    {
+      "id": "course-42",
+      "question": "How does the lecture export a function from a custom CommonJS module?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "6-NodeJS.pdf (Slide 20)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.266,
+        "inference_seconds": 1.332,
+        "cooling_seconds": 3.938,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.267,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 88.0,
+        "power_w": 59.78,
+        "utilization_percent": 3.0
+      }
+    },
+    {
+      "id": "course-43",
+      "question": "Which statement describes blocking I/O?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "6-NodeJS.pdf (Slide 23)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.127,
+        "inference_seconds": 1.103,
+        "cooling_seconds": 4.031,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.127,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 55.49,
+        "utilization_percent": 37.0
+      }
+    },
+    {
+      "id": "course-44",
+      "question": "In fs.readFile(file, (err, data) => {...}), what should be checked before processing data?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "6-NodeJS.pdf (Slide 28)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.061,
+        "inference_seconds": 1.143,
+        "cooling_seconds": 3.907,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.061,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 49.19,
+        "utilization_percent": 92.0
+      }
+    },
+    {
+      "id": "course-45",
+      "question": "Which front-end framework in the lecture was developed by Google?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.065,
+        "inference_seconds": 0.885,
+        "cooling_seconds": 5.188,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.065,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 50.51,
+        "utilization_percent": 43.0
+      }
+    },
+    {
+      "id": "course-46",
+      "question": "Select all front-end libraries or frameworks listed in the lecture.",
+      "expected": "A, B, D",
+      "result": {
+        "best_choice": "A, B, D",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 25)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.002,
+        "inference_seconds": 1.045,
+        "cooling_seconds": 3.953,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.002,
+      "model_output": {
+        "answer": "A, B, D",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 89.0,
+        "power_w": 54.39,
+        "utilization_percent": 82.0
+      }
+    },
+    {
+      "id": "course-47",
+      "question": "What is Webpack used for in the sample front-end project?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 17)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.118,
+        "inference_seconds": 1.167,
+        "cooling_seconds": 3.953,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.118,
+      "model_output": {
+        "answer": "C",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 88.0,
+        "power_w": 56.66,
+        "utilization_percent": 33.0
+      }
+    },
+    {
+      "id": "course-48",
+      "question": "Which Webpack configuration property identifies the input file to bundle?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 17)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.385,
+        "inference_seconds": 1.403,
+        "cooling_seconds": 3.985,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.385,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2451.0,
+        "temperature_c": 87.0,
+        "power_w": 62.8,
+        "utilization_percent": 30.0
+      }
+    },
+    {
+      "id": "course-49",
+      "question": "What kind of architecture does React use for reusable independent UI parts?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 19)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 12.521,
+        "inference_seconds": 2.368,
+        "cooling_seconds": 10.14,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 12.521,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2737.0,
+        "temperature_c": 86.0,
+        "power_w": 45.69,
+        "utilization_percent": 5.0
+      }
+    },
+    {
+      "id": "course-50",
+      "question": "Which description of React is incorrect?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "7-Front-end dev with NodeJS.pdf (Slide 19)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.463,
+        "inference_seconds": 1.747,
+        "cooling_seconds": 3.703,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.464,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2737.0,
+        "temperature_c": 86.0,
+        "power_w": 46.85,
+        "utilization_percent": 5.0
+      }
+    },
+    {
+      "id": "course-51",
+      "question": "Flask là framework web dành cho ngôn ngữ nào?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "8-Python Flask.pdf (Slide 3)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.078,
+        "inference_seconds": 1.311,
+        "cooling_seconds": 3.766,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.079,
+      "model_output": {
+        "answer": "D",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2751.0,
+        "temperature_c": 89.0,
+        "power_w": 52.32,
+        "utilization_percent": 38.0
+      }
+    },
+    {
+      "id": "course-52",
+      "question": "Why is Flask described as a micro framework?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "8-Python Flask.pdf (Slide 3)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 7.247,
+        "inference_seconds": 2.755,
+        "cooling_seconds": 4.5,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 7.247,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2758.0,
+        "temperature_c": 86.0,
+        "power_w": 55.74,
+        "utilization_percent": 6.0
+      }
+    },
+    {
+      "id": "course-53",
+      "question": "Which template engine is named in the Flask lecture?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "8-Python Flask.pdf (Slide 5)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.653,
+        "inference_seconds": 1.445,
+        "cooling_seconds": 4.203,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.653,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2806.0,
+        "temperature_c": 89.0,
+        "power_w": 58.52,
+        "utilization_percent": 91.0
+      }
+    },
+    {
+      "id": "course-54",
+      "question": "Which command installs Flask?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "8-Python Flask.pdf (Slide 7)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.907,
+        "inference_seconds": 0.968,
+        "cooling_seconds": 3.938,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.908,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2808.0,
+        "temperature_c": 87.0,
+        "power_w": 55.27,
+        "utilization_percent": 75.0
+      }
+    },
+    {
+      "id": "course-55",
+      "question": "Which decorator maps the homepage URL to a Flask function?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "8-Python Flask.pdf (Slide 10)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.132,
+        "inference_seconds": 1.158,
+        "cooling_seconds": 3.985,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.132,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2808.0,
+        "temperature_c": 88.0,
+        "power_w": 48.89,
+        "utilization_percent": 60.0
+      }
+    },
+    {
+      "id": "course-56",
+      "question": "Which port is used to access the Flask development app in the lecture?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "8-Python Flask.pdf (Slide 9)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.919,
+        "inference_seconds": 0.961,
+        "cooling_seconds": 3.969,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.919,
+      "model_output": {
+        "answer": "B",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2808.0,
+        "temperature_c": 87.0,
+        "power_w": 51.11,
+        "utilization_percent": 59.0
+      }
+    },
+    {
+      "id": "course-57",
+      "question": "What does routing mean in Flask?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "8-Python Flask.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.952,
+        "inference_seconds": 1.02,
+        "cooling_seconds": 3.922,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.952,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2808.0,
+        "temperature_c": 88.0,
+        "power_w": 47.73,
+        "utilization_percent": 72.0
+      }
+    },
+    {
+      "id": "course-58",
+      "question": "Select all relational databases named in the lecture.",
+      "expected": "A, B, C",
+      "result": {
+        "best_choice": "A, B, C",
+        "matched_source": "9-Database.pdf (Slide 6)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.787,
+        "inference_seconds": 1.674,
+        "cooling_seconds": 4.109,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.787,
+      "model_output": {
+        "answer": "A, B, C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2808.0,
+        "temperature_c": 88.0,
+        "power_w": 58.12,
+        "utilization_percent": 45.0
+      }
+    },
+    {
+      "id": "course-59",
+      "question": "Select all NoSQL databases named in the lecture.",
+      "expected": "B, C",
+      "result": {
+        "best_choice": "B, C",
+        "matched_source": "9-Database.pdf (Slide 4)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.109,
+        "inference_seconds": 1.172,
+        "cooling_seconds": 3.938,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.109,
+      "model_output": {
+        "answer": "B, C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2840.0,
+        "temperature_c": 87.0,
+        "power_w": 55.06,
+        "utilization_percent": 6.0
+      }
+    },
+    {
+      "id": "course-60",
+      "question": "How do relational databases represent structured data?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "9-Database.pdf (Slide 4)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.868,
+        "inference_seconds": 0.896,
+        "cooling_seconds": 3.968,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.868,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2840.0,
+        "temperature_c": 88.0,
+        "power_w": 44.7,
+        "utilization_percent": 5.0
+      }
+    },
+    {
+      "id": "course-61",
+      "question": "Which database category is identified as suitable for structured transactional applications?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "9-Database.pdf (Slide 5)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 30.372,
+        "inference_seconds": 26.108,
+        "cooling_seconds": 4.266,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 30.372,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 3532.0,
+        "temperature_c": 84.0,
+        "power_w": 29.14,
+        "utilization_percent": 0.0
+      }
+    },
+    {
+      "id": "course-62",
+      "question": "What does SQLAlchemy ORM map Python objects to?",
+      "expected": "D",
+      "result": {
+        "error": "Không có đáp án: GPU đang 85°C (ngưỡng 85°C). Đợi máy nguội rồi thử lại."
+      },
+      "correct": false,
+      "seconds": 26.289,
+      "model_output": null,
+      "gpu": {
+        "memory_mib": 1667.0,
+        "temperature_c": 85.0,
+        "power_w": 33.61,
+        "utilization_percent": 41.0
+      }
+    },
+    {
+      "id": "course-63",
+      "question": "Select all benefits of ORM stated in the lecture.",
+      "expected": "C, D",
+      "result": {
+        "error": "Không có đáp án: GPU đang 85°C (ngưỡng 85°C). Đợi máy nguội rồi thử lại."
+      },
+      "correct": false,
+      "seconds": 22.144,
+      "model_output": null,
+      "gpu": {
+        "memory_mib": 1709.0,
+        "temperature_c": 85.0,
+        "power_w": 33.57,
+        "utilization_percent": 37.0
+      }
+    },
+    {
+      "id": "course-64",
+      "question": "Which extension is named for creating forms in Flask?",
+      "expected": "A",
+      "result": {
+        "error": "Không có đáp án: GPU đang 85°C (ngưỡng 85°C). Đợi máy nguội rồi thử lại."
+      },
+      "correct": false,
+      "seconds": 20.679,
+      "model_output": null,
+      "gpu": {
+        "memory_mib": 1721.0,
+        "temperature_c": 85.0,
+        "power_w": 33.35,
+        "utilization_percent": 32.0
+      }
+    }
+  ]
+}

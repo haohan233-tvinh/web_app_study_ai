@@ -1,0 +1,1352 @@
+{
+  "1-Introduction.pdf": {
+    "source": "1-Introduction.pdf",
+    "type": "lecture_slides",
+    "total_pages": 60,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Web Application Development\n\nIntroduction to the Internet\n     and the WWW"
+      },
+      {
+        "page": 2,
+        "content": "Contents\n\n• History of the Internet\n• Some concepts related to the Internet\n• Applications on the Internet\n• Introduction to the World Wide Web\n\n\n\n\n\n                                                                                                       2"
+      },
+      {
+        "page": 3,
+        "content": "History of the Internet\n\n• 1945\n  Vannevar Bush wrote in Atlantic Monthly about a\n  memory extension — Memex — which was a photo-\n   electrical-mechanical device that linked documents on\n   microfiche.\n• 1958\n   In response to the launch of Sputnik, the U.S. Defense\n  Department established Advanced Research Projects Agency\n   (ARPA), which eventually would focus on computer\n  networking and communications technology.\n\n\n\n\n\n                                                                                                       3"
+      },
+      {
+        "page": 4,
+        "content": "History of the Internet\n\n• 1962\n  Doug Engelbart devised NLS — \"oNLine System\" — for\n  browsing and editing information. In the process, he\n  invented the computer mouse.\n\n• 1965\n  Ted Nelson coined the name hypertext for a complex,\n  changing, indeterminate file structure.\n\n  Donald Davies at the UK National Physical Laboratory\n  coined the terms packet and packet switching.\n\n\n\n\n\n                                                                                                       4"
+      },
+      {
+        "page": 5,
+        "content": "History of the Internet\n\n• 1969\n  ARPA started what would become the Internet\n when it created ARPANET connecting the\n  University of California at Los Angeles (UCLA)\n  with SRI International at Menlo Park,\n  California, and then the University of\n  California at Santa Barbara and the University\n  of Utah.\n\n\n\n\n\n                                                                                                       5"
+      },
+      {
+        "page": 6,
+        "content": "History of the Internet\n\n• 1971\n  File Transfer Protocol (FTP) is established.\n  Fifteen sites were connected to ARPANET.\n\n• 1974\n  TCP/IP becomes the Internet Protocol Suite.\n\n  The term Internet was coined to describe a\n  single global TCP/IP network.\n\n\n\n\n                                                                                                       6"
+      },
+      {
+        "page": 7,
+        "content": "History of the Internet\n\n• 1978\n  Amateur radio operators began experimenting with\n  packet radio transmitting ASCII encoded data over\n  Very High Frequency (VHF) amateur radio frequencies\n  using homebuilt equipment.\n\n• 1980\n  Tim Berners-Lee, at CERN in Switzerland, wrote a\n  notebook program called ENQUIRE — \"Enquire-Within-\n  Upon-Everything\" — which linked computer\n  information points.\n   Earlier forms of text messaging become electronic mail,\n  commonly called email or e-mail.\n\n\n\n                                                                                                       7"
+      },
+      {
+        "page": 8,
+        "content": "History of the Internet\n\n• 1983\n\n  The Domain Name System (DNS) is invented.\n\n  Generic top-level domain categories are .gov, .edu, .com,\n   .mil, .org and .net.\n\n• 1989\n\n  Tim Berners-Lee at CERN wrote \"Information\n  Management: A Proposal\" and \"HyperText and CERN.\" He\n  proposed what was to become the World Wide Web.\n\n\n\n\n\n                                                                                                       8"
+      },
+      {
+        "page": 9,
+        "content": "History of the Internet\n\n• 1990\n  Tim Berners-Lee invented the World Wide Web,\n  HTML, and a text browser. He used a NeXT\n  computer to write a global hypertext system and\n  create a hypertext graphical user interface (GUI)\n  browser and \"what you see is what you get\"\n  editor.\n  He established the first successful communication\n  between an Hypertext Transfer Protocol (HTTP)\n  client and server via the Internet.\n\n\n\n                                                                                                       9"
+      },
+      {
+        "page": 10,
+        "content": "History of the Internet\n\n• 1993\n  Marc Andreessen, Eric Bina and others at\n  NCSA displayed first graphical browser,\n  Mosaic. Other browsers were Midas, Erwise,\n  Viola and one for Mac.\n• 1994\n Two million computers connected to the\n  Internet were used mostly by academics,\n  scientists, and corporate researchers.\n\n\n\n\n                                                                                                      10"
+      },
+      {
+        "page": 11,
+        "content": "History of the Internet\n\n• 1995\n\n  Amazon.com bookstore appears.\n\n  Sergey Brin and Larry Page planned the future\n  Google.\n\n  The first wiki was written.\n\n\n\n\n\n                                                                                                      11"
+      },
+      {
+        "page": 12,
+        "content": "History of the Internet\n\n• 1996\n\n  Microsoft Internet Explorer appeared.\n\n  Hotmail was the first Web e-mail site.\n• 1998\n\n  Netscape released its code, spawning Mozilla\n  open-source browser.\n\n  Google opened and answered 10,000 search\n  queries per day.\n\n\n\n\n                                                                                                      12"
+      },
+      {
+        "page": 13,
+        "content": "History of the Internet\n\n• 2001\n\n  Wikipedia opened.\n\n  Google answered more than 100 million\n  searches per day.\n\n  Apple released the first iPod.\n\n  The file-sharing service Kazaa founded.\n\n\n\n\n                                                                                                      13"
+      },
+      {
+        "page": 14,
+        "content": "History of the Internet\n\n• 2003\n\n  More than three billion Web pages.\n\n  New browsers include Apple Computer's Safari and others\n   including Amaya, Camino, Lynx, Opera and Phoenix.\n\n  The virtual world Second Life was born.\n\n  WordPress blog publishing and content management\n  system opens.\n\n  Skype voice calling over the Internet begins.\n\n  Apple introduces the on-line music service iTunes.\n\n\n\n                                                                                                      14"
+      },
+      {
+        "page": 15,
+        "content": "History of the Internet\n\n• 2004\n\n  Newest browser is Firefox by Mozilla. Apple Computer's\n  iPod pocket-sized MP3 music player are all the rage.\n\n  Facebook started collecting friends.\n\n  Podcasting commenced.\n\n   Flickr image hosting website opens.\n\n  Digg was founded.\n\n  Mass use of Voice over Internet Protocol – VoIP – begins.\n\n\n\n\n\n                                                                                                      15"
+      },
+      {
+        "page": 16,
+        "content": "History of the Internet\n\n•  2005\n\n  More than eight billion Web pages.\n\n   Online technology is in two-thirds of American homes. Three-\n   quarters of Americans go online spending an average 12.5 hours\n   there per week. Television viewing declines among Internet users.\n\n   High-speed always-on broadband access to the Internet is changing\n   dramatically how we related to the Web – how often we go online,\n  what we do online, how long we stay online.\n\n  YouTube began storing and retrieving videos.\n\n   Google Earth is a virtual globe, map and geographical Internet site.\n\n\n\n\n\n                                                                                                      16"
+      },
+      {
+        "page": 17,
+        "content": "History of the Internet\n\n• 2006\n\n  Twitter began issuing tweets.\n\n  Google has indexed more than 25 billion web\n  pages, 400 million queries per day, 1.3 billion\n  images.\n\n\n\n\n\n                                                                                                      17"
+      },
+      {
+        "page": 18,
+        "content": "History of the Internet\n\n•  2007\n\n   Apple released the iPhone multimedia and Internet smartphone.\n\n•  2008\n\n   Google released the Chrome web browser.\n\n•  2009\n     It's estimated that a quarter of Earth's population uses the Internet.\n\n    Microsoft's Bing joins Yahoo and Google as major search engines on the Internet.\n\n•  2010\n\n   Apple released the iPad tablet computer.\n•  2014\n\n  HTML5\n\n\n\n\n                                                                                                      18"
+      },
+      {
+        "page": 19,
+        "content": "Connecting to the Internet\n\n\n\n\n\n                                                                                         19"
+      },
+      {
+        "page": 20,
+        "content": "TCP/IP\n\n• Protocol: defines formats and rules for\n  exchanging messages between parties\n• TCP/IP protocols: a set of protocols used for\n  the Internet; two most important protocols\n  are IP and TCP\n\n\n\n\n\n                                                                                                      20"
+      },
+      {
+        "page": 21,
+        "content": "TCP/IP\n\n• IP address: numerical addresses of devices on\n  the Internet;\n  – example: 42.112.24.18 (USTH), 74.125.239.31\n     (Google VN)\n• Virtual vs. real IP address\n\n\n\n\n\n                                                                                                      21"
+      },
+      {
+        "page": 22,
+        "content": "Virtual vs. real IP address\n\n\n\n\n\n     10.10.0.2          10.10.0.3\n\n\n\n               10.10.0.1\n\n                                   Internet\n                 203.162.3.4\n\n\n\n\n\n                                                                                       23"
+      },
+      {
+        "page": 23,
+        "content": "Some Concepts\n\n\nClient – Server Systems\n\n\n\n\n\n                                                                                                 24"
+      },
+      {
+        "page": 24,
+        "content": "Some Concepts\n\n• Domain name: memorable names for nodes\n  on the Internet (instead of using IP address)\n  – Example: 111.65.248.132 ó vnexpress.net\n• Domain name server: the server helps to map\n  IP addresses to domain names (and vice versa)\n\n\n\n\n\n                                                                                                      25"
+      },
+      {
+        "page": 25,
+        "content": "DNS Server\n\n\n\n\n\n                                                                  26"
+      },
+      {
+        "page": 26,
+        "content": "DNS\n\n\n\n\n\n                                                        27"
+      },
+      {
+        "page": 27,
+        "content": "Firewall\n\n\n\n\n\nHacker\n\n\n\n\n\n                                                                                       28"
+      },
+      {
+        "page": 28,
+        "content": "Proxy\n\n\n\n\n\n                                                          29"
+      },
+      {
+        "page": 29,
+        "content": "Applications on the Internet\n\n• Electronic mail (email)\n• File server\n• Web\n• Instant messaging\n• Video conferencing\n• Social network\n• P2P\n• Media/file sharing\n\n\n\n                                                                                                      30"
+      },
+      {
+        "page": 30,
+        "content": "Email\n\n\n\n\n\n                                                          31"
+      },
+      {
+        "page": 31,
+        "content": "Instant Messaging\n\n\n\n\n\n                                                                            32"
+      },
+      {
+        "page": 32,
+        "content": "Video Conferencing\n\n\n\n\n\n                                                                               33"
+      },
+      {
+        "page": 33,
+        "content": "P2P\n\n\n\n\n\n                                                       34"
+      },
+      {
+        "page": 34,
+        "content": "File Sharing\n\n\n\n\n\n                                                                   35"
+      },
+      {
+        "page": 35,
+        "content": "Media Sharing\n\n\n\n\n\n                         Instagram\n\n\n\n\n\n                                                                       36"
+      },
+      {
+        "page": 36,
+        "content": "Social Networks\n\n\n\n\n\n                                                                         37"
+      },
+      {
+        "page": 37,
+        "content": "Introduction to the WWW\n\n• The World Wide Web is a worldwide collection\n  of electronic documents (a.k.a the Web)\n• A Web page is a document on the WWW\n• A Web site is a collection of related Web pages\n\n\n\n\n\n                                                                                                      38"
+      },
+      {
+        "page": 38,
+        "content": "Introduction to the WWW\n\n\n\n\n\n                          request\n\n\n\n\n                         response\n\n   Web Client                        Web Server\n\n\n\n\n\n                                                                                        39"
+      },
+      {
+        "page": 39,
+        "content": "Introduction to the WWW\n\n•  Protocol: HyperText Transfer Protocol (HTTP)\n request\n GET /path/file.html HTTP/1.0\n From: someuser@jmarshall.com\n User-Agent: HTTPTool/1.0 [blank line here]                     response\n\n                       HTTP/1.0 200 OK\n                        Date: Fri, 31 Dec 1999 23:59:59 GMT\n                        Content-Type: text/html\n                        Content-Length: 1354\n                      <html> <body> <h1>Happy New Millennium!</h1> (more\n                                  file contents) . . . </body> </html>\n• Language used to create Web pages: HyperText\n  Markup Language (HTML)\n\n\n\n                                                                                                      40"
+      },
+      {
+        "page": 40,
+        "content": "HTTP vs HTML\n\n• HTML: hypertext markup language\n  – Definitions of tags that are added to Web\n    documents to control their appearance\n• HTTP: hypertext transfer protocol\n  – The rules governing the conversation between a\n   Web client and a Web server\n\n Both were invented at the same time by the same person"
+      },
+      {
+        "page": 41,
+        "content": "What is a protocol?\n\n• In diplomatic circles, a protocol is the set of rules\n  governing a conversation between people\n\n• We have seen that the client and server carry on\n  a machine-to-machine conversation\n\n• A network protocol is the set of rules governing a\n  conversation between a client and a server\n\n• There are many protocols, HTTP is just one"
+      },
+      {
+        "page": 42,
+        "content": "An HTTP conversation\n\n\n       Client                                              Server\n\n•  I would like to open a\n  connection                                                         • OK\n\n• GET <file location>\n\n                                                         • Send page or error message\n\n• Display response\n• Close connection\n\n                                                         • OK\n\n   HTTP is the set of rules governing the format and content of the\n   conversation between a Web client and server"
+      },
+      {
+        "page": 43,
+        "content": "An HTTP example\n\n • The message requesting a Web page must\n  begin with the work “GET” and be followed by\n  a space and the location of a file on the server,\n   like this:\n             GET /fac/lpress/shortbio.htm\n\n\n\nThe protocol spells out the exact message format, so any Web\nclient can retrieve pages from any Web server."
+      },
+      {
+        "page": 44,
+        "content": "Web Client\n\n• Usually mentioned as Web browser\n  – Firefox\n  – Internet Explorer\n  – Chrome\n\n\n\n\n\n                                                                                                      45"
+      },
+      {
+        "page": 45,
+        "content": "Web browsers\n\n\n\n\n\n                               (source: StatCounter)\n\n                                                                       46"
+      },
+      {
+        "page": 46,
+        "content": "Web browsers\n\n\n\n\n\n                               (source: StatCounter)\n\n                                                                       47"
+      },
+      {
+        "page": 47,
+        "content": "Web Server\n\n\n                                       request\n\n\n\n\n                                     response\n\n            Web Client                        Web Server\nPopular servers\n  – Apache HTTP server\n  – Internet Information Service (IIS)\n  – lighttpd\n\n\n\n\n                                                                                                      48"
+      },
+      {
+        "page": 48,
+        "content": "Some Concepts\n\nURL (Uniform Resource Locator): a string\nrepresenting the location of a Web page\n\n\n\n\n\n                                                                                                 49"
+      },
+      {
+        "page": 49,
+        "content": "Some Concepts\n\n• Home page: the Web page considered as the\n  “start point” for a Web site\n• Hyperlink: the pointer from a Web page to\n  another\n\n\n\n\n\n                                                                                                      50"
+      },
+      {
+        "page": 50,
+        "content": "Tab Browsing\n\n\n\n\n\n                                                                     51"
+      },
+      {
+        "page": 51,
+        "content": "Web Multimedia\n\n• Audio\n• Video\n• Animation\n• 3D\n\n\n\n\n\n                                                                                                      52"
+      },
+      {
+        "page": 52,
+        "content": "Search Engines\n\n• A search engine is a system designed to search\n  information on the WWW\n• Popular search engines\n  – Yahoo! (http://www.yahoo.com)\n  – Bing (http://www.bing.com)\n  – Google (http://www.google.com)\n  – Coccoc (http://coccoc.com)\n\n\n\n\n\n                                                                                                      53"
+      },
+      {
+        "page": 53,
+        "content": "Search Engines\n\n\n\n\n\n                                (source: StatCounter)\n\n                                                                        54"
+      },
+      {
+        "page": 54,
+        "content": "Top Sites\n\n\n\n\n\n                                                               55"
+      },
+      {
+        "page": 55,
+        "content": "Top Sites\n\n\n\n\n\n                                                               56"
+      },
+      {
+        "page": 56,
+        "content": "Growth of the Internet\n\n\n\n\n\n                                                                                   57"
+      },
+      {
+        "page": 57,
+        "content": "Web 2.0\n\n• Web 1.0: users access contents\n• Web 2.0: users create, organize, remix contents\n• Websites\n  – Search\n  – User-generated content\n  – Blogging\n  – Social network\n  – Social media\n  – Location-based services\n\n\n\n\n                                                                                                      58"
+      },
+      {
+        "page": 58,
+        "content": "Mobile Web\n\n• Websites for mobile devices\n• Considerations\n  – Screen\n  – Computation power\n  – Connection\n\n\n\n\n\n                                                                                                      59"
+      },
+      {
+        "page": 59,
+        "content": "Summary\n\n• History of the Internet\n• Some concepts related to the Internet\n• Applications on the Internet\n• Introduction to the World Wide Web\n• Web browsers\n\n\n\n\n\n                                                                                                      60"
+      },
+      {
+        "page": 60,
+        "content": "61"
+      }
+    ]
+  },
+  "2-HTML.pdf": {
+    "source": "2-HTML.pdf",
+    "type": "lecture_slides",
+    "total_pages": 32,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Web Application Development\nHypertext Markup Language\n         (HTML)"
+      },
+      {
+        "page": 2,
+        "content": "Outline\n\n• Definition\n• Structure of a Web page\n• Tags, Elements and Attributes\n• Images\n• Tables\n\n\n\n\n\n                                                                                                       2"
+      },
+      {
+        "page": 3,
+        "content": "Definition\n\n• HTML is Hypertext Markup Language, which\n  defines the markup tags to control the\n  appearance of web documents\n• Web browsers use markup tags to present\n  documents\n• Nowadays, HTML is the most widely used\n  language on the Web\n\n\n\n\n\n                                                                                                       3"
+      },
+      {
+        "page": 4,
+        "content": "Example\n\n<html>\n    <head>\n         <title>Web Application Development</title>\n    </head>\n    <body>\n         <!– Example of markup tags in HTML -->\n        <h1>About the Course.</h1>\n        <p>The course provides students with basic knowledge about Web\n          technologies. On finishing the course, students should be able to\n         develop simple web application.</p>\n        <p>During the course, students have to complete lecture notes and\n         assignments.</p>\n    </body>\n</html>\n\n  Markup tags used are: <html>, <head>, <title>, <body>, <h1>, <p>\n  Comment tag: <!– comment content -->\n\n\n\n\n\n                                                                                                         4"
+      },
+      {
+        "page": 5,
+        "content": "Example\n\n<html>\n    <head>\n         <title>Web Application Development</title>\n    </head>\n    <body>\n        <h1>About the Course.</h1>\n        <p>The course provides students with basic knowledge about Web\n          technologies. On finishing the course, studentsTitleshould be able to\n         develop simple web application.</p>\n        <p>During the course, students have to complete lecture notes and\n         assignments.</p>                            h1\n    </body>\n</html>                                                               p\n                                                                  p\n\n\n\n\n\n                                                                                                         5"
+      },
+      {
+        "page": 6,
+        "content": "Structure of a Web Page\n\n• Markup tags define structures of the documents\n\n               DOCTYPE\n                 <html>\n\n                <head>\n\n\n                 </head>\n\n                <body>\n\n\n                 </body>\n\n                  </html>\n\n\n\n                                                                                                       6"
+      },
+      {
+        "page": 7,
+        "content": "DOCTYPE Declaration\n\n • Specifies which version of (X)HTML is used\n\n • Placed at the beginning of the (X)HTML documents\n\n\n<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”\n“http://www.w3.org/TR/html4/loose.dtd”>\n\n\n<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”\n“http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>\n\n\n\n\n\n                                                                                                   7"
+      },
+      {
+        "page": 8,
+        "content": "Tags and Elements\n\n\n\n\n              Element\n\n   <h1> About the Course </h1>\n\nOpening tag                   Closing tag\n\n\n\n\n\n                                                                                       8"
+      },
+      {
+        "page": 9,
+        "content": "Attributes of Elements\n\n• <p> is the tag for defining paragraphs\n• “lang” is an attribute of element <p> for\n  specifying language of the paragraph\n\n   <p lang=“en-us”> Content of Paragraph</p>\n\n• An attribute has two parts: name and value\n• Name and value are separated by “=“ sign\n• Values must be held in double quotation marks\n•  Attribute names must be in lowercase\n• An element may have several attributes\n\n\n\n                                                                                                      9"
+      },
+      {
+        "page": 10,
+        "content": "Core Elements and Attributes\n\n• The <html> element\n  – Contain two children: <head> and <body>\n• The <head> element\n  – The first thing to appear after the <html> tag\n  – Contains elements such as <title>, <style>, <script>, etc.\n• The <body> element\n  – Main content of the web page\n• The <title> element\n  – Display title of the Web pages at the top of the browser\n  – Used as default name for bookmarking\n  – Used for search engines\n\n\n\n                                                                                                         10"
+      },
+      {
+        "page": 11,
+        "content": "Headings\n\n• HTML offers six levels of headings, which use\n  the elements <h1>, <h2>, <h3>, <h4>, <h5>,\n  and <h6>\n• While browsers can display headings\n  differently, they tend to display the <h1>\n  element as the largest and <h6> as the\n  smallest\n\n\n\n\n\n                                                                                                      11"
+      },
+      {
+        "page": 12,
+        "content": "Paragraphs\n\n• <p> elements are used for defining paragraphs\n• <br /> is for adding a line break\n• <hr />: The <hr /> element creates a\n  horizontal rule across the page\n\n\n\n\n\n                                                                                                      12"
+      },
+      {
+        "page": 13,
+        "content": "Presentational Elements\n\n• <b>: Anything that appears in a <b> element is\n  displayed in bold\n• <i>: The content of an <i> element is displayed\n  in italicized text\n• <u>: underline\n• <s> (or <strike>): strikethrough\n\n\n\n\n\n                                                                                                      13"
+      },
+      {
+        "page": 14,
+        "content": "Presentational Elements\n\n• <sup>: The content of a <sup> element is\n  written in superscript\n• <sub>: The content of a <sub> element is\n  written in                  subscript\n• <big>: The content of the <big> element is\n  displayed one font size larger than the rest\n  of the text surrounding it. If the font is already\n  the largest size, it has no effect\n• <small>\n\n\n\n\n                                                                                                      14"
+      },
+      {
+        "page": 15,
+        "content": "Lists\n\n• <li> tag defines a list item\n• List items can be grouped in 3 types:\n  – Unordered lists, which are like lists of bullet\n     points: <ul>\n  – Ordered lists, which use a sequence of numbers or\n      letters instead of bullet points: <ol>\n  – Description lists, which allow you to define and\n     describe a term: <dl>, <dt>, <dd>\n\n\n\n\n\n                                                                                                      15"
+      },
+      {
+        "page": 16,
+        "content": "Lists\n\n• <li> tag defines a list item\n• List items can be grouped in 3 types:\n  – Unordered lists, which are like lists of bullet\n     points: <ul>\n  – Ordered lists, which use a sequence of numbers or\n      letters instead of bullet points: <ol>\n  – Description lists, which allow you to define and\n     describe a term: <dl>, <dt>, <dd>\n\n\n\n\n\n                                                                                                      16"
+      },
+      {
+        "page": 17,
+        "content": "Example of Order List\n\n• HTML tags:                              Result:\n<p>An ordered list:</p>    An ordered list:\n                              1.Coffee<ol>\n                              2.Tea      <li>Coffee</li>\n                              3.Milk\n      <li>Tea</li>\n      <li>Milk</li>\n</ol>\n\n\n\n\n\n                                                                                                      17"
+      },
+      {
+        "page": 18,
+        "content": "Example of Unorder List\n\n• HTML tags:                               Result:\n<p>An unordered list:</p>   An unordered list:\n                                       •  Coffee<ul>\n                                       •  Tea      <li>Coffee</li>\n                                       •  Milk\n      <li>Tea</li>\n      <li>Milk</li>\n</ul>\n\n\n\n\n\n                                                                                                        18"
+      },
+      {
+        "page": 19,
+        "content": "Example of Description List\n\n• HTML tags:                  Result:\n                             Coffee<dl>\n                                   Black hot drink <dt>Coffee</dt>\n                            Milk <dd>Black hot drink</dd>\n                              White cold drink <dt>Milk</dt>\n <dd>White cold drink</dd>\n</dl>\n\n\n\n\n\n                                                                                                          19"
+      },
+      {
+        "page": 20,
+        "content": "Block-level Elements\n\n• A block-level element starts on a new line and\n  takes up the full width available (stretches out\n  to the left and right as far as it can)\n• Examples of block-level elements:\n     <div>\n    <h1> - <h6>\n    <p>\n     <form>\n\n\n\n\n                                                                                                      20"
+      },
+      {
+        "page": 21,
+        "content": "Inline Elements\n\n• An inline element does not start on a new line\n  and only takes up as much width as necessary\n• Examples of inline elements:\n     <span>\n     <a>\n    <img>\n\n\n\n\n\n                                                                                                      21"
+      },
+      {
+        "page": 22,
+        "content": "Links\n\n• Use element <a> with attribute “href” to\n  create links\n• Value of “href” may be a relative address or a\n   full url\n• Attribute “title” can be used to create tooltip\n  for helping users\n\n\n\n\n\n                                                                                                      22"
+      },
+      {
+        "page": 23,
+        "content": "Link Example\n\n\n\n\n\n                                                                     23"
+      },
+      {
+        "page": 24,
+        "content": "URLs\n\n• Uniform Resource Locator\n• Each resource (Web page, site, file) has a\n  unique URL\n\n\n\n\n\n                                                                                                      24"
+      },
+      {
+        "page": 25,
+        "content": "URLs\n\n• Protocol: http://, https://, ftp://, file://\n• Domain: domain name or IP address\n• Path: begins with a forward slash character, and\n  may consist of one or more directory names\n•  If a filename is not given, the web server will\n  usually do one of three things\n  – Return a default file (index.htm, index.html,…)\n  – Offer a list of files and directories\n  – An error message\n\n\n\n\n                                                                                                      25"
+      },
+      {
+        "page": 26,
+        "content": "Absolute and Relative URLs\n\n• Absolute URL: can be used to access the\n  Webpage from anywhere\n    http://www.usth.edu.vn/news/test.html\n• Relative URL: indicates where the resource is\n  in relation to the current page\n  – Same directory:  test.html\n  – Parent directory: ../test.html\n  – Sub-directory: example/test.html\n\n\n\n\n\n                                                                                                      26"
+      },
+      {
+        "page": 27,
+        "content": "Images\n\n• Types of images\n  – Bitmap: JPEG, PNG, GIF\n  – Vector: Flash, SVG\n• Add an image to a webpage\n  <img src=”logo.gif” title =“Cat” alt=”Image of a cat” />\n  <img src=“logo.gif” width=“150” height=“150” />\n\n\n\n\n\n                                                                                                        27"
+      },
+      {
+        "page": 28,
+        "content": "Images as Links\n\n<a href=”../index.html” title=”Homepage”>\n    <img src=”images/banana.jpg”/>\n</a>\n\n\n\n\n\n                                                                                                      28"
+      },
+      {
+        "page": 29,
+        "content": "Tables\n\n\n\n\n              <table border=”1”>\n               <tr>\n                    <td>Row 1, Column 1</td>\n                    <td>Row 1, Column 2</td>\n               </tr>\n               <tr>\n                    <td>Row 2, Column 1</td>\n                    <td>Row 2, Column 2</td>\n               </tr>\n              </table>\n\n\n\n\n\n                                                           29"
+      },
+      {
+        "page": 30,
+        "content": "Column & Row Spanning\n\n<table>\n<tr>\n    <th></th>\n    <th>ABC</th>\n    <th>BBC</th>\n    <th>CNN</th>\n</tr>\n<tr>\n    <th>6pm - 7pm</th>\n    <td rowspan=\"2\">Movie</td>\n    <td>Comedy</td>\n    <td>News</td>\n</tr>\n<tr>\n    <th>7pm - 8pm</th>\n    <td>Sport</td>\n    <td>Current Affairs</td>\n</tr>\n</table>\n\n                                                                                                     30"
+      },
+      {
+        "page": 31,
+        "content": "Tools\n\n• Editor: Any text editor can be used\n  – Notepad\n  – Wordpad\n  – Notepad++ (recommended)\n  – Microsoft Expression Web\n  – Komodo\n  – Dreamweaver\n• Web server:\n  – Apache\n  – Xampp\n\n\n                                                                                                      31"
+      },
+      {
+        "page": 32,
+        "content": "32"
+      }
+    ]
+  },
+  "3-CSS.pdf": {
+    "source": "3-CSS.pdf",
+    "type": "lecture_slides",
+    "total_pages": 47,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Web Application Development\n\nCascading Style Sheet (CSS)"
+      },
+      {
+        "page": 2,
+        "content": "Outline\n\n• Concepts of CSS\n• Controlling font\n• Text format\n• Box model\n• Table\n\n\n\n\n\n                                                                                                       2"
+      },
+      {
+        "page": 3,
+        "content": "Introduction\n\n• CSS: Cascading Style Sheet\n• CSS is a style language for defining layout of\n HTML documents\n  – Separation of structure from presentation\n  – CSS covers fonts, colors, margins, lines, height,\n     width, background images, advanced positions\n    and many other things\n\n\n\n\n\n                                                                                                       3"
+      },
+      {
+        "page": 4,
+        "content": "Adding CSS Rules to HTML\n\n• 3 CSS Styles: Inline style, Embedded style &\n  External style\n• Inline style: specify for each element\n  <h1 style=\"color:blue;margin-left:30px;\">\n    This is a heading.\n  </h1>\n\n\n\n\n\n                                                                                                       4"
+      },
+      {
+        "page": 5,
+        "content": "Adding CSS Rules to HTML\n\n• Embedded/Internal style: embed an entire\n  CSS document in an HTML document’s head\n  section\n    <head>\n           <style>\n             body {background-color: red;}\n           </style>\n     </head>\n\n\n\n\n                                                                                                       5"
+      },
+      {
+        "page": 6,
+        "content": "Adding CSS Rules to HTML\n\n•  External style: style sheet can be stored in a separate\n   file\n•  “mystyle.css” looks as follows:\n       body {\n         background-color: blue;\n           }\n\n       h1 {\n          color: red;\n          margin-left: 20px;\n           }\n\n    <head>\n        <link rel=\"stylesheet\" type=\"text/css“\n       href=\"mystyle.css\">\n    </head>\n\n                                                                                                       6"
+      },
+      {
+        "page": 7,
+        "content": "Advantages of External Style Sheets\n\n• Reuse CSS rules\n• Reduce size of Web pages\n• Change the appearance of several pages by\n  altering just the style sheet rather than\n  modifying each individual page\n• Because the source document does not\n  contain the style rules, different style sheets\n  can be attached to the same document (i.e.\n  desktops vs. phones)\n\n\n\n                                                                                                       7"
+      },
+      {
+        "page": 8,
+        "content": "Cascading\n\nPriority\n  – inline\n  – embedded\n  – external\n\n\n\n\n\n                                                                                                       8"
+      },
+      {
+        "page": 9,
+        "content": "CSS Rules\n\n• CSS works by associating rules with elements\n  in documents\n• Each rule has two parts\n  – Selector: indicates which elements the declaration\n     applies to\n  – Declaration: indicates how elements should be\n     styled\n\n\n\n\n\n                                                                                                       9"
+      },
+      {
+        "page": 10,
+        "content": "Type of Selectors\n\n• Class selector\n• ID selector\n• Type selector\n\n\n\n\n\n                                                                                                      10"
+      },
+      {
+        "page": 11,
+        "content": "Class Selector\n\n\n<p class=\"highlight\">This paragraph has red text.</p>\n<p class=\"default\">This paragraph has dark gray text.</p>\n<p class=\"default\">This paragraph also has dark gray text.</p>\n\n/* Define highlight class */\n.highlight {\n       color:#F00;\n}\n/* Define default class */\n.default {\n       color:#333;\n}\n\n\n\n\n                                                                                                    11"
+      },
+      {
+        "page": 12,
+        "content": "Class Selector\n\n\n<p class=\"highlight\">This paragraph has red text.</p>\n<p class=\"default\">This paragraph has dark gray text.</p>\n<p class=\"default\">This paragraph also has dark gray text.</p>\n\n\n• The same class can be used on multiple elements\n\n• Multiple classes can be applied on the same element\n\n\n\n\n\n                                                                                                    12"
+      },
+      {
+        "page": 13,
+        "content": "ID Selector\n\n\n<p id=\"highlight\">This paragraph has red text.</p>\n<p id=\"default\">This paragraph has dark gray text.</p>\n\n/* Define highlighted text */\n#highlight {\n      color:#F00;\n}\n/* Define default text */\n#default {\n      color:#333;\n}\n\n                                                                                                    13"
+      },
+      {
+        "page": 14,
+        "content": "ID Selector\n\n\n<p id=\"highlight\">This paragraph has red text.</p>\n<p id=\"default\">This paragraph has dark gray text.</p>\n\n\n• Each element can have only one ID\n\n• Each page can have only one element with that ID\n\n\n\n\n\n                                                                                                    14"
+      },
+      {
+        "page": 15,
+        "content": "Type Selector\n\n\n<p>This paragraph has red text.</p>\n<p>This paragraph has red text.</p>\n\n/* Define red text */\np {\n      color:#F00;\n}\n\n\n\n\n\n                                                                                                    15"
+      },
+      {
+        "page": 16,
+        "content": "Multiple external style sheets\n\n\n                                      CSS\n\n\n\n                                      CSS          HTML\n\n\n\n                                      CSS\n\n\n<link rel=\"stylesheet“ type=\"text/css\" href=\"css/one.css\" />\n<link rel=\"stylesheet“ type=\"text/css\" href=\"css/two.css\" />\n<link rel=\"stylesheet“ type=\"text/css\" href=\"css/three.css”/>\nthree.css has the highest priority\n\n\n\n                                                                                                      16"
+      },
+      {
+        "page": 17,
+        "content": "Imported Style Sheets\n\n\n                                           CSS\n\n\n\n                CSS                         CSS\n\n\n\n                                           CSS\n\n\n<style>@import url(\"one.css\")</style>\n<style> @import url(\"two.css\")</style>\n<style> @import url(\"three.css\")</style>\n\n\n\n\n\n                                                                                                   17"
+      },
+      {
+        "page": 18,
+        "content": "Grouping\n\n/* Heading styles */                       /* Heading styles */\nh1 {                                       h1, h2, h3 {\n     font-family:Helvetica,Arial,sans-serif;         font-family:Helvetica,Arial,sans-\n    color:#333;                                        serif;\n}                                               color:#333;\nh2 {                                                     }\n     font-family:Helvetica,Arial,sans-serif;\n    color:#333;\n}\nh3 {\n     font-family:Helvetica,Arial,sans-serif;\n    color:#333;\n}\n\n\n\n\n\n                                                                                                         18"
+      },
+      {
+        "page": 19,
+        "content": "Grouping\n\n\n\n/* Heading styles */\nh1, h2, h3 {\n     font-family:Helvetica,Arial,sans-serif;\n    color:#333;\n}\n/* Additionally, render all h1 headings in italics */\nh1 {\n     font-style:italic;\n}\n\n\n\n\n\n                                                                                  19"
+      },
+      {
+        "page": 20,
+        "content": "Colors\nEvery color on a computer screen is created by mixing\namounts of red, green, and blue.\n\n\n\n\n\n                                                                                                     20"
+      },
+      {
+        "page": 21,
+        "content": "Colors\n\nColor                 Color HEX        Color RGB      Color Name\n\n                 #000000         rgb(0,0,0)          Black\n\n                  #FF0000         rgb(255,0,0)      Red\n\n                  #00FF00         rgb(0,255,0)      Green\n\n                  #0000FF         rgb(0,0,255)       Blue\n\n                  #FFFF00         rgb(255,255,0)     Yellow\n\n                  #00FFFF         rgb(0,255,255)    Cyan\n\n                  #FF00FF         rgb(255,0,255)     Fuchsia\n\n                 #C0C0C0        rgb(192,192,192)   Silver\n\n                   #FFFFFF         rgb(255,255,255)  White\n\n\n                                                                                    21"
+      },
+      {
+        "page": 22,
+        "content": "Division\n\n<div> tag divides a page into groups\n\n        <div>\n              <p>This is our content area.</p>\n        </div>\n\n        <div id=\"container\">\n              <p>This is our content area.</p>\n        </div>\n\n\n\n\n\n                                                                                                      22"
+      },
+      {
+        "page": 23,
+        "content": "Division\n\n\n\n<div id=\"container\">\n       <p>This is our content area.</p>\n</div>\n\n\n/* Container holds all visible page elements */\n#container {\n       padding: 20px;\n       border: 1px solid #000;\n       background: #CCC;\n}\n\n\n\n\n                                                                                                     23"
+      },
+      {
+        "page": 24,
+        "content": "Controlling Fonts\n\n\n\n\n\n                                                                           24"
+      },
+      {
+        "page": 25,
+        "content": "Controlling Fonts\n\nThe font-family Property\n\n        <p class=”one”>Here is some text.</p>\n        <p class=”two”>Here is some text.</p>\n        <p class=”three”>Here is some text.</p>\n\n\n           .one {font-family:arial, verdana, sans-serif;}\n           .two {font-family:times, “times new roman”, serif;}\n            .three {font-family:courier, “courier new”, serif;}\n\n\n\n\n\n                                                                                                      25"
+      },
+      {
+        "page": 26,
+        "content": "Generic Fonts\n\n\n\n\n\n                                                                      26"
+      },
+      {
+        "page": 27,
+        "content": "Controlling Fonts\n\n\n\n\n\n•Weight: p {font-weight: bold}\n• Style: p {font-style: italic}\n• Stretch: p {font-stretch: condensed}\n\n\n\n\n\n                                                                                           27"
+      },
+      {
+        "page": 28,
+        "content": "Formatting Text\n\n•  color: color of text\n   <html>\n      <head>\n         <style>\n         h1 { color: green; }\n         p {color: blue}\n         </style>\n      </head>\n      <body>\n         <h1>This is heading 1</h1>\n         <p>This is a paragraph</p>\n      </body>\n   </html>\n\n\n\n                                                                                                       28"
+      },
+      {
+        "page": 29,
+        "content": "Formatting Text\n•  text-align: Specifies the alignment of the text within\n   its containing element; values = {left, right, center,\n   justify}\n       <html>\n       <head>\n         <style>\n        h1 { text-align: center; }\n        h2 { text-align: right; }\n         </style>\n       </head>\n       <body>\n         <h1>This is heading 1</h1>\n         <h2>This is heading 2</h2>\n       </body>\n       </html>\n\n\n                                                                                                      29"
+      },
+      {
+        "page": 30,
+        "content": "Formatting Text\n•   vertical-align: Vertical alignment of text within containing element and in\n   relation to containing element; values={baseline, sub, super, top, etc.}\n\n<html>\n <head>\n    <style>\n        img.top { vertical-align: text-top; }\n        img.bottom { vertical-align: text-bottom; }\n   </style>\n </head>\n <body>\n  <p>An <img src=\"usth.png\" /> image with a default alignment.</p>\n  <p>An <img class=\"top\" src=\"usth.png\" /> image with a text-top\nalignment.</p>\n  <p>An <img class=\"bottom\" src=\"usth.png\" /> image with a text-bottom\nalignment.</p>\n</body>\n</html>\n\n                                                                                                      30"
+      },
+      {
+        "page": 31,
+        "content": "Formatting Text\n•  text-decoration: Specifies whether the text should be underlined, overlined,\n   strikethrough, or blinking text; values={overline, underline, line-through,\n    blink}\n<html>\n <head>\n    <style>\n    h1 { text-decoration: overline; }\n    h2 { text-decoration: line-through; }\n    h3 { text-decoration: underline; }\n   </style>\n </head>\n <body>\n   <h1>This is heading 1</h1>\n   <h2>This is heading 2</h2>\n   <h3>This is heading 3</h3>\n</body>\n</html>\n\n\n\n                                                                                                      31"
+      },
+      {
+        "page": 32,
+        "content": "Pseudo-class\n\n• Pseudo class: a mechanism allows to add some\n  special effect to some selector\n• Indicated by: selector: pseudo class\n• Example: a:link, a:visited, a:hover, a:active\n\n\n\n\n\n                                                                                                        32"
+      },
+      {
+        "page": 33,
+        "content": "Pseudo-class\n\n<style>\n    /* unvisited link */\n     a:link {\n       color: red;\n      }\n    /* visited link */\n     a:visited {\n       color: green;\n      }\n    /* mouse over link */\n    a:hover {\n       color: hotpink;\n      }\n    /* selected link */\n     a:active {\n       background-color: yellow;\n      }\n</style>\n\n\n                                                                                                   33"
+      },
+      {
+        "page": 34,
+        "content": "Box Model\n\nEvery element is treated as a box in CSS\n\n\n\n\n\n                                                                                                      34"
+      },
+      {
+        "page": 35,
+        "content": "Box Model\n\n\n\n\n\n Property                         Description\nborder     Even if you cannot see it, every box has a border. This\n            separates the edge of the box from other boxes.\nmargin     The margin is the distance between the edge of a box and\n           the box next to it.\npadding     This padding is the space between the content of the box\n          and its border.\n\n\n\n\n\n                                                                                                 35"
+      },
+      {
+        "page": 36,
+        "content": "Border Properties\n\n• border-color\n• border-style: none, solid, dotted, etc.\n• border-width\n• border-top/bottom/left/right\n• Example of a blue solid border\n\n\n\n\n\n                                                                                                      36"
+      },
+      {
+        "page": 37,
+        "content": "Border Properties\n\n• border-style: none, dotted, dashed, solid,\n  ridge, etc.\n\n     #container {\n             width: 400px;\n             margin: 10px auto 10px auto;\n             padding: 20px;\n               // rules: top right bottom left\n              border-style: dashed dotted solid ridge;\n       }\n\n\n\n\n\n                                                                                                      37"
+      },
+      {
+        "page": 38,
+        "content": "Margin Properties\n\n The margin property is used to declare the margin\n between an HTML element and those elements\n outside of it\n#container {\n       margin-top: 70px;\n       margin-right: 50px;\n      margin-bottom: 70px;\n       margin-left: 50px;\n}\n\n          #container {\n                 margin: 70px 50px 70px 50px;\n              }\n\n                                                                                                        38"
+      },
+      {
+        "page": 39,
+        "content": "Padding Properties\n  Padding is the distance between the edges\n  (borders) of an HTML element and the content\n  within it\n\n#container {\n   padding-top: 50px;\n   padding-left: 80px;\n   padding-right: 50px;\n  padding-bottom: 50px;\n}\n\n\n\n\n\n                                                                                                         39"
+      },
+      {
+        "page": 40,
+        "content": "Dimensions\n\n\n   Property                   Purpose\nheight           Sets the height of a box\nwidth            Sets the width of a box\nline-height       Sets the height of a line of text\nmax-height      Sets a maximum height for a box\nmin-height       Sets the minimum height for a box\nmax-width       Sets the maximum width for a box\nmin-width       Sets the minimum width for a box\n\n\n\n\n\n                                                                                                 40"
+      },
+      {
+        "page": 41,
+        "content": "Height and Width\n\n\n\n\n<style>\n    div {\n       height: 100px;\n      width: 320px;\n      }\n</style>\n\n\n\n\n\n                                                                                                   41"
+      },
+      {
+        "page": 42,
+        "content": "Line-height\n\n\n\n\n<style>\n    p.small {\n       line-height: 70%;\n      }\n\n    p.big {\n       line-height: 200%;\n      }\n\n</style>\n\n\n\n\n\n                                                                                                       42"
+      },
+      {
+        "page": 43,
+        "content": "Max-height\n\n\n\n\n<style>\n   p {\n      max-height: 50px;\n      background-color: yellow;\n      overflow: auto;\n      }\n</style>\n\n\n\n\n\n                                                                                                       43"
+      },
+      {
+        "page": 44,
+        "content": "Background\n\n\n\n\n\n                                                                   44"
+      },
+      {
+        "page": 45,
+        "content": "Tables\n\n• padding to set the amount of space between the\n  border of a table cell and its content — this\n  property is very important to make tables easier\n  to read.\n• border to set the properties of the border of a\n  table.\n• text and font properties to change the\n  appearance of anything written in the cell.\n• text-align to align writing to the left, right, or\n  center of a cell.\n\n\n\n\n                                                                                                      45"
+      },
+      {
+        "page": 46,
+        "content": "Tables\n\n• vertical-align to align writing to the top, middle,\n  or bottom of a cell.\n• width to set the width of a table or cell.\n• height to set the height of a cell (often used on a\n  row as well).\n• background-color to change the background\n  color of a table or cell.\n• background-image to add an image to the\n  background of a table or cell.\n• :hover to highlight a table row when a user point\n  the mouse to it\n\n\n\n\n                                                                                                      46"
+      },
+      {
+        "page": 47,
+        "content": "47"
+      }
+    ]
+  },
+  "4-JavaScript.pdf": {
+    "source": "4-JavaScript.pdf",
+    "type": "lecture_slides",
+    "total_pages": 71,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Web Application Development\n\n         JavaScript"
+      },
+      {
+        "page": 2,
+        "content": "Outline\n\n• Concepts of JavaScript\n• Basic Data Types\n• Variables\n• Flow Control Statements\n• Objects\n• Functions\n• Events\n• Forms\n\n\n\n                                                                                                        2"
+      },
+      {
+        "page": 3,
+        "content": "What is JavaScript?\n\n\n• A programming language\n• A client-side script language, executed by Web\n  browsers\n• An interpreted language\n\n\n\n\n\n                                                                                                        3"
+      },
+      {
+        "page": 4,
+        "content": "What is it used for?\n\n\n\n\n\n• HTML: define content of the web page\n\n•CSS: specify layout of the web page\n\n•JavaScript: define behavior of the web page\n\n\n\n\n                                                                                                4"
+      },
+      {
+        "page": 5,
+        "content": "What is it used for?\n\n• Handling user interaction\n• Doing calculations/manipulations of forms\n  input data\n• Search a small database embedded in the\n  downloaded page\n• Manipulate cookies\n• Generating dynamic HTML documents\n\n\n\n\n\n                                                                                                        5"
+      },
+      {
+        "page": 6,
+        "content": "Enable JavaScript-Firefox\n\n\n\n\n\n                                                                                        6"
+      },
+      {
+        "page": 7,
+        "content": "Enable JavaScript-Safari\n\n\n\n\n\n Safari -> Preferences -> Security -> Web Content\n\n\n\n\n\n                                                                                       7"
+      },
+      {
+        "page": 8,
+        "content": "Enable JavaScript-Chrome\n\n\n\n\n\n                                                                                          8"
+      },
+      {
+        "page": 9,
+        "content": "Adding JavaScript to HTML\n\n• JavaScript codes can be placed in the <body>\n  section, in the <head> section, or in an\n  external file\n• JavaScript code must be put in the <script> tag\n when put inside HTML page\n\n<script>\n document.getElementById(\"demo\").innerHTML =\n\"My First JavaScript Code\";\n</script>\n\n\n\n\n\n                                                                                                        9"
+      },
+      {
+        "page": 10,
+        "content": "Placing JavaScript to Head Section\n<html>\n  <head>\n        <title>First JavaScript </title>\n       <script>\n           function myFunction() {\ndocument.getElementById(\"demo\").innerHTML=     \"Welcome to\nthe World of JavaScript\";\n              }\n       </script>\n  </head>\n  <body>\n      <p id=“demo\">Javascript</p>\n      <button type=\"button\" onclick=“myFunction()\">\n        Click here</button>\n  </body>\n\n                                                                                                        10</html>"
+      },
+      {
+        "page": 11,
+        "content": "Placing JavaScript to Body Section\n<html>\n   <body>\n      <p id=“demo”>Javascript</p>\n\n      <button type=\"button\" onclick=“myFunction()\">\n                Click here</button>\n\n       <script>\n           function myFunction() {\ndocument.getElementById(\"demo\").innerHTML=     \"Welcome to\nthe World of JavaScript\";\n              }\n       </script>\n\n  </body>\n\n                                                                                                           11</html>"
+      },
+      {
+        "page": 12,
+        "content": "Placing JavaScript to External Files\n• Here is my external file: myScript.js\n\nfunction myFunction() {\n     document.getElementById(“demo”).innerHTML =\n    \"Welcome to the World of JavaScript\";\n}\n\n<html>\n<body>\n   <p id=\"demo\">Javascript</p>\n   <button type=\"button\" onclick=“myFunction()\">\n    Click here</button>\n    <script src=\"myScript.js\"></script>\n</body>\n</html>\n\n\n                                                                                                           12"
+      },
+      {
+        "page": 13,
+        "content": "JavaScript Comments\n\n• Single line: //comments\n• Multiple lines: /* comments */\n\n\n\n\n\n                                                                                                       13"
+      },
+      {
+        "page": 14,
+        "content": "Basic Types of Data\n\n• Numerical data\n  – Integer numbers: 74, -10\n  – Floating-point numbers: 1.234\n• Text data: “hanoi”, ‘USTH’, “USTH’s website”\n• Boolean data: true, false\n\n\n\n\n\n                                                                                                       14"
+      },
+      {
+        "page": 15,
+        "content": "Example: Displaying text data\n\n<html>\n  <head>\n        <title>JavaScript Objects</title>\n  </head>\n  <body>\n      <h2 align=“center”>\n       <script type=\"text/javascript\">\n              var name=prompt(\"What is your name?\");\n             document.write(\"Hello \" + name);\n       </script>\n      </h2>\n  </body>\n</html>\n\n\n\n                                                                                                      15"
+      },
+      {
+        "page": 16,
+        "content": "Example: Displaying text data\n\n• document is the object representing the HTML\n  document\n• write is a method which writes text in HTML\n  document\n\n           <script type=\"text/javascript\">\n            var name=prompt(\"What is your name?\");\n           document.write(\"Hello \"+name);\n           </script>\n\n\n\n\n\n                                                                                                       16"
+      },
+      {
+        "page": 17,
+        "content": "Example: Adding two numbers\n\n\n<script type=\"text/javascript\">\n       var str1=window.prompt(\"First number:\");\n       var str2=window.prompt(\"Second number:\");\n       var n1=parseInt(str1);\n       var n2=parseInt(str2);\n       var sum=n1+n2;\n       document.write(\"The first number: \"+str1+\"<br\\>\");\n       document.write(\"The second number: \"+str2+\"<br\\>\");\n      document.write(\"Sum: \"+sum);\n</script>\n\n\n\n\n\n                                                                                                        17"
+      },
+      {
+        "page": 18,
+        "content": "Variables\n\n\n                                               22                   age\n\n\n\n\n                                                  John              name\n\n• Declaration of variables\n  – var variable_name\n  – var varable_name=initial_value\n• Dynamic vs. static typing\n\n\n\n\n                                                                                                       18"
+      },
+      {
+        "page": 19,
+        "content": "Identifiers\n\n• Combination of letters, digits, underscores,\n  and dollar signs\n• Must begin with a character, dollar sign, or\n  underscore: name, _name, $name\n• Case-sensitive: name vs. Name vs. naMe\n• Must not be a keyword\n\n\n\n\n\n                                                                                                       19"
+      },
+      {
+        "page": 20,
+        "content": "JavaScript keywords\n\n\n                              finally                   switchbreak\n                            for                          thiscase\n                         function                throwcatch\n                                           if                              trycontinue\n                            in                       typeofdebugger\n                        instanceof               vardefault\n                  new                     voiddelete\n                         return                   whiledo\n                                                  withelse\n\n\n\n\n\n                                                                                                  20"
+      },
+      {
+        "page": 21,
+        "content": "String\n\n• var strString = \"This is a string\";\n• var anotherString= 'But this is also a string';\n• var stringNumbers=“123456”;\n• var strQuote1='This is a \"string\" with a quote‘\n• var strQuote2= “This is a ‘string’ with a quote”\n• var emptyStr=“”;\n• var specialStr=“This is a special \\\\string\\\\”;\n\n\n\n\n\n                                                                                                       21"
+      },
+      {
+        "page": 22,
+        "content": "Special Characters\n\n\n Escape Sequences              Character Represented\n\\b               Backspace\n\\f              Form feed\n\\n            New line\n\\r                 Carriage return\n\\t               Tab\n\\’                   Single quote\n\\”               Double quote\n\\\\                 Backslash\n\\xNN         NN is a hexadecimal number that identifies\n                 a character in the Latin-1 character set.\n\n\n\n\n\n                                                                                         22"
+      },
+      {
+        "page": 23,
+        "content": "Convert to Strings\n\nvar num_value = 35.00;\nvar string_value = \"This is a number:\" + num_value;\n\nvar strValue = \"4\" + 3 + 1;\nvar strValueTwo = 4 + 3 + \"1\";\n\nvar firstResult = \"35\" - 3;\n\n var str=String(value);\n\n\n\n\n\n                                                                                                     23"
+      },
+      {
+        "page": 24,
+        "content": "Boolean Type\n\n\n var isMarried = true;\n var hasChildren = false;\n\nvar someValue = 0;\nvar someBool = Boolean(someValue) // evaluates to false\n\n var strValue = \"1\";\n var numValue = 0;\n var boolValue = !!strValue; // converts \"1\" to a true\n boolValue = !!numValue; // converts 0 to false\n\n\n\n\n\n                                                                                                    24"
+      },
+      {
+        "page": 25,
+        "content": "Number Data Type\n\n• var negativeNumber = -1000;\n• var zero = 0;\n• var fourDigits = 2534;\n• var someFloat = 0.3555\n• var anotherNumber = 144.006;\n• var negDecimal = -2.3;\n• var lastNum = 19.5e-2\n• var firstHex = -0xCCFF;\n\n\n\n                                                                                                       25"
+      },
+      {
+        "page": 26,
+        "content": "Null and Undefined Variables\n\n• A null variable is one that you have defined\n  and to which you have assigned null as its\n  value\n  – var nullString = null;\n•  If you have declared but not initialized the\n  variable, it is considered undefined\n  – var nullString;\n\n             var s = \"\"; //s is undefined?\n\n\n\n\n                                                                                                       26"
+      },
+      {
+        "page": 27,
+        "content": "NaN\n\n• NaN: Not a Number\n\n    var nValue = 1.0;\n      if (nValue == 'one' ) // false, the second operand is NaN\n\n• a null value is NaN.\n• Test if a variable is a NaN\n\nif (isNaN(sValue)) // if string cannot be implicitly converted\n//into number, return true\n\n\n\n\n\n                                                                                                       27"
+      },
+      {
+        "page": 28,
+        "content": "Assignment Statement\n\n• nValue = 35.00;\n• nValue = nValue + 35.00;\n• nValue = someFunction();\n• var firstName = lastName = middleName = \"\";\n• var nValue1,nValue2 = 3;\n• var nValue1=3, nValue2=4, nValue3=5;\n• nValue += 3.0;\n\n\n\n\n\n                                                                                                       28"
+      },
+      {
+        "page": 29,
+        "content": "Arithmetic Operators\n\n• Binary arithmetic operators: +, -, *, /, %\n• Unary arithmetic operators: -, ++, --\n\n\n         var v = 3.0;\n         var v2 = ++v;\n         var v3 = v++;\n\n\n\n\n\n                                                                                                       29"
+      },
+      {
+        "page": 30,
+        "content": "Conditional Statements\n\nif (condition) {\n       statements;\n}\n\nif (condition) {\n       statements;\n} else {\n       statements;\n}\n\n\n\n\n\n                                                                                                   30"
+      },
+      {
+        "page": 31,
+        "content": "Conditional Statements\n\nIf student’s grade is greater than or equal to 60\n    Print “Passed”\n\n\n\n\n\nif ( studentGrade >= 60 )\n       document.writeln( \"Passed\" );\n\n\n\n\n                                                                                                 31"
+      },
+      {
+        "page": 32,
+        "content": "Conditional Statements\n\n\n\n\n\n    if ( studentGrade >= 60 )\n         document.writeln( \"Passed\" );\n   else\n         document.writeln( \"Failed\" );\ndocument.writeln( studentGrade >= 60 ? \"Passed\" : \"Failed\" );\n\n\n\n                                                                                                  32"
+      },
+      {
+        "page": 33,
+        "content": "switch Statement\n\n                              var country=“”;switch (expression) {\n                             switch (code) {case firstlabel:\n                            case 84:       statements;\n                                   country=“Vietnam”;       break;\n                                     break;case secondlabel:\n                            case 1:       statements;\n                                   country=“US”;       break;\n                                     break;            ...\n                            case 44:case lastlabel:\n                                   country=“UK”;       statements;\n                                     break;       break;\n                                default:default:\n                                 country=“Somewhere”;       statements;\n                                         }}\n\n                                                                                                  33"
+      },
+      {
+        "page": 34,
+        "content": "The while Loop\n\n\nvar product = 2;\nwhile ( product <= 1000 )\n       product = 2 * product;\n\n\n\n\n\n                                                                                         34"
+      },
+      {
+        "page": 35,
+        "content": "The while Loop\n\n\n\nvar strValue = \"\";\nvar nValue = 1;\nwhile (nValue <= 10) {\n       strValue+=nValue;\n       nValue++;\n}\n\n\n\n\n\n                                                                               35"
+      },
+      {
+        "page": 36,
+        "content": "do…while Loop\n\n\n\n\ndo {\n       strValue+=nValue;\n       nValue++;\n} while (nValue <= 10)\n\n\n\n\n\n                                                                                 36"
+      },
+      {
+        "page": 37,
+        "content": "for Loops\n\n\nfor (initial value; condition; update)\n{\n       statements;\n}\n\n\nvar s=0;\nfor (var i=10; i<100;i++){\n       if(i%2==0)\n                s=s+i;\n}\n\n\n\n\n\n                                                                               37"
+      },
+      {
+        "page": 38,
+        "content": "JavaScript Objects\n\n• Boolean\n• Number\n• String\n• Date\n• Math\n• document\n• window\n\n\n\n\n\n                                                                                                       38"
+      },
+      {
+        "page": 39,
+        "content": "Number Object\n\n• Number.MAX_VALUE\n   – The maximum number representation in JavaScript\n• Number.MIN_VALUE\n   – The smallest positive number representation in\n      JavaScript\n• Number.NaN\n   – Represents Not-a-Number\n• Number.NEGATIVE_INFINITY\n   – Represents negative infinity\n• Number.POSITIVE_INFINITY\n   – Represents infinity\n\n\n\n\n\n                                                                                                       39"
+      },
+      {
+        "page": 40,
+        "content": "String Object\n\n• Instantiate: var sObject = new String(\"Sample\n  string\");\n• Some representative methods/properties\n  – length\n  – charAt, charCodeAt\n  – indexOf\n  – concat\n  – substr\n  – toLowerCase, toUpperCase\n\n\n\n                                                                                                       40"
+      },
+      {
+        "page": 41,
+        "content": "Methods of Strings\n\n•  charAt( index): Returns a string containing the character at the\n   specified index.\n•  concat( string): Concatenates its argument to the end of the\n   string that invokes the method.\n•  indexOf(substring, index): Searches for the first occurrence of\n   substring starting from position index in the string that invokes\n  the method.\n•  substr(start, length): Returns a string containing length\n   characters starting from index start in the source string.\n•  substring(start, end): Returns a string containing the\n   characters from index start up to but not including index end\n   in the source string.\n•  toLowerCase(): Returns a string in which all uppercase letters\n   are converted to lowercase letters.\n\n\n\n\n                                                                                                       41"
+      },
+      {
+        "page": 42,
+        "content": "Date Object\n\n• Instantiate\n   – var dtNow = new Date();\n   – var dtMilliseconds = new Date(5999000920);\n   – var newDate = new Date(\"March 12, 1980 12:20:25\");\n• Methods\n   – getFullYear: The four-digit year\n   – getHours: The hours component of the date/time\n   – getMilliseconds: The milliseconds component of the\n     date/time\n   – getMinutes: The minutes component of the date/time\n   – toString: Outputs the string in local time\n\n\n\n\n                                                                                                       42"
+      },
+      {
+        "page": 43,
+        "content": "Math Object\n\n• Properties\n  – PI: value of Pi\n  – SQRT1_2: square root of 1/2\n  – SQRT2: The square root of 2\n• Methods\n  – Math.sin(x)\n  – Math.cos(x)\n  – Math.tan(x)\n\n\n\n\n\n                                                                                                       43"
+      },
+      {
+        "page": 44,
+        "content": "document Object\n\n• getElementById(id)\n   – Returns the DOM node representing the HTML element\n    whose id attribute matches id.\n• write(string)\n   – Writes the string to the HTML document as HTML code.\n•  writeln(string)\n   – Writes the string to the HTML document as HTML code\n     and adds a newline character at the end.\n• cookie\n   – A string containing the values of all the cookies stored on\n     the user’s computer for the current document\n\n\n\n\n\n                                                                                                       44"
+      },
+      {
+        "page": 45,
+        "content": "window Object\n\n•  Presents the window of Web browser\n•  Properties\n   – window.document: This property contains the document object representing\n      the document currently inside the window.\n   – window.closed: set to true if the window is closed, and false if it is not.\n•  Methods\n   – open(url, name, options) Creates a new window with the URL of the window\n       set to url, the name set to name to refer to it in the script, and the visible\n       features set by the string passed in as option.\n   – prompt(prompt, default) Displays a dialog box asking the user for input.\n   – close() Closes the current window and deletes its object from memory.\n   – focus() This method gives focus to the window (i.e., puts the window in the\n       foreground, on top of any other open browser windows).\n   – blur() This method takes focus away from the window\n\n\n\n\n\n                                                                                                       45"
+      },
+      {
+        "page": 46,
+        "content": "Arrays\n\n• var newArray = new Array('one','two');\n• var newArray = ['one','two'];\n• Multi-dimentional array\n  – var threedPoints = new Array();\n  – threedPoints[0] = new Array(1.2,3.33,2.0);\n  – threedPoints[1] = new Array(5.3,5.5,5.5);\n  – threedPoints[2] = new Array(6.4,2.2,1.9);\n\n\n\n\n\n                                                                                                       46"
+      },
+      {
+        "page": 47,
+        "content": "Functions\n\nfunction functionname (param1, param2, ..., paramn) {\n       function statements\n}\n\nfunction sayHi(toWhom) {\n        alert(\"Hi \" + toWhom);\n}\n…\nsayHi(“Tom”);\n\n\n\n\n\n                                                                                                       47"
+      },
+      {
+        "page": 48,
+        "content": "Function Returns and Arguments\n\n• Variables based on primitives, such as a string,\n  boolean, or number, are passed to a function\n  by value.\n• Objects passed to a function, on the other\n  hand, are passed by reference.\n• A function may or may not return a value.\n• Application encounters a return statement, it\n  stops processing the function code\n\n\n\n\n\n                                                                                                       48"
+      },
+      {
+        "page": 49,
+        "content": "Anonymous Functions\n\n\nvar variable = new Function (\"param1\", \"param2\", ... , \"paramn\", \"function body\");\n\nvar sayHi = new Function(\"toWhom\",\"alert('Hi ' + toWhom);\");\nsayHi(\"World!\");\n\nWrite an anonymous function that finds the greatest number in three input\nnumbers\n\n\nvar fcn=new Function(\"a\", \"b\", \"c\",\"var g=a; if (g<b) g=b; if(g<c) g=c; return g\");\ns=fcn(7, 4, 6);\n\n\n\n\n\n                                                                                                       49"
+      },
+      {
+        "page": 50,
+        "content": "Function Literals\n\nvar func = function (params) {\n       statements;\n}\n\nvar func = function (x, y) {\n       return x * y;\n}\nalert(func(3,3));\n\n\n\n\n\n                                                                                                      50"
+      },
+      {
+        "page": 51,
+        "content": "HTML DOM\n\n\n<html>\n  <head>\n       <title>My title</title>\n  </head>\n  <body>\n      <a href=“http://www.usth.edu.vn”>My link</a>\n     <h1>My header</h1>\n  </body>\n</html>\n\n\n\n\n\n                                                                                                       51"
+      },
+      {
+        "page": 52,
+        "content": "HTML DOM\n\n\n\n\n\n                                                                    52"
+      },
+      {
+        "page": 53,
+        "content": "Manipulating DOM\n\n\n• JavaScript creates dynamic HTML by\n  manipulating DOM. Examples are:\n   • Changing the content of HTML elements\n   • Changing the style of HTML elements\n   • Adding/deleting HTML elements\n   • Reacting to HTML DOM events\n\n\n\n\n\n                                                                                                       53"
+      },
+      {
+        "page": 54,
+        "content": "Events\n\n• Events allow scripts to respond to a user who\n   is moving the mouse, entering form data or\n  pressing keys, etc.\n• Events and event handling help make web\n  applications more responsive, dynamic and\n  interactive\n• Events must be registered for handling\n\n\n\n\n\n                                                                                                       54"
+      },
+      {
+        "page": 55,
+        "content": "Inline Registration\n<html>\n  <head>\n   <title>My title</title>\n   <script type=“text/javascript”>\n       function changeHeader(){\ndocument.getElementById(“heading1”).innerHTML =\n        “Welcome to the Web App Class”;\n          }\n  </script>\n </head>\n  <body>\n      <a href=“http://www.usth.edu.vn”>My link</a>\n      <h1 id=“heading1” onclick=“changeHeader()”>My\nheader</h1>\n  </body>\n</html>                                                                                          55"
+      },
+      {
+        "page": 56,
+        "content": "Traditional Model Registration\n<html>\n  <head>\n   <title>My title</title>\n   <script type=“text/javascript”>\n       function changeHeader(){\ndocument.getElementById(“heading1”).innerHTML =\n        “Welcome to the Web App Class”;\n          }\n  </script>\n </head>\n  <body onload=“changeHeader()”>\n      <a href=“http://www.usth.edu.vn”>My link</a>\n      <h1 id=“heading1”>My header</h1>\n  </body>\n</html>\n\n                                                                                                       56"
+      },
+      {
+        "page": 57,
+        "content": "Popular Events\n\n• onclick: fires when the user clicks an HTML\n  element\n• onchange: fires when an HTML element has\n  been changed\n• onkeydown: fires when the user pushes a\n  keyboard key\n• onload: fires when the browser has finished\n  loading the page\n\n\n\n\n\n                                                                                                       57"
+      },
+      {
+        "page": 58,
+        "content": "Popular Events\n\n• onmousemove: fires repeatedly whenever the\n  user moves the mouse over the web page\n• onmouseover: fires when the user moves the\n  mouse over an HTML element\n• onmouseout: fires when the user moves the\n  mouse away from an HTML element\n\n\n\n\n\n                                                                                                       58"
+      },
+      {
+        "page": 59,
+        "content": "Forms\n\n\n\n\n\n                                                            59"
+      },
+      {
+        "page": 60,
+        "content": "Forms\n\n<form name=\"signin\">\n  Username: <input type=\"text\" name=\"email\"/> <br/>\n  Password: <input type=\"password\" name=\"passwd\"/> <br/>\n\n  <input type=\"reset\" name=\"reset\" value=\"Reset\"/>\n  <input type=\"submit\" name=\"submit\" value=\"Submit\"/>\n</form>\n\n\n\n\n\n                                                                                                         60"
+      },
+      {
+        "page": 61,
+        "content": "Form Elements\n\n• Text field: a box which users can use to\n  provide one-line text data\n\n    Username: <input type=\"text\" name=“username\" />\n\n\n\n\n\n                                                                                                       61"
+      },
+      {
+        "page": 62,
+        "content": "Form Elements\n\n• Password field: defines a password field\n\n\n   Password: <input type=\"password\" name=\"passwd\"/>\n\n\n\n\n\n                                                                                                       62"
+      },
+      {
+        "page": 63,
+        "content": "Form Elements\n\n • Radio button: provides users a means to select\n  one from previously listed items\n\nCompany size (people): <br/>\n  10~19 <input type=\"radio\" name=\"csize\" value=\"10_19\" checked/> <br/>\n  20~49 <input type=\"radio\" name=\"csize\" value=\"20_49\"/> <br/>\n  50~99 <input type=\"radio\" name=\"csize\" value=\"50_99\"/> <br/>\n  above <input type=\"radio\" name=\"csize\" value=\"above\"/>\n\n\n\n\n\n                                                                                                         63"
+      },
+      {
+        "page": 64,
+        "content": "Form Elements\n  • Checkboxes: provides users a means to select one or\n   more items from previously listed items\n\nLanguages:<br/>\n   English <input type=\"checkbox\" name=\"languages\" value=\"English\"/><br/>\n  French <input type=\"checkbox\" name=\"languages\" value=\"French\"/><br/>\n  Japanese <input type=\"checkbox\" name=\"languages\" value=\"Japanese\"/><br/>\n  Chinese <input type=\"checkbox\" name=\"languages\" value=\"Chinese\"/><br/>\n\n\n\n\n\n                                                                                                         64"
+      },
+      {
+        "page": 65,
+        "content": "Form Elements\n\nSubmit and Reset buttons:\n\n<form name=\"signin\">\n Username: <input type=\"text\" name=\"email\"/> <br/>\n Password: <input type=\"password\" name=\"passwd\"/> <br/>\n\n  <input type=\"reset\" name=\"reset\" value=\"Reset\"/>\n  <input type=\"submit\" name=\"submit\" value=\"Submit\"/>\n</form>\n\n\n\n\n\n                                                                                                         65"
+      },
+      {
+        "page": 66,
+        "content": "Form Elements\n\n Textarea: get multiple-line text input\n\nComment: <br/>\n<textarea name=\"comment\" rows=\"10\" cols=\"20\"></textarea>\n\n\n\n\n\n                                                                                                         66"
+      },
+      {
+        "page": 67,
+        "content": "Form Elements\n\nA dropdown list allows users to select one item from a list of items.\n\n\nCity:<br/>\n<select size=\"1\">\n   <option value=“HN\">Ha Noi</option>\n   <option value=\"H\">Hue</option>\n   <option value=“HCM”>Ho Chi Minh</option>\n</select>\n\n\n\n\n\n                                                                                                        67"
+      },
+      {
+        "page": 68,
+        "content": "Form Processing: Getting values\n\n• Form text field:\n  value=document.formName.textfieldName.value;\n\n• Form radio buttons:\n   checked=document.formName.radioButtonName[index].checked;\n\n     if (checked==true)\n  value=document.formName.radioButtonName[index].value;\n\n\n\n\n\n                                                                                                         68"
+      },
+      {
+        "page": 69,
+        "content": "Form Processing: Validation\n\n<html><head>\n<script>\n     function checkForm() {\n       var unamef = document.forms[\"validateForm\"][\"uname\"].value;\n           if (unamef == null || unamef == \"\") {\n        alert(\"Name must be filled out\");\n         return false;\n         }\n      }\n</script>\n</head>\n<body>\n\n<form name=\"validateForm\" action=“check_form.asp\" onsubmit=\"return checkForm()\"\nmethod=“post\">\n   Username: <input type=\"text\" name=“uname\"> <br />\n     <input type=“submit\" name=“submit” value=\"Submit\">\n</form>\n\n</body></html>\n                                                                                                      69"
+      },
+      {
+        "page": 70,
+        "content": "JavaScript Frameworks\n\n• A collection of Javascript functions for\n common JavaScript tasks like animations, DOM\n  manipulation, and Ajax handling\n• Examples:\n  – Prototype\n  – Foundation\n  – jQuery\n\n\n\n\n\n                                                                                                       70"
+      },
+      {
+        "page": 71,
+        "content": "71"
+      }
+    ]
+  },
+  "6-NodeJS.pdf": {
+    "source": "6-NodeJS.pdf",
+    "type": "lecture_slides",
+    "total_pages": 37,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\n\n\n\n\n          Web Application Development\n\n                             Node.js Fundamentals\n\n\n\n              KIEU Quoc Viet  HUYNH Vinh Nam\n\n\n               Information and Communication Technology Laboratory (ICTLab),\n                          University of Science and Technology of Hanoi\n\n\n                           Hanoi, Sept 2024\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        1 / 37"
+      },
+      {
+        "page": 2,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nTable of Contents\n\n\n   1  Introduction\n\n\n   2  Setup\n\n\n   3  Core Concepts\n\n\n   4  Asynchronous + Callbacks\n\n\n   5  Basic Example\n\n\n   6  Conclusion\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        2 / 37"
+      },
+      {
+        "page": 3,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nNode.js Fundamentals\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        3 / 37"
+      },
+      {
+        "page": 4,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nWhat is Node.js?\n\n\n       Definition:\n\n\n               Node.js   is  a  JavaScript  runtime  built  on\n              Chrome’s V8 engine that allows JavaScript to\n              be executed on the server.\n\n               Enables    server-side   programming    with\n                JavaScript.\n\n\n     Key Points:\n\n\n              Uses non-blocking, event-driven architecture.\n\n                Primarily used for building scalable and fast net-\n              work applications.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        4 / 37"
+      },
+      {
+        "page": 5,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nWhat is Node.js? (cont.)\n\n\n\n\n\n   Why is it important?:\n\n\n            JavaScript can now be used end-to-end (front-end and back-end), reducing the need\n               for multiple programming languages across an application.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        5 / 37"
+      },
+      {
+        "page": 6,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nNode.js Architecture\n\n\n\n     Single-threaded, Event-Driven:\n\n\n            Node.js operates on a single thread using the event loop to handle multiple connec-\n              tions concurrently.\n\n\n             Unlike traditional multithreaded servers, Node.js is non-blocking, allowing it to effi-\n              ciently manage multiple requests without creating new threads for each.\n\n    Event Loop:\n\n\n            Explain the event loop: The core of Node.js’ non-blocking architecture.\n\n\n            Handles I/O operations asynchronously, queuing up operations and processing them\n           once they’re complete.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        6 / 37"
+      },
+      {
+        "page": 7,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nNode.js Architecture (cont.)\n\n\n\n\n\n    V8 Engine:\n\n\n            Node.js     uses\n            Google’s    V8\n             JavaScript   en-\n             gine  to convert\n             JavaScript code\n              into    machine\n            code.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        7 / 37"
+      },
+      {
+        "page": 8,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nUse Cases of Node.js\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        8 / 37"
+      },
+      {
+        "page": 9,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nUse Cases of Node.js (cont.)\n\n\n    Real-Time Applications: Suitable for chat applications, online col-\n     laboration tools, and multiplayer games.\n\n    API Servers: Commonly used to build RESTful APIs and microser-\n      vices.\n\n     Single-Page Applications (SPAs): Works well with frameworks like\n     React or Vue.js to handle dynamic content.\n\n    Data Streaming Applications: Ideal for audio/video streaming due\n     to its event-driven nature.\n\n    IoT Applications: Handles large amounts of data from IoT devices\n      efficiently.\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024        9 / 37"
+      },
+      {
+        "page": 10,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nRecap: Why Node.js?\n\n\n\n     Node.js allows JavaScript to run on the server.\n\n     Uses a single-threaded, event-driven architecture to handle multiple\n     connections concurrently.\n\n    Powered by the V8 JavaScript engine for fast execution.\n\n      Ideal for real-time, API-based, and data-heavy applications.\n\n\n\n Key takeaway: Node.js excels in non-blocking, asynchronous operations.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       10 / 37"
+      },
+      {
+        "page": 11,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nInstalling Node.js & NPM\n\n\n\n  Steps to Install:\n       1 Go  to  https://nodejs.org/  and\n       download the appropriate installer for\n       your OS.\n       2  Install Node.js along with npm (Node\n       Package Manager).\n       3  Verify installation:\n\n            node -v\n            npm -v\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       11 / 37"
+      },
+      {
+        "page": 12,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nInstalling Node.js & NPM (cont.)\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       12 / 37"
+      },
+      {
+        "page": 13,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nSetting Up a Basic Node.js Project\n\n\n\n\nSteps to Set Up:\n\n    1  Create a new project directory:\n\n          mkdir nodejs-fundamentals\n          cd nodejs-fundamentals\n\n    2  Initialize the project using npm:\n\n          npm init -y\n\n\n    3  This creates a package.json file to manage the project.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       13 / 37"
+      },
+      {
+        "page": 14,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nSetting Up a Basic Node.js Project (cont.)\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       14 / 37"
+      },
+      {
+        "page": 15,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nUnderstanding package.json\n\n\nWhat is package.json?\n\n\n      Contains metadata about your project.\n\n\n      Tracks dependencies for libraries and packages.\n\n\n       Defines custom scripts (e.g., commands to start a server).\n\nKey Fields:\n\n\n      \"name\": Name of the project.\n\n\n      \"version\": Current version of the project.\n\n\n      \"dependencies\": Lists installed npm packages.\n\n\n      \"scripts\": Commands such as \"start\":  \"node app.js\".\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       15 / 37"
+      },
+      {
+        "page": 16,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nWriting and Running the First Node.js Program\n\n\nCreate a file hello.js:\n\n\n  1       console.log('Hello, World from Node.js!');\n\n\nRun the script in the terminal:\n\n     node hello.js\n\n\n Output: Hello, World from Node.js!\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       16 / 37"
+      },
+      {
+        "page": 17,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nNode.js as a JavaScript Runtime\n\n\n\nWhat is Node.js?\n\n     Node.js is a JavaScript runtime that allows JS to be executed on the\n      server-side.\n\n     Built on Chrome’s V8 JavaScript engine.\n\n     Provides an environment for building network applications, using non-\n     blocking I/O operations.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       17 / 37"
+      },
+      {
+        "page": 18,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nOverview of Modules and require() Function\n\n\nWhat are Modules?\n\n\n      Modules in Node.js are independent blocks of reusable code.\n\n\n      Node.js uses the require() function to load modules.\n\n\nExample: Loading the fs Module\n\n\n  1       const fs = require('fs');\n\n\n\n Built-in Modules: fs, http, url, etc.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       18 / 37"
+      },
+      {
+        "page": 19,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nExample: Using the fs (File System) Module\n\n\n\nReading a File Synchronously:\n\n\n  1       const fs = require('fs');\n  2       let data = fs.readFileSync('file.txt', 'utf8');\n  3       console.log(data);\n\n\n\nExplanation:\n\n\n      fs.readFileSync() reads a file synchronously, blocking execution until reading is complete.\n\n\n      console.log() outputs the file content.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       19 / 37"
+      },
+      {
+        "page": 20,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nCreating Custom Modules\n\n\nCreating and Exporting a Module:\n\n\n  1   // file: myModule.js\n  2   module.exports.sayHello = function() {\n  3       console.log('Hello from myModule!');\n  4   };\n\n\nImporting and Using the Custom Module:\n\n\n  1   const myModule = require('./myModule');\n  2   myModule.sayHello(); // Outputs: Hello from myModule!\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       20 / 37"
+      },
+      {
+        "page": 21,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nEvent-Driven Architecture in Node.js\n\n\n\n\n\nWhat is Event-Driven Programming?\n\n\n      Node.js uses an event-driven architecture, where actions trigger events.\n\n     The Event Loop processes events asynchronously without blocking.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       21 / 37"
+      },
+      {
+        "page": 22,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nExample: Using EventEmitter\n\nCreating an Event Listener:\n\n\n  1        const EventEmitter = require('events');\n  2        const emitter = new EventEmitter();\n\n  3\n  4        // Register a listener\n  5        emitter.on('event', () => {\n  6            console.log('An event occurred!');\n  7        });\n\n  8\n  9        // Emit the event\n 10        emitter.emit('event'); // Outputs: An event occurred!\n\n\n Explanation:\n\n      emitter.on() registers an event listener.\n\n      emitter.emit() triggers the event.\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       22 / 37"
+      },
+      {
+        "page": 23,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nBlocking vs Non-Blocking I/O\n\n\n\nBlocking I/O:\n\n\n      Operations execute in sequence, one after the other.\n\n\n      Blocks further execution until the current operation is complete.\n\n\n\n\nNon-Blocking I/O:\n\n\n      Operations can be initiated without waiting for the previous operation to complete.\n\n\n      Node.js excels in handling non-blocking, asynchronous operations.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       23 / 37"
+      },
+      {
+        "page": 24,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nExample of Blocking Code\n\n\n\nSynchronous File Reading:\n\n\n  1       const fs = require('fs');\n\n  2\n\n  3       let data = fs.readFileSync('file.txt');\n  4       console.log(data);\n  5       console.log('File reading complete.');\n\n\n\nOutput Order:\n\n\n        File content is printed first.\n\n       ”File reading complete” is printed only after file is fully read.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       24 / 37"
+      },
+      {
+        "page": 25,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nExample of Non-Blocking Code\n\n\nAsynchronous File Reading:\n\n\n  1   const fs = require('fs');\n\n  2\n\n  3   fs.readFile('file.txt', (err, data) => {\n  4       if (err) throw err;\n  5       console.log(data);\n  6   });\n  7   console.log('File reading initiated.');\n\n\n\nOutput Order:\n\n\n       ”File reading initiated” is printed first.\n\n        File content is printed later when reading is complete.\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       25 / 37"
+      },
+      {
+        "page": 26,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nWhat are Callbacks?\n\n\n                          Callback Syntax:\n\n Definition:                        1   function fetchData(callback) {\n                                       2       // Simulate async operation\n                                       3       setTimeout(() => {\n      A callback is a function\n                                       4           console.log('Data fetched!');\n        passed as an argument\n                                       5           callback();\n         to another function.\n                                       6       }, 1000);\n                                       7   }\n            It   is  executed  after\n                                       8\n        an asynchronous oper-\n                                       9   fetchData(() => {\n         ation completes.\n                                      10       console.log('Callback executed.');\n                                      11   });\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       26 / 37"
+      },
+      {
+        "page": 27,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nExample: Callback Function\n\n\nAsynchronous Operation with Callback:\n\n\n  1   function doSomething(callback) {\n  2       console.log('Doing something...');\n  3       callback();\n  4   }\n\n  5\n\n  6   function onComplete() {\n  7       console.log('Task complete.');\n  8   }\n\n  9\n\n 10   doSomething(onComplete); // Outputs: Doing something... Task complete.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       27 / 37"
+      },
+      {
+        "page": 28,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nError Handling in Callbacks\n\n\nHandling Errors in Asynchronous Functions:\n\n\n  1   fs.readFile('file.txt', (err, data) => {\n  2       if (err) {\n  3           console.error('Error reading file:', err);\n  4           return;\n  5       }\n  6       console.log(data);\n  7   });\n\n\n\nExplanation:\n\n\n      Check if err exists before proceeding.\n\n      Use return to stop further execution if an error occurs.\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       28 / 37"
+      },
+      {
+        "page": 29,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nRecap of Asynchronous Programming\n\n\n\n\n\nKey Takeaways:\n\n\n      Node.js uses non-blocking I/O operations to handle multiple requests concurrently.\n\n\n      Callbacks are functions passed to asynchronous operations, executed when the task\n        is complete.\n\n\n      Proper error handling in callbacks is crucial for robust code.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       29 / 37"
+      },
+      {
+        "page": 30,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nIntroducing the HTTP Module\n\n\n\nThe HTTP Module in Node.js:\n\n\n     The built-in http module allows Node.js to create a basic web server.\n\n\n      Provides functionality for handling HTTP requests and responses.\n\n\n    No need for external libraries—just import and use.\n\n\n\nKey Features:\n\n\n      Create an HTTP server with http.createServer().\n\n\n      Listen for requests on a specific port.\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       30 / 37"
+      },
+      {
+        "page": 31,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nCode Example: Basic HTTP Server in Node.js\n\n\nExample Code:\n\n\n  1    const http = require('http');\n  2    const server = http.createServer((req, res) => {\n  3        res.statusCode = 200;\n  4        res.setHeader('Content-Type', 'text/plain');\n  5        res.end('Hello, World!\\n');\n  6    });\n\n  7\n  8    server.listen(3000, () => {\n  9        console.log('Server running at http://localhost:3000/');\n 10    });\n\n\n\nExplanation: This code creates a simple HTTP server that listens on port\n3000.\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       31 / 37"
+      },
+      {
+        "page": 32,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nRunning the Server\n\n\nSteps to Run the Server:\n\n\n    1  Save the code as server.js in your project folder.\n\n\n    2  In the terminal, navigate to the folder and run the server with:\n\n\n         node server.js\n\n\n    3  You should see a message like:\n\n\n         Server running at http://localhost:3000/\n\n\n\n    4  Open your browser and navigate to http://localhost:3000/ to see the output.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       32 / 37"
+      },
+      {
+        "page": 33,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nBreakdown of the HTTP Server Code\n\n\nKey Sections of the Code:\n\n\n     http.createServer(): Creates the HTTP server and handles incoming requests.\n\n\n     res.statusCode = 200: Sets the status code to 200, indicating a successful re-\n      quest.\n\n\n     res.setHeader(’Content-Type’, ’text/plain’): Specifies the content type of\n      the response as plain text.\n\n\n     res.end(’Hello, World!’): Ends the response and sends the data to the client.\n\n\n     server.listen(3000): Instructs the server to listen on port 3000.\n\n\nConsole Output: Displays when the server starts successfully.\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       33 / 37"
+      },
+      {
+        "page": 34,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nRecap of Key Concepts\n\n\n\nWhat We’ve Covered:\n\n\n      Introduction to the Node.js HTTP module and its role in building a server.\n\n\n      Writing a simple Node.js server to handle HTTP requests.\n\n\n     Running and testing the server on localhost.\n\n\n      Understanding the key components of an HTTP server in Node.js.\n\n\n\nNext Steps: Preparing to integrate front-end with back-end using HTTP\n endpoints.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       34 / 37"
+      },
+      {
+        "page": 35,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\nQuestions and Next Steps\n\n\n\n\nAny Questions?\n\n\n\n\nNext Steps:\n\n\n     Review the code examples we covered in class.\n\n\n      Begin thinking about how to integrate front-end components with this HTTP server.\n\n\n     The hand-on assignment will help solidify your understanding.\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       35 / 37"
+      },
+      {
+        "page": 36,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\n\n\n                       Hand-on Assignment\n\n\n\n     Build a simple Node.js server that handles different types of requests:\n\n\n           Serve different types of content (e.g., HTML, JSON).\n\n\n           Set up different routes to respond to GET and POST requests.\n\n    Use the concepts covered in class to break down the HTTP server code.\n\n    Submit the project by the end of the week.\n\n\nTip: Start by expanding the basic server example and adding routes for\n different paths (e.g., /, /about, /data).\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       36 / 37"
+      },
+      {
+        "page": 37,
+        "content": "Introduction        Setup          Core Concepts        Asynchronous + Callbacks        Basic Example        Conclusion\n\n\n\n\n     Thank you for listening!\n\n\n\n\n\n                                                         Lecture 04                          Hanoi, Sept 2024       37 / 37"
+      }
+    ]
+  },
+  "7-Front-end dev with NodeJS.pdf": {
+    "source": "7-Front-end dev with NodeJS.pdf",
+    "type": "lecture_slides",
+    "total_pages": 28,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n\n          Web Application Development\n\n                    Front-End Development with Node.js\n\n\n\n              KIEU Quoc Viet  HUYNH Vinh Nam\n\n\n               Information and Communication Technology Laboratory (ICTLab),\n                          University of Science and Technology of Hanoi\n\n\n                           Hanoi, Sept 2024\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        1 / 28"
+      },
+      {
+        "page": 2,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nTable of Contents\n\n\n   1  Introduction\n\n\n   2 FE Dev Tools\n\n\n   3  Sample Project\n\n\n   4 FE Libraries and Frameworks\n\n\n   5  Recap\n\n\n   6  Question and Next Steps\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        2 / 28"
+      },
+      {
+        "page": 3,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n\n                            Introduction\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        3 / 28"
+      },
+      {
+        "page": 4,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nWhat is Front-End Development?\n\n\n\n\n\nFront-End Development:\n\n     Front-end refers to the part of a web\n     application that users interact with directly.\n     Typically built using HTML, CSS, and\n     JavaScript.\n     Focuses on user experience (UX) and user\n      interface (UI) design.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        4 / 28"
+      },
+      {
+        "page": 5,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nFront-End Example\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        5 / 28"
+      },
+      {
+        "page": 6,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nFront-End vs. Back-End Development\n\n\n      Front-End Development       Back-End Development\n       User-facing part of the app      Server-side logic and databases\n       Built with HTML, CSS, JS      Built with Node.js, Python, etc.\n           Handles UI/UX               Handles business logic\n\n\n\n\n\nNode.js: Used for both back-end and front-end tooling.\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        6 / 28"
+      },
+      {
+        "page": 7,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n\n                    FE Dev Tools\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        7 / 28"
+      },
+      {
+        "page": 8,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nRecall: Role of Node.js in Front-End Development\n\n\n\n\nWhy Use Node.js for Front-End?\n\n     Build Tools: Automate tasks like bundling and minification.\n\n    Package Management: Install and manage front-end libraries using\n    npm.\n\n     JavaScript Everywhere: Unified language across front-end and\n     back-end.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        8 / 28"
+      },
+      {
+        "page": 9,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nRecall: Node.js as a Build Tool\n\n\n\n\nCommon Build Tools:\n\n    Webpack: Bundles JavaScript and assets.\n\n     Parcel: Zero-config bundler for fast setup.\n\n     Gulp: Automates repetitive tasks like minifying CSS/JS.\n\n\n\n\nWhy Bundle? Optimizes performance by reducing file size and load times.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024        9 / 28"
+      },
+      {
+        "page": 10,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nRecall: npm (Node Package Manager)\n\n\nnpm Overview:\n\n   npm is the default package manager for Node.js.\n\n    Used to install, manage, and version-control front-end and back-end\n      libraries.\n\n\nnpm Command Examples:\n\n     npm init  // Initialize a new project\n     npm install <package>  // Install a package\n     npm start  // Start the project\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       10 / 28"
+      },
+      {
+        "page": 11,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nCommon FE Libraries\n\n\n\nSome Common Front-End Libraries:\n\n     React: A powerful and flexible JavaScript\n      library developed by Facebook.\n\n     Vue.js: A lightweight, progressive\n     JavaScript framework designed to be easy\n     to integrate into existing projects.\n\n     Angular: A comprehensive JavaScript\n     framework developed by Google, designed\n      for building complex and large-scale web\n      applications.\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       11 / 28"
+      },
+      {
+        "page": 12,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nCommon FE Libraries (cont.)\n\n\n\n\n Statistics:\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       12 / 28"
+      },
+      {
+        "page": 13,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nInstalling Front-End Libraries with npm\n\n\n\nHow to Install Front-End Libraries:\n\n    npm allows easy installation of JavaScript libraries like React, Vue.js,\n     or Angular.\n\n\n\nExample: Installing React:\n\n     npm install react react-dom\n\n\nNote: The package.json file keeps track of installed packages.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       13 / 28"
+      },
+      {
+        "page": 14,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n\n               Hand-on Some Sample Projects\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       14 / 28"
+      },
+      {
+        "page": 15,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nProject Structure Overview\n\n\nTypical Front-End Project Structure:\n\n     src/: Contains your source files (HTML, CSS, JS).\n\n     dist/: Contains bundled files for production.\n\n    node modules/: Installed npm packages.\n\n    package.json: Project metadata and dependencies.\n\nCommand to Create Project Structure:\n\n     npm init  // Creates package.json\n     mkdir src dist  // Create directories\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       15 / 28"
+      },
+      {
+        "page": 16,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nCreating a Basic Front-End with Node.js Tools\n\nHTML and JavaScript Setup:\n\n     Create an HTML file (index.html) inside src/.\n\n     Create a JavaScript file (app.js) inside src/.\n\nExample HTML File:\n\n\n  1    <!DOCTYPE html>\n  2    <html>\n  3        <head>\n  4        <title>Node.js Front-End</title>\n  5        </head>\n  6        <body>\n  7        <h1>Hello, Front-End with Node.js!</h1>\n  8        <script src=\"app.js\"></script>\n  9        </body>\n 10    </html>\n\n                                                         Lecture 05                          Hanoi, Sept 2024       16 / 28"
+      },
+      {
+        "page": 17,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nUsing Webpack to Bundle Front-End Code\n\nSetting Up Webpack:\n\n      Install Webpack using npm:\n\n          npm install webpack webpack-cli --save-dev\n\n\n     Create a webpack.config.js file to define entry points and output\n       files.\n\nExample Webpack Configuration:\n\n\n  1    module.exports = {\n  2        entry: './src/app.js',\n  3        output: {\n  4            filename: 'bundle.js',\n  5            path: __dirname + '/dist'\n  6        }\n  7    };\n                                                         Lecture 05                          Hanoi, Sept 2024       17 / 28"
+      },
+      {
+        "page": 18,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nRunning and Testing the Front-End\n\n\n\nSteps to Run the Front-End:\n\n    1  Bundle the project using Webpack:\n\n          npm run build\n\n\n\n    2 Open the index.html file in a browser to see the output.\n\n\n\nTesting and Debugging Tips:\n\n    Use the browser’s developer tools (Console, Network) for debugging.\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       18 / 28"
+      },
+      {
+        "page": 19,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nReact Overview\n\n\n\n\nWhat is React?\n\n   A JavaScript library for building user interfaces.\n\n     Developed by Facebook, widely used for single-page applications\n     (SPAs).\n\n    Component-based architecture: Reusable, independent UI\n     components.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       19 / 28"
+      },
+      {
+        "page": 20,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nSetting Up React with Node.js\n\n Installing React via npm:\n\n     npm install react react-dom\n\n\n\nBasic React Component:\n\n\n  1    import React from 'react';\n  2    import ReactDOM from 'react-dom';\n\n  3\n  4    function App() {\n  5        return <h1>Hello, React!</h1>;\n  6    }\n\n  7\n  8    ReactDOM.render(<App />, document.getElementById('root'));\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       20 / 28"
+      },
+      {
+        "page": 21,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nIntegrating React with Webpack\n\nWebpack Configuration for React:\n\n\n  1    module.exports = {\n  2        entry: './src/index.js',\n  3        output: {\n  4            filename: 'bundle.js',\n  5            path: __dirname + '/dist'\n  6        },\n  7        module: {\n  8            rules: [\n  9            { test: /\\.js$/, use: 'babel-loader' }\n 10            ]\n 11        }\n 12    };\n\n\nBabel: Used to transpile modern JavaScript (ES6+) and JSX into\nbrowser-compatible JS.\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       21 / 28"
+      },
+      {
+        "page": 22,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nDeploying the Front-End Application\n\n\n\nDeployment Strategies:\n\n     Host on platforms like Netlify, Vercel, or GitHub Pages.\n\n     Serve as static files from a back-end server (e.g., using Express.js).\n\n\n\nProduction Build:\n\n     npm run build  // Creates optimized production build\n\n\nDeploy the contents of the dist/ directory.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       22 / 28"
+      },
+      {
+        "page": 23,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nRecap of Node.js for Front-End\n\n\n\n\n\nKey Points:\n\n     Node.js is crucial for managing and building front-end assets.\n\n     Tools like npm, Webpack, and Gulp automate front-end tasks.\n\n     Front-end libraries like React integrate easily with Node.js.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       23 / 28"
+      },
+      {
+        "page": 24,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n\n                    Question and Next Steps\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       24 / 28"
+      },
+      {
+        "page": 25,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\nDiscussion\n\n\n\nAny Questions?\n\n\n\nNext Steps: Front-End Development\n\n\n     Review the code examples we covered in class.\n\n\n      Explore more advanced front-end frameworks (Vue.js, Angular).\n\n\n      Learn state management with React (Redux, Context API).\n\n\n      Experiment with modern JavaScript features and CSS preprocessors (Sass).\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       25 / 28"
+      },
+      {
+        "page": 26,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n                     Midterm Announcement\n\n\n\n    Choose your group (6 people maximum) in the same class page\n     [Deadline: October 4th, 2024]\n\n    The topics will be assigned randomly, visit this google spreedsheet\n\n     https://docs.google.com/spreadsheets/d/1X3gZ2CB0LDxNv_\n     hprwek1V9XVuRaa9V5gdHrVC8n3iM/edit?usp=sharing to see your topic\n\n\n             Visit https://github.com/VietKQ-usth/WebDev2024 and folk this repo.\n\n\n           Every team member has to commit your work.\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       26 / 28"
+      },
+      {
+        "page": 27,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n                  Midterm Announcement (cont.)\n\n\n\n     Requirements:\n\n\n            Friendly UI design, understandable, not to complex\n\n\n          Fancy UI effects/animations (bonus)\n\n\n           Should contain all the pages to serve all use cases from the assigned topic\n\n     Prepare for a presentation (5 minutes per group maximum).\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       27 / 28"
+      },
+      {
+        "page": 28,
+        "content": "Introduction    FE Dev Tools     Sample Project    FE Libraries and Frameworks     Recap     Question and Next Steps\n\n\n\n\n     Thank you for listening!\n\n\n\n\n\n                                                         Lecture 05                          Hanoi, Sept 2024       28 / 28"
+      }
+    ]
+  },
+  "8-Python Flask.pdf": {
+    "source": "8-Python Flask.pdf",
+    "type": "lecture_slides",
+    "total_pages": 14,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\n\n\n\n\n          Web Application Development\n\n                             Python Flask\n\n\n\n              KIEU Quoc Viet  HUYNH Vinh Nam\n\n\n               Information and Communication Technology Laboratory (ICTLab),\n                          University of Science and Technology of Hanoi\n\n\n                           Hanoi, Sept 2024\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        1 / 14"
+      },
+      {
+        "page": 2,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nTable of Contents\n\n\n\n\n\n   1  Introduction to Flask\n\n\n\n   2  Setting Up Flask\n\n\n\n   3  Routing in Flask\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        2 / 14"
+      },
+      {
+        "page": 3,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nWhat is Flask?\n\n     Flask is a lightweight web framework for Python.\n\n       It is designed to be simple and flexible.\n\n     Often referred to as a ”micro” framework because it doesn’t require\n      particular tools or libraries.\n\n     Flask gives developers full control over components, unlike larger\n     frameworks like Django.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        3 / 14"
+      },
+      {
+        "page": 4,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nPython BE trend\n\n Statistics:\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        4 / 14"
+      },
+      {
+        "page": 5,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nKey Features of Flask\n\n\n\n  Why use Flask?\n\n     Lightweight and minimalistic.\n\n     Highly extensible: Add what you need (e.g., database,\n     authentication).\n\n     Jinja2 template engine: Dynamic HTML rendering.\n\n    Development server and debugger: Simplifies testing and\n     development.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        5 / 14"
+      },
+      {
+        "page": 6,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nFlask vs. Django\n\n\n\n            Flask                Django\n       Micro framework         Full-stack framework\n                                    Pre-built tools and\n        Minimal, flexible\n                                        structure\n       Manual routing         Automatic routing\n    Lightweight, quick to set\n                                 Heavier, more features\n             up\n\n\n\n   Flask: Ideal for small to medium applications or for learning web\ndevelopment.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        6 / 14"
+      },
+      {
+        "page": 7,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nInstalling Flask\n\n\n\n\n  Step 1: Install Flask using pip.\n\n    pip install flask\n\n\n\n\nStep 2: Verify Installation.\n\n    python -m flask --version\n\nThis should display the Flask version installed.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        7 / 14"
+      },
+      {
+        "page": 8,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nCreating Your First Flask App\n\n\n\n  Step 1: Create a new Python file.\n\n    from flask import Flask\n    app = Flask(__name__)\n\n\n    @app.route('/')\n    def hello_world():\n        return 'Hello, Flask!'\n\n\n    if __name__ == '__main__':\n        app.run(debug=True)\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        8 / 14"
+      },
+      {
+        "page": 9,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nRunning the Flask Application\n\n\n\n\n\n  Step 2: Run the application from the terminal.\n\n    python app.py\n\n\n\n\n\nAccess the application: Open your browser and go to\nhttp://localhost:5000.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024        9 / 14"
+      },
+      {
+        "page": 10,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nBreakdown of Flask Application\n\n\n\n\n    Flask( name  ): Creates a Flask application object.\n\n    @app.route(’/’): Defines the route for the homepage.\n\n    def hello world(): This function handles the requests and returns\n     the response.\n\n    app.run(debug=True): Starts the development server with\n     debugging enabled.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024       10 / 14"
+      },
+      {
+        "page": 11,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nWhat is Routing?\n\n   Routing:\n\n    The process of mapping URLs to specific code functions.\n\n     Every route is associated with a URL and function.\n\n     Flask uses decorators like @app.route() to define routes.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024       11 / 14"
+      },
+      {
+        "page": 12,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nDefining Routes in Flask\n\n\n\n    @app.route('/about')\n    def about():\n        return 'This is the About page.'\n\n\n\nDynamic Routes:\n\n    @app.route('/user/<name>')\n    def user(name):\n        return f'Hello, {name}!'\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024       12 / 14"
+      },
+      {
+        "page": 13,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\nRoute Methods (GET and POST)\n\n\n\n  GET:\n\n    Used to request data from the server.\n\n    Common for pages like forms or search engines.\n\n\n\nPOST:\n\n    Used to send data to the server (e.g., form submissions).\n\n    More secure, data is not visible in the URL.\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024       13 / 14"
+      },
+      {
+        "page": 14,
+        "content": "Introduction to Flask                                     Setting Up Flask                                  Routing in Flask\n\n\n\n\n     Thank you for listening!\n\n\n\n\n\n                                                         Lecture 06                          Hanoi, Sept 2024       14 / 14"
+      }
+    ]
+  },
+  "9-Database.pdf": {
+    "source": "9-Database.pdf",
+    "type": "lecture_slides",
+    "total_pages": 16,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\n\n\n\n\n          Web Application Development\n\n                                Database\n\n\n\n              KIEU Quoc Viet  HUYNH Vinh Nam\n\n\n               Information and Communication Technology Laboratory (ICTLab),\n                          University of Science and Technology of Hanoi\n\n\n                           Hanoi, Oct 2024\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         1 / 16"
+      },
+      {
+        "page": 2,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nTable of Contents\n\n\n\n   1  Introduction\n\n\n   2  Types of Databases\n\n\n   3  Setting Up MySQL\n\n\n   4  Sample Project\n\n\n   5  Conclusion\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         2 / 16"
+      },
+      {
+        "page": 3,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nWhy Care About Database Systems?\n\n\n\n\n\n     Database systems store and manage web contents.\n\n     Popular DB systems include: MySQL, Microsoft SQL, PostgreSQL,\n     Oracle, DB2.\n\n    MySQL is widely used by top websites like Facebook, Twitter, and\n     Wikipedia.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         3 / 16"
+      },
+      {
+        "page": 4,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nTypes of Databases\n\n\n\n\n     Relational Databases (RDBMS):\n\n           Store structured data in tables with relationships.\n\n          Examples: MySQL, PostgreSQL, SQLite.\n\n   NoSQL Databases:\n\n           Store unstructured data and allow for flexible schema.\n\n          Examples: MongoDB, CouchDB.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         4 / 16"
+      },
+      {
+        "page": 5,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nApplications of Databases\n\n\n\n\n\n     Relational DB: Best for structured data, complex queries, and\n     transactional applications like banking systems.\n\n    NoSQL DB: Used for large-scale, schema-less data handling, suitable\n      for social media, real-time analytics.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         5 / 16"
+      },
+      {
+        "page": 6,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nFocus on Relational Databases: MySQL and SQLite\n\n\n\n\n                            Relational Databases\n\n\n    MySQL: Open-source, most popular relational DB for web\n      applications.\n\n     SQLite: Lightweight, often used in mobile apps or for local\n     development.\n\n     Structured query language (SQL) is used for managing relational\n     databases.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         6 / 16"
+      },
+      {
+        "page": 7,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nSetting Up MySQL with XAMPP\n\n\n\n\n\n   XAMPP includes MySQL, PHP, and Apache in one package,\n      simplifying local development.\n\n       It’s cross-platform, making it easy to develop and test web apps\n      locally.\n\n    MySQL setup: Can be done easily within XAMPP.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         7 / 16"
+      },
+      {
+        "page": 8,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nFlask Framework for Web Development\n\n\n\n\n\n                             Flask and ORM\n\n\n     Flask is a lightweight Python framework that simplifies web\n     application development.\n\n     Perfect for integrating databases such as MySQL and SQLite using\n     Object Relational Mapping (ORM).\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         8 / 16"
+      },
+      {
+        "page": 9,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nORM with SQLAlchemy in Flask\n\n\n\n\n\n    SQLAlchemy allows you to map Python objects to database tables,\n      simplifying database operations.\n\n     Benefits of ORM:\n\n          Reduces the need to write raw SQL queries.\n\n         Makes it easier to switch between different types of databases (e.g.,\n          SQLite, MySQL).\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024         9 / 16"
+      },
+      {
+        "page": 10,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nInstalling SQLAlchemy and MySQL Driver\n\n\n\n\n\n      Install MySQL driver: pip install mysqlclient\n\n      Install SQLAlchemy: pip install SQLAlchemy\n\n     Setup connection in Flask:\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        10 / 16"
+      },
+      {
+        "page": 11,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nSample Project: Register Page with Flask and MySQL\n\n\n\n     Objective: Build a simple user registration page using Flask and\n    MySQL.\n\n     User data will be saved to a MySQL database.\n\n     Project structure:\n\n         app.py: Main Flask application.\n\n         templates/: HTML files for front-end.\n\n         config.py: Database configuration.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        11 / 16"
+      },
+      {
+        "page": 12,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nMySQL Query: Connecting Flask and MySQL\n\n\n\n\n\n      First, connect to MySQL from Flask using SQLAlchemy:\n\n     Create a user model for registration:\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        12 / 16"
+      },
+      {
+        "page": 13,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nHandling Registration Form\n\n\n\n\n\n    Flask-WTF can be used to create forms in Flask.\n\n     Registration form structure:\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        13 / 16"
+      },
+      {
+        "page": 14,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nInsert User Data into MySQL Database\n\n\n\n\n\n      In the register route, collect form data and save it to the MySQL\n     database:\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        14 / 16"
+      },
+      {
+        "page": 15,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\nConclusion\n\n\n\n\n\n     Databases are essential for storing and managing web content.\n\n    MySQL and Flask make a powerful combination for building dynamic\n    web applications.\n\n    SQLAlchemy simplifies database interaction by providing an ORM.\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        15 / 16"
+      },
+      {
+        "page": 16,
+        "content": "Introduction           Types of Databases             Setting Up MySQL           Sample Project            Conclusion\n\n\n\n\n     Thank you for listening!\n\n\n\n\n\n                                                         Lecture 07                          Hanoi, Oct 2024        16 / 16"
+      }
+    ]
+  },
+  "Exercise 3.pdf": {
+    "source": "Exercise 3.pdf",
+    "type": "exercise",
+    "total_pages": 6,
+    "pages": [
+      {
+        "page": 1,
+        "content": "Practical 3\n\n           Web Application Development\n\n                     October 7, 2024\n\n\nInstructions\n\nThis assignment focuses on using Flask (Python) to build a backend web\napplication.  You will implement different routes to handle web requests,\ninteract with a MySQL database using Flask-SQLAlchemy, and create APIs.\nComplete the following exercises.\n   Tools Required:\n\n        Python 3.x\n\n        Flask and Flask-SQLAlchemy packages\n\n       MySQL Database (or SQLite)\n\n        Postman or cURL for API testing\n\nExercise 1:  Install Flask Development Envi-\nronment\n\nDownload and install one of the following Python development environments:\n\n        Anaconda (with Flask and SQLAlchemy)\n\n       Any text editor (VSCode, PyCharm) with Flask installation using pip\n     install flask\n\nMake sure to install Flask and SQLAlchemy for database handling.\n\n\n\n                                 1"
+      },
+      {
+        "page": 2,
+        "content": "Exercise 2: Flask Route to Display Strings\n\n        Create a Flask application and write a route that displays the following\n      strings:\n\n      – ”Welcome to Flask Development!”\n\n      – ”This is Labwork 3: Flask/MySQL/API”\n\n        Display these strings at the /welcome route.\n\nExercise 3: Display a Table Using Flask and\nJinja2\n\n        Write a Flask route that renders a simple HTML table using Jinja2\n     templating. The table should display the following data:\n\n      – Column 1: Names\n\n      – Column 2: Ages\n\n        Use a Python list or dictionary to pass the data to the template and\n      display it at the /table route.\n\nSample Table:\n\n                   Name  Age\n                                Alice    22\n                        Bob    19\n                              Charlie   25\n                           David    24\n                          Eve     21\n\n                   Table 1: Table of Names and Ages\n\nThe Flask route should render a table similar to this in HTML. Use the\nfollowing Python list or dictionary to pass the data to the Jinja2 template:\n\n        data = [’name’:  ’Alice’, ’age’:  22, ’name’:  ’Bob’, ’age’:\n     19, ’name’:  ’Charlie’, ’age’:  25, ’name’:  ’David’, ’age’:\n     24, ’name’:  ’Eve’, ’age’:  21]\n\n                                 2"
+      },
+      {
+        "page": 3,
+        "content": "Flask Route Example:\n\n@app.route(’/table’)\ndef display_table():\n    data = [{’name’: ’Alice’, ’age’: 22}, {’name’: ’Bob’, ’age’: 19},\n            {’name’: ’Charlie’, ’age’: 25}, {’name’: ’David’, ’age’: 24},\n            {’name’: ’Eve’, ’age’: 21}]\n    return render_template(’table.html’, students=data)\n\nIn your Jinja2 template (table.html), use a loop to generate the rows dy-\nnamically:\n\n<table border=\"1\">\n    <tr>\n        <th>Name</th>\n        <th>Age</th>\n    </tr>\n    {% for student in students %}\n    <tr>\n        <td>{{ student.name }}</td>\n        <td>{{ student.age }}</td>\n    </tr>\n    {% endfor %}\n</table>\n\nExercise 4: Flask Function to Calculate Facto-\nrial\n\n        Write a Flask route that accepts a number as a URL parameter and\n      calculates the factorial of the number.\n\n        Example URL: /factorial/5\n\n       The function should return the factorial of the number using Python’s\n    math module.\n\n\n\n\n\n                                 3"
+      },
+      {
+        "page": 4,
+        "content": "Exercise 5:  Flask Function to Check Prime\nNumber\n\n        Write a Flask route that accepts a number as a URL parameter and\n     checks if the number is prime.\n\n        Example URL: /is prime/7\n\n        Return \"Prime\" if the number is prime, otherwise return \"Not Prime\".\n\nExercise 6: Flask Function to Sort a Numerical\nArray\n\n        Write a Flask route that accepts a list of numbers (via URL query\n     parameters) and returns the sorted array.\n\n        Example URL: /sort?numbers=4,2,9,1\n\n        Return the sorted array in ascending order.\n\nExercise 7: Flask Function to Reverse a String\n\n        Write a Flask route that accepts a string as a URL parameter and\n      returns the reversed string.\n\n        Example URL: /reverse string/hello\n\n        Output should be \"olleh\".\n\nExercise 8: Use Flask with MySQL for Database\nOperations\n\n   1. Create a MySQL Database and Table Using Flask:\n\n                Use Flask-SQLAlchemy to create the following table in MySQL:\n\n          – students: id (Primary Key), name, class, and mark\n\n\n                                 4"
+      },
+      {
+        "page": 5,
+        "content": "          Write a Flask route that creates this table.\n\n   2. Insert Data into the Table:\n\n                 Write a route that inserts students’ data into the MySQL database.\n                Example student data: Name: John, Class: One, Mark: 80\n\n   3. Update Data Based on Condition:\n\n                 Write a route to update the class of students where the mark is\n            less than 60.\n                 Students with marks less than 60 should have their class updated\n           to ”Two.”\n\n   4. Select and Display Students by Groups:\n\n                 Write Flask routes to query and display students from the database\n         grouped by marks:\n\n          – Excellent students: mark > 75\n          – Good students: 60 ≤mark ≤75\n          – Average students: mark < 60\n                 Display the result in three separate HTML tables using Jinja2\n          templating.\n\nExercise 9: Build a Frontend for an API with\nFlask\n\n        Study the Dummy static API at https://dummyapi.io/.\n\n        Create a Flask application that serves as a backend API. Your API\n     should perform the following:\n\n         1. Users:\n\n          – List available users at the /users route.\n          – Show detailed info of a user profile at /user/{user id}.\n          – List all posts for a specific user at /user/{user id}/posts.\n\n         2. Posts:\n\n                                 5"
+      },
+      {
+        "page": 6,
+        "content": "– List available posts at the /posts route.\n– List all comments for a specific post at /post/{post id}/comments.\n\n\n\n\n\n                      6"
+      }
+    ]
+  },
+  "Exercise1.pdf": {
+    "source": "Exercise1.pdf",
+    "type": "exercise",
+    "total_pages": 4,
+    "pages": [
+      {
+        "page": 1,
+        "content": "University of Science and Technology of Hanoi\n                                             18 Hoang Quoc Viet, Cau Giay, Hanoi\n                                                     Telephone/ Fax: +84-4 37 91 69 60\n                                                       Website: http://www.usth.edu.vn\n\n\n\n              Web Application Development\n\n                      Exercise 1: HTML/CSS\n\nQuestion 1: Create a Web page named “task1.html” as following:\n\n\n\n\n\nQuestion 2: Create a web page named task2.html containing:\n\n• A list of your most favorite movies.\n     -  Use ordered list.\n• A list of subjects that you are studying in this semester.\n     -  Use unordered list.\n\nQuestion 3: Create a web page named task3.html, then do the following:\n\n• Download about 3 images (size > 300x300px). Save these images to a folder\n  named “images” (a sub-folder of the folder containing “task3.html”).\n•  In the task3.html, write the code to show all downloaded images as thumbnails (i.e.\n  images with size 50x50px).\n\nQuestion 4: Create a web page named task4.html so that each thumbnail in\n“task3.html” web page is a link to the corresponding full-size image.\n\nQuestion 5: Create a web page named task5.html containing the following table:"
+      },
+      {
+        "page": 2,
+        "content": "Monday    Tuesday  Wednesday  Thursday    Friday\n\n   Morning     Math                  Mobile                 History\n                          Chemistry\n    Afternoon     Physics\n\n\nQuestion 6: Write a web page named task6.html, having two paragraphs. Define CSS\nrules so that:\n\n     • Text size of the first paragraph is 0.5 of the normal font size (i.e. 1em).\n     • Text color of the second paragraph is red.\n     • Use id selector for the first paragraph, class selector for the second paragraph.\n     • Add another paragraph (called the third paragraph) also having the red text.\n     • Use inline style, embedded style, and external style for the created web page,\n    having three paragraphs (first, second, third).\n\nQuestion 7: Create a web page named task7.html, containing an image:\n\n     • Decorate the image with a border\n          - Color: red\n          - Size: 5px\n          - Solid\n     • Use pseudo-class hover to change appearance of the image when the mouse is\n   on the image\n\nQuestion 8: Create a web page named task8.html, containing three links to other\npages:\n\n     • Use property text-decoration to remove the underlines\n     • If a link is visited, then its color becomes red\n     • Change the color of the links to green when the mouse is over\n\nQuestion 9: Create a web page named task9.html, containing a table as following:\n\n\n                        Subject                    ECTS\n\n                      Math                             3\n\n                         Physics                            5\n\n                      Chemistry                           4\n\n                         English                            3\n\n\n   •  Provide CSS so that the row pointed by the mouse is highlighted."
+      },
+      {
+        "page": 3,
+        "content": "Question 10: Create a web page named task10.html, having the the layout as\nfollowing (each part is a <div> element):\n\n\n\n\n\nQuestion 11: Use HTML and CSS to create a website for viewing categorized photos\nas following:\n\n\n\n                                             Banner\n\n\n\n\n                      Category 1\n\n                                             Thumbnail\n                      Category 2\n\n                      Category 3\n\n                      About\n\n\n\n\n\n                                                                 Copyright\n\n\nThe functions of the website are:\n     • The web page has two panels. The left one contains links to each category.\n   When\n    a link in the left panel is clicked, the right panel shows images in corresponding\n    category.\n     • Photos are displayed in the right panel with thumbnail style and have thin\n    borders.\n     • When a thumbnail image is clicked, the corresponding full-size photo will be"
+      },
+      {
+        "page": 4,
+        "content": "displayed in a pop-up window.\n• The web page should have an “About” link pointing to a page containing the\nname of the student who develops the website."
+      }
+    ]
+  },
+  "Exercise2.pdf": {
+    "source": "Exercise2.pdf",
+    "type": "exercise",
+    "total_pages": 2,
+    "pages": [
+      {
+        "page": 1,
+        "content": "University of Science and Technology of Hanoi\n                                             18 Hoang Quoc Viet, Cau Giay, Hanoi\n                                                     Telephone/ Fax: +84-4 37 91 69 60\n                                                       Website: http://www.usth.edu.vn\n\n\n\n            Web Application Development\n\n                      Exercise 2: JavaScript\n\nQuestion 1: Write a JavaScript program to convert temperatures to and from\nCelsius and Fahrenheit:\n\n    •  Conversion Formula: c/5 = (f-32)/9 where c is temperature in Celsius and\n        f is temperature in Fahrenheit.\n\nQuestion 2: Write a JavaScript program to find the largest of five numbers.\nDisplay an alert box to show the result.\n\nQuestion 3: Write a JavaScript program that iterates from 1 to 15. For each\niteration,  it will check if the current number is odd or even, and display a\nmessage to the screen. The output should be:\n\n   “1 is odd”\n   “2 is even” ….\n\nQuestion 4: Use HTML/CSS/ JavaScript to create a form as the following.\n\n\n\n\n\n    Write a JavaScript function that checks whether two entered passwords are\nidentical. The function is called when users click the “Submit” button.\n\nQuestion 5: Write a JavaScript program to calculate multiplication and division of\ntwo numbers:\n\n     • HTML form should be used to get inputs from user\n     • The interface of the program should look as follows:"
+      },
+      {
+        "page": 2,
+        "content": "Question 6: Find all h1 elements that are children of a div element and apply a\nbackground to them:\n\n• Sample Input HTML File:\n\n<body>\n    <h1>Introduction</h1>\n   <div>\n      <h1>About HTML</h1>\n      <h1>About CSS</h1>\n    </div>\n   <h1>About JavaScript</h1>\n</body>\n\nQuestion 7: Attach a function to the blur event. The blur event occurs when the\nfollowing <input> Field1 loses focus:\n\n<body>\n   <form>\n       <input id=\"field1\" type=\"text\" value=\"Field 1\">\n       <input id=\"field2\" type=\"text\" value=\"Field 2\">\n   </form>\n</body>\n\nQuestion 8: Create a web page named task8.html, containing three links to other\npages:\n\n     • Use property text-decoration to remove the underlines\n     • If a link is visited, then its color becomes red\n     • Change the color of the links to green when the mouse is over\n\nQuestion 9: Count the number of milliseconds between the two click events on a\nparagraph. Following are the sample data:\n<body>\n   <h1>Heading1</h1>\n   <h2>Heading2</h2>\n   <p>Paragraph</p>\n    <button>Button</button>\n    <div id=\"log\"></div>\n</body>"
+      }
+    ]
+  },
+  "study_guide_lesson1_2.html": {
+    "source": "study_guide_lesson1_2.html",
+    "type": "study_guide",
+    "full_text": "🌐 Web Dev Guide\nHọc phần: Phát triển Ứng dụng Web\nWeb Application Development\n/\nBài 1: Giới thiệu Internet & World Wide Web\n🖨️ In tài liệu\nSlide 1-Introduction.pdf\nBài 1: Tổng Quan Về Internet & World Wide Web\nKhám phá nguồn gốc lịch sử, câu chuyện đằng sau các phát minh, kiến trúc mạng Client - Server, giao thức TCP/IP, DNS và cách mạng duyệt Web.\n🎯\nDành cho người mới bắt đầu:\nBạn không cần có kiến thức lập trình từ trước. Bài học này sẽ giúp bạn hiểu được:\nTại sao người ta tạo ra Internet?\n,\nLàm thế nào một cú nhấp chuột từ máy tính bạn có thể lấy dữ liệu từ một máy chủ cách nửa vòng Trái Đất?\nvà\nSự khác biệt cốt tử giữa Internet vs World Wide Web là gì?\n1. Câu Chuyện Lịch Sử: Hành Trình Khai Sinh Internet & Web\nĐể dễ nhớ và không bị ngợp giữa hàng chục mốc thời gian, chúng ta hãy chia lịch sử Internet thành\n4 Chương tiến hóa lớn\ntheo đúng nội dung bài giảng slide:\n🏛️ Chương 1: Thời Kỳ Đặt Nền Móng & Những Ý Tưởng Đi Trước Thời Đại\n1945 - 1968\n1\n1945\nÝ tưởng về \"Memex\" — Bộ não mở rộng trên bàn làm việc\n👤 Vannevar Bush\nBối cảnh & Vấn đề:\nSau Thế chiến II, lượng tài liệu khoa học quá đồ sộ. Để tra cứu, con người phải lật từng trang sách một cách thủ công.\nPhát minh:\nNhà khoa học Vannevar Bush đã viết một bài luận nổi tiếng mô tả thiết bị giả tưởng tên là\nMemex\n. Đây là một chiếc bàn làm việc có khả năng lưu trữ hàng triệu vi phim và đặc biệt là có\ncơ chế liên kết tức thì giữa tài liệu này với tài liệu khác\n.\n💡\nDễ hiểu:\nMemex chính là \"ông tổ\" sinh ra ý tưởng về các\nđường link (Hyperlink)\nmà ngày nay chúng ta nhấp chuột mỗi ngày.\n2\n1958\nVệ tinh Sputnik phóng lên & Mỹ thành lập cơ quan ARPA\n👤 Bộ Quốc phòng Hoa Kỳ\nBối cảnh:\nLiên Xô phóng thành công vệ tinh\nSputnik\nvào không gian khiến nước Mỹ lo ngại tụt hậu về công nghệ quân sự.\nHành động:\nTổng thống Mỹ thành lập cơ quan\nARPA (Advanced Research Projects Agency)\nnhằm đổ tiền nghiên cứu các công nghệ tối tân nhất, đặc biệt là mạng lưới máy tính có thể sống sót và tiếp tục truyền tin ngay cả khi có một số trạm bị ném bom phá hủy.\n3\n1962\nHệ thống NLS & Sự ra đời của Chuột Máy Tính\n👤 Doug Engelbart\nBối cảnh:\nMáy tính thời bấy giờ cực kỳ cồng kềnh, người dùng phải gõ các dòng lệnh phức tạp trên bàn phím.\nPhát minh:\nDoug Engelbart sáng chế ra hệ thống\nNLS (oNLine System)\ncho phép duyệt và chỉnh sửa tài liệu trực quan, đồng thời phát minh ra\ncon chuột máy tính (Computer Mouse)\nđầu tiên trên thế giới để người dùng tương tác trỏ-và-nhấp trực tiếp trên màn hình.\n4\n1965\nKhai sinh thuật ngữ \"Hypertext\" và \"Chuyển Mạch Gói\" (Packet Switching)\n👤 Ted Nelson & Donald Davies\nHai khái niệm trụ cột:\nTed Nelson\nđặt ra thuật ngữ\nHypertext (Siêu văn bản)\n: Là văn bản không bắt người đọc phải đọc tuần tự từ trên xuống dưới, mà có thể bấm vào một từ khóa để nhảy sang một tài liệu khác bất kỳ.\nDonald Davies\nđặt ra thuật ngữ\nPacket (Gói tin)\nvà kỹ thuật\nPacket Switching (Chuyển mạch gói)\n.\n💡\nẨn dụ Chuyển mạch gói:\nThay vì gửi nguyên một cuốn sách dày cộp qua bưu điện (rất dễ tắc nghẽn), người ta xé cuốn sách thành 100 trang nhỏ, đánh số thứ tự 1-100 (gọi là\nPacket\n). Mỗi trang có thể bay qua các đường bưu điện khác nhau. Khi đến nơi nhận, người nhận gom đủ 100 trang và ghép lại theo đúng số thứ tự. Nhờ vậy dữ liệu không bao giờ bị nghẽn mạng!\n🔌 Chương 2: ARPANET & Bộ Giao Thức TCP/IP Kết Nối Toàn Cầu\n1969 - 1988\n5\n1969\nARPANET ra đời — 4 chiếc máy tính đầu tiên kết nối với nhau\n👤 ARPA & 4 trường đại học Mỹ\nSự kiện lịch sử:\nMạng\nARPANET\n(tiền thân của Internet) chính thức đi vào hoạt động, kết nối 4 máy tính tại: Đại học California tại Los Angeles (UCLA), Viện SRI Menlo Park, ĐH California tại Santa Barbara (UCSB) và ĐH Utah.\nChi tiết thú vị:\nThông điệp đầu tiên được truyền qua mạng là chữ\nLOGIN\n, nhưng khi vừa gõ xong chữ\nL\nvà\nO\nthì hệ thống bị sập máy! Dẫu vậy, đó là khởi đầu vĩ đại của mạng máy tính toàn cầu.\n6\n1971 - 1974\nGiao thức FTP & Sự ra đời của Bộ Giao Thức TCP/IP và từ \"Internet\"\n👤 Vinton Cerf & Robert Kahn\nVấn đề:\nNăm 1971 có thêm giao thức FTP để truyền file. Tuy nhiên, mỗi hãng máy tính (IBM, DEC, Xerox...) lại dùng ngôn ngữ mạng riêng, các máy tính không thể nói chuyện được với nhau.\nĐột phá:\nNăm 1974, bộ giao thức\nTCP/IP\nđược chuẩn hóa để làm \"ngôn ngữ chung toàn cầu\". Thuật ngữ\nInternet\n(viết tắt của\nInter-networking\n- mạng liên kết giữa các mạng) chính thức ra đời.\n7\n1978 - 1980\nThử nghiệm vô tuyến, Thư điện tử (Email) & Phần mềm ENQUIRE\n👤 Tim Berners-Lee (CERN)\nNăm 1978 thử nghiệm truyền gói tin qua sóng vô tuyến (Packet Radio). Năm 1980, các dạng tin nhắn văn bản chuyển thành\nElectronic Mail (Email)\n. Cũng năm 1980,\nTim Berners-Lee\nkhi làm việc tại CERN (Tổ chức Nghiên cứu Hạt nhân Châu Âu) đã viết chương trình sổ tay điện tử mang tên\nENQUIRE\nđể liên kết các mẩu thông tin trên máy tính.\n8\n1983\nHệ thống Tên Miền DNS ra đời\n👤 Paul Mockapetris\nVấn đề:\nTrước năm 1983, muốn truy cập một máy chủ, người dùng phải nhớ từng địa chỉ số IP dài dòng (như\n128.9.0.32\n). Khi số lượng máy tính tăng vọt, không ai có thể nhớ nổi.\nPhát minh:\nDNS (Domain Name System)\nra đời, hoạt động như cuốn \"danh bạ Internet\", giúp chuyển đổi tên miền dễ nhớ (như\n.com\n,\n.edu\n,\n.gov\n,\n.org\n,\n.net\n,\n.mil\n) sang địa chỉ số IP của máy chủ.\n🌐 Chương 3: Tim Berners-Lee Khai Sinh World Wide Web & Bùng Nổ Trình Duyệt Mosaic\n1989 - 1994\n9\n1989 - 1990\nBộ ba phát minh thế kỷ: World Wide Web, HTML & Giao thức HTTP\n👤 Tim Berners-Lee (CERN)\nVấn đề thực tế tại CERN:\nViện nghiên cứu hạt nhân CERN có hàng ngàn nhà khoa học quốc tế cùng làm việc. Nhưng mỗi người dùng một loại máy tính và hệ điều hành khác nhau, khiến việc chia sẻ báo cáo nghiên cứu vô cùng cực khổ.\nĐột phá vĩ đại:\nNăm 1989, Tim Berners-Lee viết đề án\n\"Information Management: A Proposal\"\n. Đến năm 1990, ông dùng máy tính NeXT để cùng lúc tạo ra:\n1.\nHTML:\nNgôn ngữ định dạng văn bản hiển thị.\n2.\nHTTP:\nGiao thức để máy tính gửi yêu cầu và nhận trang web về.\n3.\nWeb Browser & Editor:\nTrình duyệt kiêm trình soạn thảo trang web đầu tiên trên thế giới mang tên\nWorldWideWeb\n.\n10\n1993 - 1994\nTrình duyệt đồ họa Mosaic đưa Web đến với công chúng\n👤 Marc Andreessen & Eric Bina (NCSA)\nTại sao Mosaic thay đổi cả thế giới?\nTrước năm 1993, trình duyệt web hầu như chỉ hiển thị văn bản đen trắng đơn điệu. Marc Andreessen và Eric Bina tạo ra\nMosaic\n— trình duyệt đồ họa đầu tiên có khả năng hiển thị\nảnh màu nằm ngay bên cạnh văn bản\ntrên cùng một trang web.\nChỉ sau 1 năm (1994), số lượng máy tính kết nối Internet đã cán mốc 2 triệu máy.\n🚀 Chương 4: Kỷ Nguyên Thương Mại, Mạng Xã Hội & Công Nghệ Di Động\n1995 - Nay\n11\n1995 - 1998\nBùng nổ Dot-com, Sự ra đời của Google & Mozilla\n1995:\nHiệu sách trực tuyến Amazon.com mở cửa. Sergey Brin & Larry Page bắt đầu lên kế hoạch xây dựng công cụ tìm kiếm Google. Trang wiki đầu tiên ra đời.\n1996:\nMicrosoft ra mắt trình duyệt Internet Explorer (IE). Hotmail là dịch vụ web email đầu tiên.\n1998:\nNetscape công bố mã nguồn mở (tiền thân sinh ra trình duyệt Mozilla / Firefox). Google chính thức thành lập, phục vụ 10.000 lượt tìm kiếm/ngày.\n12\n2001 - 2006\nKỷ nguyên Web 2.0, Mạng xã hội & Chia sẻ nội dung\n2001:\nBách khoa toàn thư mở Wikipedia ra đời. Google đạt mốc 100 triệu lượt tìm kiếm/ngày. Apple ra mắt máy nghe nhạc iPod. Dịch vụ chia sẻ file Kazaa.\n2003:\nHơn 3 tỷ trang web tồn tại. Apple ra mắt Safari. Ra đời nền tảng viết blog WordPress, cuộc gọi thoại Skype, Second Life, iTunes.\n2004:\nTrình duyệt Firefox ra mắt. Mark Zuckerberg thành lập Facebook. Bắt đầu Podcasting, trang chia sẻ ảnh Flickr, gọi VoIP đại chúng.\n2005:\nHơn 8 tỷ trang web. YouTube ra đời cho phép xem & tải video. Google Earth ra mắt. Mạng Internet cáp quang băng rộng (Broadband) phủ sóng gia đình.\n2006:\nMạng xã hội Twitter phát đi những dòng tweet đầu tiên. Google lập chỉ mục 25 tỷ trang web và 400 triệu lượt truy vấn/ngày.\n13\n2007 - 2014\nCuộc cách mạng Smartphone & Chuẩn hóa HTML5\n2007:\nSteve Jobs ra mắt\niPhone\n, mở màn cho kỷ nguyên lướt web trên điện thoại cảm ứng (Mobile Web).\n2008:\nGoogle ra mắt trình duyệt tốc độ cao\nGoogle Chrome\n.\n2009 - 2010:\n1/4 dân số thế giới sử dụng Internet. Microsoft ra mắt công cụ tìm kiếm Bing. Apple ra mắt máy tính bảng iPad.\n2014:\nChuẩn web thế hệ mới\nHTML5\nchính thức hoàn thiện, tích hợp video, audio trực tiếp mà không cần Flash.\n📋 Bảng Tra Cứu Nhanh: Nhân Vật Lịch Sử & Phát Minh Cốt Lõi (Rất hay thi!)\nKhi làm bài kiểm tra trắc nghiệm, các thầy cô thường hỏi liên hệ giữa nhân vật và phát minh. Dưới đây là bảng tóm tắt ngắn gọn nhất:\nNăm\nNhân vật / Tổ chức\nPhát minh / Đóng góp chính\nÝ nghĩa cốt lõi\n1945\nVannevar Bush\nÝ tưởng cỗ máy\nMemex\nNguồn cảm hứng khai sinh liên kết siêu văn bản (Hyperlink).\n1958\nARPA (Bộ Quốc phòng Mỹ)\nCơ quan nghiên cứu mạng máy tính\nKhởi nguồn tài trợ xây dựng mạng tiền thân của Internet.\n1962\nDoug Engelbart\nHệ thống\nNLS\n&\nChuột máy tính (Mouse)\nBiến máy tính từ gõ lệnh khô khan sang tương tác trỏ nhấp đồ họa.\n1965\nTed Nelson\nThuật ngữ\nHypertext\n(Siêu văn bản)\nKhái niệm văn bản có chứa liên kết nhảy sang trang khác.\n1965\nDonald Davies\nPacket\n&\nPacket Switching\nPhương pháp chia nhỏ dữ liệu thành các gói tin để truyền chống nghẽn.\n1969\nARPANET\nMạng 4 trường đại học đầu tiên\nMạng máy tính đầu tiên trên thế giới truyền thông điệp thành công.\n1974\nVinton Cerf & Bob Kahn\nBộ giao thức\nTCP/IP\n& từ\nInternet\n\"Ngôn ngữ chuẩn\" giúp mọi máy tính thế giới kết nối được với nhau.\n1983\nPaul Mockapetris\nHệ thống tên miền\nDNS\nĐổi địa chỉ IP dạng số khó nhớ thành tên miền (.com, .edu, .org...).\n1989-1990\nTim Berners-Lee\n(CERN)\nWorld Wide Web, HTML, HTTP, Web Browser\nCha đẻ của Web hiện đại, giúp ai cũng có thể đọc và chia sẻ web.\n1993\nMarc Andreessen & Eric Bina\nTrình duyệt đồ họa\nMosaic\nTrình duyệt đầu tiên cho phép xem ảnh màu trực tiếp cùng văn bản.\n2. Kết Nối Mạng & Bộ Giao Thức TCP/IP\nGiao thức (Protocol) là gì?\nLà tập hợp các quy tắc định dạng và trao đổi thông điệp chuẩn giữa các thiết bị để chúng có thể hiểu được nhau (giống như nghi thức ngoại giao hoặc việc con người cùng nói chung một thứ tiếng).\n📡 Giao thức IP (Internet Protocol)\nChịu trách nhiệm định tuyến và đánh địa chỉ cho các gói tin để dữ liệu đến đúng thiết bị đích qua địa chỉ IP.\n🛡️ Giao thức TCP (Transmission Control)\nĐảm bảo việc truyền dữ liệu tin cậy: chia nhỏ dữ liệu thành các gói, kiểm tra lỗi, gửi lại gói tin bị mất và ghép đúng thứ tự.\nĐịa chỉ IP (IP Address): Thực vs Ảo (Private vs Public IP)\nMỗi thiết bị trên mạng có một địa chỉ định danh (ví dụ:\n42.112.24.18\ncủa USTH hay\n74.125.239.31\ncủa Google).\nLoại IP\nVí dụ dải địa chỉ\nPhạm vi hoạt động\nĐặc điểm\nIP Riêng / Ảo (Private IP)\n192.168.x.x\n,\n10.x.x.x\nMạng nội bộ (LAN / Nhà / Trường học)\nKhông truy cập trực tiếp từ ngoài Internet; Router dùng NAT để ánh xạ.\nIP Công cộng / Thực (Public IP)\n203.162.3.4\nToàn cầu trên Internet\nĐộc nhất trên toàn cầu, được các nhà mạng (ISP) cấp.\n3. Tên Miền (Domain Name) & Máy Chủ DNS\nCon người khó có thể ghi nhớ hàng ngàn dãy số IP như\n111.65.248.132\n, do đó\nDomain Name (Tên miền)\nnhư\nvnexpress.net\nra đời.\n💻 Trình duyệt\n(Gõ:\ngoogle.com\n)\n➡️ Hỏi IP ➡️\n🧭 DNS Server\n(Danh bạ Internet)\n➡️ Trả về:\n142.250.x.x\n➡️\n🖥️ Web Server\n(Tải trang Web)\n🧱 Firewall (Tường lửa)\nHệ thống bảo mật kiểm soát lưu lượng ra/vào mạng dựa trên các quy tắc xác định, ngăn chặn tin tặc (Hacker) và tấn công độc hại.\n🔄 Proxy Server\nMáy chủ trung gian đứng giữa người dùng và Internet, giúp tăng tốc độ qua bộ nhớ đệm (Cache), lọc nội dung và ẩn danh IP người dùng.\n4. World Wide Web (WWW) & Giao Thức HTTP\n💡\nPhân biệt quan trọng: Internet vs World Wide Web\nInternet:\nLà hạ tầng mạng lưới phần cứng kết nối hàng triệu máy tính toàn cầu.\nWorld Wide Web (Web):\nLà một\ndịch vụ\nchạy trên Internet, là tập hợp các tài liệu siêu văn bản liên kết với nhau.\nMô hình Client - Server & Luồng Giao Tiếp HTTP\nMỗi khi bạn truy cập một trang web, máy khách (Client - Trình duyệt) gửi một\nHTTP Request\nvà máy chủ (Web Server như Apache, Nginx, IIS) phản hồi bằng một\nHTTP Response\n:\nHTTP Request (Gửi đi)\nGET /index.html HTTP/1.1\nHost: www.usth.edu.vn\nUser-Agent: Mozilla/5.0 (Windows NT 10.0)\nAccept: text/html\nHTTP Response (Nhận về)\nHTTP/1.1 200 OK\nDate: Mon, 17 Aug 2026 21:00:00 GMT\nContent-Type: text/html\nContent-Length: 1024\n\n<html>\n  <body><h1>Chào mừng đến USTH!</h1></body>\n</html>\nBảng so sánh: HTTP vs HTML\nTiêu chí\nHTTP (Hypertext Transfer Protocol)\nHTML (Hypertext Markup Language)\nBản chất\nGiao thức truyền tải (Quy tắc đàm thoại)\nNgôn ngữ đánh dấu (Cấu trúc nội dung)\nVai trò\nQuy định cách Client & Server gửi yêu cầu và nhận dữ liệu\nĐịnh nghĩa các thẻ (tags) để trình duyệt hiển thị giao diện văn bản, ảnh, bảng...\nVí dụ lệnh\nGET\n,\nPOST\n,\n200 OK\n,\n404 Not Found\n<html>\n,\n<h1>\n,\n<p>\n,\n<a>\n5. Sự Chuyển Dịch: Web 1.0 sang Web 2.0 & Mobile Web\n📖 Web 1.0 (Read-Only Web)\nTrang web tĩnh. Người dùng chỉ đóng vai trò người đọc tiếp nhận thông tin thụ động từ tác giả trang web (báo chí điện tử đời đầu, danh bạ Yahoo).\n✍️ Web 2.0 (Read-Write-Participate Web)\nWeb có tính tương tác cao. Người dùng tự tạo nội dung (User-Generated Content), chia sẻ, bình luận và mạng xã hội (Facebook, YouTube, TikTok, Wikipedia).\n📱\nThách thức khi phát triển cho Mobile Web:\nKhi thiết kế ứng dụng web cho điện thoại thông minh, lập trình viên cần tối ưu cho 3 yếu tố:\n                (1)\nKích thước màn hình nhỏ & thao tác chạm cảm ứng\n, \n                (2)\nNăng lực xử lý & dung lượng pin hạn chế\n, \n                (3)\nTốc độ kết nối mạng 3G/4G/5G thường xuyên biến động\n.\nSlide 2-HTML.pdf\nBài 2: Ngôn Ngữ Đánh Dấu Siêu Văn Bản (HTML)\nChi tiết cú pháp thẻ HTML, thuộc tính, các khối hiển thị (Block vs Inline), liên kết URL, hình ảnh, bảng và cấu trúc chuẩn của trang web.\n1. Cấu Trúc Khung Chuẩn Của Trang HTML\nMọi trang web đều tuân theo cấu trúc cây phân cấp (DOM Tree) gồm 3 phần chính:\n<!DOCTYPE html>\n<html lang=\"vi\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tiêu đề trang hiển thị trên tab trình duyệt</title>\n  </head>\n  <body>\n    <!-- Nội dung chính của trang web sẽ nằm trong body -->\n    <h1>Khóa học Phát triển Ứng dụng Web</h1>\n    <p>Học HTML rất thú vị và dễ dàng!</p>\n  </body>\n</html>\n<!DOCTYPE html>\nKhai báo chuẩn HTML5 để trình duyệt hiểu và hiển thị trang đúng quy chuẩn hiện đại.\n<head>\nChứa siêu dữ liệu (Metadata), thẻ\n<title>\n, liên kết CSS, mã Script, không hiển thị trực tiếp lên giao diện.\n<body>\nChứa toàn bộ nội dung mà người dùng nhìn thấy: tiêu đề, đoạn văn, hình ảnh, nút bấm, bảng biểu...\n2. Khái Niệm: Tag, Element và Attribute\n🔍\nGiải phẫu một phần tử HTML (HTML Element):\n<\np\nlang\n=\"\nvi\n\">Nội dung đoạn văn</\np\n>\nThẻ mở (Opening Tag):\n<p>\nTên thuộc tính (Attribute Name):\nlang\n(luôn viết thường)\nGiá trị thuộc tính (Attribute Value):\n\"vi\"\n(đặt trong dấu ngoặc kép)\nNội dung (Content):\nNội dung đoạn văn\nThẻ đóng (Closing Tag):\n</p>\n3. Định Dạng Văn Bản & Các Loại Danh Sách (Lists)\nTiêu đề (Headings) & Đoạn văn\nHTML cung cấp 6 cấp độ tiêu đề từ quan trọng nhất\n<h1>\nđến nhỏ nhất\n<h6>\n:\n<p>\n: Đoạn văn bản (Paragraph).\n<br/>\n: Ngắt dòng (Line break) — là thẻ tự đóng, không cần thẻ đóng\n</br>\n.\n<hr/>\n: Đường kẻ ngang phân cách nội dung (Horizontal rule).\nCác thẻ định dạng chữ (Presentational Elements)\nThẻ\nÝ nghĩa & Hiển thị\nVí dụ mã\nKết quả hiển thị\n<b>\n/\n<strong>\nIn đậm chữ (Bold text)\n<b>Đậm</b>\nĐậm\n<i>\n/\n<em>\nIn nghiêng (Italic)\n<i>Nghiêng</i>\nNghiêng\n<u>\nGạch chân (Underline)\n<u>Gạch chân</u>\nGạch chân\n<s>\n/\n<strike>\nGạch ngang chữ (Strikethrough)\n<s>Giá cũ: 100k</s>\nGiá cũ: 100k\n<sup>\nChỉ số trên (Superscript)\nx<sup>2</sup> + y<sup>2</sup>\nx\n2\n+ y\n2\n<sub>\nChỉ số dưới (Subscript)\nH<sub>2</sub>O\nH\n2\nO\n<big>\n/\n<small>\nChữ lớn hơn / Chữ nhỏ hơn\n<small>Bản quyền 2026</small>\nBản quyền 2026\n3 Loại Danh Sách (Lists) Trong HTML\n1. Không thứ tự (\n<ul>\n)\nHiển thị dạng dấu chấm tròn (bullet points):\n<ul>\n  <li>Coffee</li>\n  <li>Tea</li>\n</ul>\n2. Có thứ tự (\n<ol>\n)\nHiển thị theo thứ tự 1, 2, 3...:\n<ol>\n  <li>Bước 1</li>\n  <li>Bước 2</li>\n</ol>\n3. Định nghĩa (\n<dl>\n)\nGồm thuật ngữ\n<dt>\nvà mô tả\n<dd>\n:\n<dl>\n  <dt>HTML</dt>\n  <dd>Markup Lang</dd>\n</dl>\n4. Phân Biệt: Block-level vs Inline Elements\nĐặc điểm\nKhối Block-level\nNội dòng Inline\nBắt đầu dòng\nLuôn tự động bắt đầu trên\nmột dòng mới\n.\nNằm\nngay trên cùng một dòng\nvăn bản hiện tại.\nChiều rộng (Width)\nChiếm trọn 100% chiều rộng có thể của thẻ cha.\nChỉ chiếm vừa đủ kích thước nội dung của nó.\nCác thẻ tiêu biểu\n<div>\n,\n<p>\n,\n<h1>-<h6>\n,\n<ul>\n,\n<form>\n,\n<table>\n<span>\n,\n<a>\n,\n<img>\n,\n<b>\n,\n<i>\n,\n<strong>\n5. Liên Kết (Hyperlinks) & Cấu Trúc URL\nDùng thẻ\n<a>\n(Anchor) với thuộc tính\nhref\nđể tạo liên kết:\n<!-- Mở liên kết ngoài -->\n<a href=\"https://usth.edu.vn\" title=\"Trường ĐH KH&CN Hà Nội\" target=\"_blank\">Truy cập USTH</a>\n\n<!-- Ảnh làm liên kết -->\n<a href=\"index.html\">\n  <img src=\"logo.png\" alt=\"Logo Trang chủ\" width=\"120\" />\n</a>\nPhân biệt Đường dẫn Tuyệt đối vs Tương đối\n🌐 URL Tuyệt đối (Absolute URL)\nChứa đầy đủ giao thức và tên miền, truy cập được từ bất kỳ đâu trên thế giới:\nhttps://www.usth.edu.vn/news/test.html\n📂 URL Tương đối (Relative URL)\nXác định vị trí tương đối so với file HTML hiện tại:\nCùng thư mục:\ntest.html\nThư mục cha (lên 1 cấp):\n../test.html\nThư mục con:\nimages/logo.png\n6. Hình Ảnh & Bảng Biểu (Tables)\nChèn hình ảnh với thẻ\n<img>\nThẻ\n<img>\nlà thẻ tự đóng, các thuộc tính quan trọng:\nsrc\n: Đường dẫn tới file ảnh (JPEG, PNG, GIF, SVG...).\nalt\n: Văn bản thay thế nếu ảnh lỗi tải (rất quan trọng cho SEO và người khiếm thị).\nwidth\n/\nheight\n: Chiều rộng và chiều cao (đơn vị pixel).\ntitle\n: Chú thích hiện ra khi người dùng rê chuột vào ảnh (Tooltip).\nTạo Bảng với Thẻ\n<table>\n, Gộp Cột & Hàng\nBảng gồm: dòng\n<tr>\n, ô tiêu đề\n<th>\nvà ô dữ liệu\n<td>\n.\ncolspan=\"n\"\n: Gộp\nn\ncột lại với nhau.\nrowspan=\"n\"\n: Gộp\nn\ndòng (hàng) lại với nhau.\n<table border=\"1\">\n  <tr>\n    <th>Thời gian</th>\n    <th>Kênh ABC</th>\n    <th>Kênh BBC</th>\n  </tr>\n  <tr>\n    <th>18:00 - 19:00</th>\n    <td rowspan=\"2\">Phim Chiếu Rạp (Gộp 2 tiếng)</td>\n    <td>Thời sự</td>\n  </tr>\n  <tr>\n    <th>19:00 - 20:00</th>\n    <td>Thể thao</td>\n  </tr>\n</table>\nThực hành tức thì\nTrình Soạn Thảo & Thử Nghiệm HTML Trực Tuyến\nGõ code HTML ở khung bên trái và quan sát kết quả kết xuất ngay lập tức ở khung bên phải.\n💻 Code Editor (HTML)\n🔄 Khôi phục mẫu\n<h2 style=\"color: #2563eb;\">Xin chào sinh viên USTH!</h2>\n<p>Đây là đoạn văn thử nghiệm <b>in đậm</b> và <i>in nghiêng</i>.</p>\n\n<h4>Danh sách môn học Web App:</h4>\n<ul>\n  <li>HTML5 & CSS3</li>\n  <li>JavaScript Logic</li>\n  <li>NodeJS & Python Flask</li>\n</ul>\n\n<table border=\"1\" cellpadding=\"8\" style=\"border-collapse: collapse; width: 100%;\">\n  <tr style=\"background:#f1f5f9;\">\n    <th>Học phần</th>\n    <th>Độ khó</th>\n  </tr>\n  <tr>\n    <td>HTML Cơ Bản</td>\n    <td>⭐ Dễ</td>\n  </tr>\n</table>\nKẾT QUẢ HIỂN THỊ (LIVE PREVIEW)\n💡\nThử thách nhanh cho bạn:\nThử thêm một danh sách có thứ tự\n<ol>\nhoặc chèn một thẻ\n<a href=\"#\">Liên kết</a>\nvào khung soạn thảo ở trên để kiểm tra kết quả ngay!\nKiểm tra hiểu bài\nTrắc Nghiệm Ôn Tập Kiến Thức Cốt Lõi\nTrả lời 6 câu hỏi then chốt thường gặp trong bài kiểm tra và phỏng vấn kiến thức cơ bản.\n1. Ai là người phát minh ra World Wide Web, HTML và HTTP vào năm 1989-1990?\nA. Bill Gates\nB. Steve Jobs\nC. Tim Berners-Lee\nD. Marc Andreessen\n✅ Chính xác! Tim Berners-Lee phát minh ra WWW, HTML, HTTP và trình duyệt đầu tiên tại CERN (Thụy Sĩ).\n2. Máy chủ DNS (Domain Name Server) có nhiệm vụ chính là gì?\nA. Lưu trữ mã nguồn HTML của trang web\nB. Ánh xạ từ tên miền (như google.com) sang địa chỉ IP và ngược lại\nC. Ngăn chặn virus và phần mềm độc hại\nD. Tăng tốc độ render đồ họa của trình duyệt\n✅ Đúng! DNS đóng vai trò như \"danh bạ điện thoại\" của Internet giúp chuyển đổi tên miền dễ nhớ thành địa chỉ IP số.\n3. Thẻ nào sau đây là phần tử nội dòng (Inline Element)?\nA. <div>\nB. <p>\nC. <span>\nD. <h1>\n✅ Chính xác!\n<span>\n,\n<a>\n,\n<img>\nlà các phần tử Inline (không tự động nhảy sang dòng mới).\n4. Để gộp 2 cột liền kề trong một bảng HTML, ta sử dụng thuộc tính nào?\nA. rowspan=\"2\"\nB. colspan=\"2\"\nC. merge=\"2\"\nD. span=\"2\"\n✅ Đúng!\ncolspan\ndùng để gộp cột (Column Span), còn\nrowspan\ndùng để gộp hàng (Row Span).\n5. Điểm khác biệt cốt lõi nhất giữa Web 1.0 và Web 2.0 là gì?\nA. Web 2.0 có tốc độ mạng nhanh hơn\nB. Web 1.0 dùng cáp quang còn Web 2.0 dùng Wifi\nC. Web 2.0 cho phép người dùng trực tiếp sáng tạo và tương tác nội dung (User-generated content)\nD. Web 2.0 không cần dùng đến trình duyệt\n✅ Chính xác! Web 2.0 đánh dấu kỷ nguyên tương tác 2 chiều và mạng xã hội.\n6. Phương thức HTTP nào được trình duyệt gửi đi khi bạn gõ một địa chỉ web và ấn Enter để tải trang?\nA. GET\nB. POST\nC. DELETE\nD. PUT\n✅ Đúng! Phương thức\nGET\nđược dùng để yêu cầu lấy dữ liệu/tài liệu từ máy chủ web."
+  }
+}

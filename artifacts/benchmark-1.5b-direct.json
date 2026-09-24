@@ -1,0 +1,509 @@
+{
+  "dataset": "D:\\pop\\web_app_study_ai\\tests\\course_benchmark.json",
+  "dataset_sha256": "c4bd826e18924b5f4fa7088592a8d2072a9dcc77066107c165093c43b007cda7",
+  "solver_sha256": "aeec97316d762a9cb7b7d2af1b4b9fd9d87d18fd7ee98b7ff2a801495a785eca",
+  "knowledge_sha256": "c15da3d81d14ef7a4a17ef20879b738721d4bb2073ba6b5e6bef1d745774a389",
+  "scope": "Author-created course regression set, not an independent real-exam accuracy estimate",
+  "settings": {
+    "model": "models/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+    "server": "runtime/cuda/llama-server.exe",
+    "knowledge": "data/course_knowledge.json",
+    "course_dir": "D:/Study/Vinh/Study/semester 3/Web Application Development",
+    "device": "CUDA0",
+    "threads": 2,
+    "context_size": 4096,
+    "context_chars": 6500,
+    "max_tokens": 48,
+    "include_internal_check": false,
+    "min_request_interval_seconds": 4,
+    "max_gpu_temperature_c": 85,
+    "expected_options": 4,
+    "top_k": 5
+  },
+  "total": 18,
+  "correct": 16,
+  "accuracy": 0.8888888888888888,
+  "wilson_95_interval": [
+    0.6719975513339578,
+    0.9689811315464172
+  ],
+  "load_seconds": 3.537,
+  "median_seconds": 4.714,
+  "p95_seconds": 5.202,
+  "by_topic": {
+    "1-Introduction": [
+      8,
+      8
+    ],
+    "2-HTML": [
+      8,
+      10
+    ]
+  },
+  "gpu_baseline": {
+    "memory_mib": 923.0,
+    "temperature_c": 77.0,
+    "power_w": 17.84,
+    "utilization_percent": 30.0
+  },
+  "gpu_after_load": {
+    "memory_mib": 2055.0,
+    "temperature_c": 80.0,
+    "power_w": 34.03,
+    "utilization_percent": 32.0
+  },
+  "model_log": "D:\\pop\\web_app_study_ai\\logs\\model-53978.log",
+  "python_external_network_blocked": true,
+  "rows": [
+    {
+      "id": "course-01",
+      "question": "Who invented the World Wide Web?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 9)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 0.587,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 0.587,
+      "model_output": {
+        "answer": "A",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2065.0,
+        "temperature_c": 82.0,
+        "power_w": 39.33,
+        "utilization_percent": 88.0
+      }
+    },
+    {
+      "id": "course-02",
+      "question": "What does a network protocol define?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "1-Introduction.pdf (Slide 20)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.425,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.425,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2065.0,
+        "temperature_c": 81.0,
+        "power_w": 35.83,
+        "utilization_percent": 63.0
+      }
+    },
+    {
+      "id": "course-03",
+      "question": "What is the role of a domain name?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 24)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.775,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.775,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2065.0,
+        "temperature_c": 82.0,
+        "power_w": 27.38,
+        "utilization_percent": 12.0
+      }
+    },
+    {
+      "id": "course-04",
+      "question": "Which protocol is used for communication between a Web client and Web server?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "1-Introduction.pdf (Slide 43)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.696,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.696,
+      "model_output": {
+        "answer": "D",
+        "source": 5
+      },
+      "gpu": {
+        "memory_mib": 2062.0,
+        "temperature_c": 84.0,
+        "power_w": 37.47,
+        "utilization_percent": 35.0
+      }
+    },
+    {
+      "id": "course-05",
+      "question": "Which is a markup language rather than a communication protocol?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 3)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.639,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.639,
+      "model_output": {
+        "answer": "C",
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2023.0,
+        "temperature_c": 82.0,
+        "power_w": 27.89,
+        "utilization_percent": 60.0
+      }
+    },
+    {
+      "id": "course-06",
+      "question": "A web browser normally acts as which participant in the client-server model?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "1-Introduction.pdf (Slide 44)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.666,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.666,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2023.0,
+        "temperature_c": 85.0,
+        "power_w": 32.91,
+        "utilization_percent": 38.0
+      }
+    },
+    {
+      "id": "course-07",
+      "question": "What does URL stand for?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 24)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.744,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.744,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2023.0,
+        "temperature_c": 82.0,
+        "power_w": 21.8,
+        "utilization_percent": 99.0
+      }
+    },
+    {
+      "id": "course-08",
+      "question": "Which statement distinguishes Web 2.0 in the lecture?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 57)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.733,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.733,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2023.0,
+        "temperature_c": 85.0,
+        "power_w": 32.14,
+        "utilization_percent": 57.0
+      }
+    },
+    {
+      "id": "course-09",
+      "question": "Where is the DOCTYPE declaration placed in an HTML document?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "2-HTML.pdf (Slide 7)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.83,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.83,
+      "model_output": {
+        "answer": "D",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2031.0,
+        "temperature_c": 87.0,
+        "power_w": 38.16,
+        "utilization_percent": 53.0
+      }
+    },
+    {
+      "id": "course-10",
+      "question": "Select all direct children of the html element in the basic document structure.",
+      "expected": "A, B",
+      "result": {
+        "best_choice": "A, B",
+        "matched_source": "2-HTML.pdf (Slide 6)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.911,
+        "multi": true,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.911,
+      "model_output": {
+        "answer": "A, B",
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2110.0,
+        "temperature_c": 85.0,
+        "power_w": 33.1,
+        "utilization_percent": 13.0
+      }
+    },
+    {
+      "id": "course-11",
+      "question": "How many levels of HTML headings are available?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.644,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.644,
+      "model_output": {
+        "answer": "C",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2077.0,
+        "temperature_c": 82.0,
+        "power_w": 26.25,
+        "utilization_percent": 96.0
+      }
+    },
+    {
+      "id": "course-12",
+      "question": "Which HTML element inserts a line break?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 12)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.828,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.828,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2055.0,
+        "temperature_c": 84.0,
+        "power_w": 26.18,
+        "utilization_percent": 89.0
+      }
+    },
+    {
+      "id": "course-13",
+      "question": "Select all formal HTML list categories named in the lecture.",
+      "expected": "A, C, D",
+      "result": {
+        "best_choice": "A, C",
+        "matched_source": "2-HTML.pdf (Slide 16)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.761,
+        "multi": true,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 4.761,
+      "model_output": {
+        "answer": "A, C",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2055.0,
+        "temperature_c": 87.0,
+        "power_w": 34.22,
+        "utilization_percent": 47.0
+      }
+    },
+    {
+      "id": "course-14",
+      "question": "Which HTML tag defines a list item in ordered and unordered lists?",
+      "expected": "D",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 18)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.598,
+        "multi": false,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 4.599,
+      "model_output": {
+        "answer": "C",
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2055.0,
+        "temperature_c": 84.0,
+        "power_w": 20.59,
+        "utilization_percent": 100.0
+      }
+    },
+    {
+      "id": "course-15",
+      "question": "Which HTML element creates a hyperlink?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "4-JavaScript.pdf (Slide 53)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.613,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.613,
+      "model_output": {
+        "answer": "D",
+        "source": 2
+      },
+      "gpu": {
+        "memory_mib": 2055.0,
+        "temperature_c": 86.0,
+        "power_w": 27.88,
+        "utilization_percent": 32.0
+      }
+    },
+    {
+      "id": "course-16",
+      "question": "Thuộc tính nào của thẻ a chỉ định địa chỉ liên kết?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "study_guide_lesson1_2.html (HTML)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.202,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.202,
+      "model_output": {
+        "answer": "B",
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2055.0,
+        "temperature_c": 86.0,
+        "power_w": 61.04,
+        "utilization_percent": 78.0
+      }
+    },
+    {
+      "id": "course-17",
+      "question": "Which attribute specifies the source file of an img element?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "3-CSS.pdf (Slide 30)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.432,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.432,
+      "model_output": {
+        "answer": "A",
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2055.0,
+        "temperature_c": 89.0,
+        "power_w": 46.19,
+        "utilization_percent": 42.0
+      }
+    },
+    {
+      "id": "course-18",
+      "question": "Which HTML element represents a row in a table?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 29)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 4.846,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 4.847,
+      "model_output": {
+        "answer": "A",
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2027.0,
+        "temperature_c": 87.0,
+        "power_w": 46.4,
+        "utilization_percent": 44.0
+      }
+    }
+  ]
+}

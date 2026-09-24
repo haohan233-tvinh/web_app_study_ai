@@ -1,0 +1,22 @@
+# Local Python state
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Downloaded models, runtimes, and caches (several gigabytes)
+models/
+runtime/
+
+# Local run output
+logs/
+artifacts/*.log
+artifacts/*.pid
+artifacts/*.err.log
+
+# Local secrets and editor files
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+What is the JavaScript value of "4" + 3 + 1?
+A) 8
+B) "71"
+C) "431"
+D) "44"

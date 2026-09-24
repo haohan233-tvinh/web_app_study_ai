@@ -1,0 +1,72 @@
+[
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\1-Introduction.pdf",
+    "sha256": "10fa1d67778ecc897373de25899027aa03e2b2b7fcef7892fcd99156440864ad",
+    "pages": 60,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\2-HTML.pdf",
+    "sha256": "58d914005c0aba033ce88328613a0a2552ee3a1a2f7db04b5cb70305b504b581",
+    "pages": 32,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\3-CSS.pdf",
+    "sha256": "c44e751d533e87f795d39ce882a93522d01edbc8c29b6a533563aa613455c135",
+    "pages": 47,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\4-JavaScript.pdf",
+    "sha256": "b9a013b4077cda6542de00485d3347c3301097ec98f034435123e781ff4bfe99",
+    "pages": 71,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\6-NodeJS.pdf",
+    "sha256": "ade57c997e84722ca4353b03dc1c4d69508776f65f93d657357f475ef4c87470",
+    "pages": 37,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\7-Front-end dev with NodeJS.pdf",
+    "sha256": "4e01a60c981fdb5694f3fc47a8d8b00efd8f06eeeb9b9a5d2a96a28e27be09d7",
+    "pages": 28,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\8-Python Flask.pdf",
+    "sha256": "c184b0a848b539b8db866eaad94be214b7596e561ed0fd3587b42718beed6b90",
+    "pages": 14,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\9-Database.pdf",
+    "sha256": "8b0ffaed40eb5d408027c1d97908edd43dbd682817b02d0e8e826bd21338d304",
+    "pages": 16,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\Exercise 3.pdf",
+    "sha256": "9579eade4542ad5f3d51afbde3778e65b00b1b6345ddca925d084038e104b3d4",
+    "pages": 6,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\Exercise1.pdf",
+    "sha256": "17ad6a22058a2c2d978170e29d6dab6e8fb029779c73d9bb374114d2143ce58c",
+    "pages": 4,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\Exercise2.pdf",
+    "sha256": "d3755394b1318530f1da05ace8701f284bc90037e98d9083b8d1af94f5094076",
+    "pages": 2,
+    "empty_pages": []
+  },
+  {
+    "source": "D:\\Study\\Vinh\\Study\\semester 3\\Web Application Development\\Study Guide\\study_guide_lesson1_2.html",
+    "sha256": "3c9aa35996bc597e9f63eb48c14f57808914d8cd35e1d0a0a2429ab2b4c13e12"
+  }
+]

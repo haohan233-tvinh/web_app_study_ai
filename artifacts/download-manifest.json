@@ -1,0 +1,28 @@
+{
+  "llama_cpp": {
+    "release": "b11159",
+    "source": "https://github.com/ggml-org/llama.cpp/releases/tag/b11159",
+    "assets": [
+      {"file":"llama-b11159-bin-win-cuda-12.4-x64.zip","sha256":"1cc7a3eaf5238cb2baaec7e918fe0b0d2dfc005c42698e960f5c8571dcd9d0ce","verified":true},
+      {"file":"cudart-llama-bin-win-cuda-12.4-x64.zip","sha256":"8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6","verified":true},
+      {"file":"llama-b11159-bin-win-vulkan-x64.zip","sha256":"930a023c5039ea872ef72f999dd641951658f21963c76d4490626deb94ab247d","verified":true,"usage":"earlier Vulkan test; not selected runtime"}
+    ]
+  },
+  "models": [
+    {
+      "file":"models/qwen2.5-3b-instruct-q4_k_m.gguf",
+      "repository":"Qwen/Qwen2.5-3B-Instruct-GGUF",
+      "source":"https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF",
+      "revision":"7dabda4d13d513e3e842b20f0d435c732f172cbe",
+      "bytes":2104932768,
+      "sha256":"626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+      "verified":true,
+      "license":"qwen-research (open weights; not described as Apache-2.0 or OSI open source)"
+    },
+    {
+      "file":"models/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+      "source":"https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+      "usage":"pre-existing baseline model retained"
+    }
+  ]
+}

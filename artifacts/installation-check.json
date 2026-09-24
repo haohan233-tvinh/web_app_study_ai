@@ -1,0 +1,53 @@
+{
+  "python": "C:\\Users\\vinh1\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "settings": {
+    "model": "models/qwen2.5-3b-instruct-q4_k_m.gguf",
+    "server": "runtime/cuda/llama-server.exe",
+    "knowledge": "data/course_knowledge.json",
+    "course_dir": "D:/Study/Vinh/Study/semester 3/Web Application Development",
+    "device": "CUDA0",
+    "threads": 2,
+    "context_size": 4096,
+    "context_chars": 6500,
+    "max_tokens": 48,
+    "include_internal_check": false,
+    "min_request_interval_seconds": 4,
+    "max_gpu_temperature_c": 85,
+    "thermal_wait_seconds": 20,
+    "sleep_idle_seconds": 15,
+    "expected_options": 4,
+    "top_k": 5
+  },
+  "packages": {
+    "Pillow": "12.1.0",
+    "rapidocr-onnxruntime": "1.4.4",
+    "onnxruntime": "1.26.0",
+    "numpy": "2.4.4",
+    "PyMuPDF": "1.27.2.3",
+    "beautifulsoup4": "4.14.3"
+  },
+  "files": {
+    "models/qwen2.5-3b-instruct-q4_k_m.gguf": {
+      "exists": true,
+      "bytes": 2104932768,
+      "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d"
+    },
+    "runtime/cuda/llama-server.exe": {
+      "exists": true,
+      "bytes": 9216,
+      "sha256": "550ff7c5a77127297988c8f5c9e1b08a7c258000a1ec0d4d848b20a7b4a34796"
+    },
+    "data/course_knowledge.json": {
+      "exists": true,
+      "bytes": 186987,
+      "sha256": "c15da3d81d14ef7a4a17ef20879b738721d4bb2073ba6b5e6bef1d745774a389"
+    }
+  },
+  "ocr_models": {
+    "ch_PP-OCRv4_det_infer.onnx": 4745517,
+    "ch_PP-OCRv4_rec_infer.onnx": 10857958,
+    "ch_ppocr_mobile_v2.0_cls_infer.onnx": 585532
+  },
+  "devices": "Available devices:\n  CUDA0: NVIDIA GeForce RTX 3060 Laptop GPU (6143 MiB, 5130 MiB free)",
+  "ready": true
+}

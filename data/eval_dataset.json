@@ -1,0 +1,54 @@
+[
+  {
+    "module": "3-CSS",
+    "question": "Trong mô hình hộp CSS (Box Model), thứ tự từ trong ra ngoài lần lượt là gì?",
+    "context": "CSS Box Model bao gồm từ trong ra ngoài: Content -> Padding -> Border -> Margin.",
+    "choices": {
+      "A": "Content, Margin, Border, Padding",
+      "B": "Content, Padding, Border, Margin",
+      "C": "Padding, Content, Border, Margin",
+      "D": "Margin, Border, Padding, Content"
+    },
+    "answer": "B",
+    "explanation": "Thứ tự từ lõi ra ngoài: Content (nội dung) -> Padding (khoảng đệm) -> Border (viền) -> Margin (lề ngoài)."
+  },
+  {
+    "module": "3-CSS",
+    "question": "Thuộc tính Flexbox nào dùng để căn chỉnh các phần tử con theo trục chính (main axis)?",
+    "context": "Flexbox layout: 'justify-content' căn chỉnh dọc theo main-axis; 'align-items' căn chỉnh dọc theo cross-axis.",
+    "choices": {
+      "A": "align-items",
+      "B": "justify-content",
+      "C": "align-content",
+      "D": "flex-direction"
+    },
+    "answer": "B",
+    "explanation": "justify-content căn chỉnh các flex items dọc theo trục chính (main axis)."
+  },
+  {
+    "module": "1-Introduction",
+    "question": "Ai là người phát minh ra World Wide Web (WWW) vào năm 1989 tại CERN?",
+    "context": "Tim Berners-Lee phát minh ra World Wide Web (WWW) tại CERN năm 1989, bao gồm HTTP, HTML và URL.",
+    "choices": {
+      "A": "Vint Cerf",
+      "B": "Tim Berners-Lee",
+      "C": "Marc Andreessen",
+      "D": "Brendan Eich"
+    },
+    "answer": "B",
+    "explanation": "Tim Berners-Lee là cha đẻ của WWW, HTTP và HTML."
+  },
+  {
+    "module": "1-Introduction",
+    "question": "Trong kiến trúc Client-Server của Web, trình duyệt đóng vai trò gì?",
+    "context": "Trình duyệt (Browser) đóng vai trò là Client, gửi yêu cầu (HTTP Request) đến Web Server và hiển thị phản hồi (HTTP Response).",
+    "choices": {
+      "A": "Web Server",
+      "B": "Client (User Agent)",
+      "C": "Database Server",
+      "D": "Router"
+    },
+    "answer": "B",
+    "explanation": "Trình duyệt là Client (User Agent) khởi tạo các yêu cầu HTTP tới máy chủ."
+  }
+]

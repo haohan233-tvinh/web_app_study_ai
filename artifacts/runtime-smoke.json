@@ -1,0 +1,22 @@
+{
+  "pid": 5132,
+  "url": "http://127.0.0.1:65082",
+  "health": {
+    "status": "ok"
+  },
+  "idle_cpu_percent_over_3_seconds": 0.0,
+  "connections": [
+    {
+      "local": [
+        "127.0.0.1",
+        65082
+      ],
+      "remote": [],
+      "status": "LISTEN"
+    }
+  ],
+  "only_loopback_connections": true,
+  "unauthenticated_request_rejected": true,
+  "normal_close_terminates_model": true,
+  "abrupt_parent_exit_terminates_model": true
+}

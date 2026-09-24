@@ -1,0 +1,787 @@
+{
+  "dataset": "D:\\pop\\web_app_study_ai\\tests\\course_benchmark.json",
+  "dataset_sha256": "c4bd826e18924b5f4fa7088592a8d2072a9dcc77066107c165093c43b007cda7",
+  "scope": "Author-created course regression set, not an independent real-exam accuracy estimate",
+  "settings": {
+    "model": "models/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+    "server": "runtime/cuda/llama-server.exe",
+    "knowledge": "data/course_knowledge.json",
+    "course_dir": "D:/Study/Vinh/Study/semester 3/Web Application Development",
+    "device": "CUDA0",
+    "threads": 2,
+    "context_size": 4096,
+    "context_chars": 6500,
+    "max_tokens": 240,
+    "min_request_interval_seconds": 4,
+    "max_gpu_temperature_c": 85,
+    "expected_options": 4,
+    "top_k": 5
+  },
+  "total": 18,
+  "correct": 9,
+  "accuracy": 0.5,
+  "wilson_95_interval": [
+    0.2903070395897999,
+    0.7096929604102
+  ],
+  "load_seconds": 4.206,
+  "median_seconds": 6.024,
+  "p95_seconds": 6.915,
+  "by_topic": {
+    "1-Introduction": [
+      6,
+      8
+    ],
+    "2-HTML": [
+      3,
+      10
+    ]
+  },
+  "gpu_baseline": {
+    "memory_mib": 866.0,
+    "temperature_c": 76.0,
+    "power_w": 18.47,
+    "utilization_percent": 23.0
+  },
+  "gpu_after_load": {
+    "memory_mib": 1985.0,
+    "temperature_c": 79.0,
+    "power_w": 34.01,
+    "utilization_percent": 13.0
+  },
+  "model_log": "D:\\pop\\web_app_study_ai\\logs\\model-60160.log",
+  "python_external_network_blocked": true,
+  "rows": [
+    {
+      "id": "course-01",
+      "question": "Who invented the World Wide Web?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 59)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 1.641,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 1.641,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The excerpt states that Tim Berners-Lee invented the World Wide Web in 1990.",
+            "correct": true
+          },
+          "B": {
+            "why": "The excerpt does not mention Brendan Eich.",
+            "correct": false
+          },
+          "C": {
+            "why": "The excerpt does not mention Vint Cerf.",
+            "correct": false
+          },
+          "D": {
+            "why": "The excerpt does not mention Linus Torvalds.",
+            "correct": false
+          }
+        },
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 1993.0,
+        "temperature_c": 84.0,
+        "power_w": 82.75,
+        "utilization_percent": 86.0
+      }
+    },
+    {
+      "id": "course-02",
+      "question": "What does a network protocol define?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "1-Introduction.pdf (Slide 20)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.594,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.594,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "This option is incorrect because screen resolution is not a protocol.",
+            "correct": false
+          },
+          "B": {
+            "why": "This option is incorrect because price of Internet access is not a protocol.",
+            "correct": false
+          },
+          "C": {
+            "why": "This option is correct because formats and rules for exchanging messages are the definition of a network protocol.",
+            "correct": true
+          },
+          "D": {
+            "why": "This option is incorrect because database table names are not a protocol.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 1992.0,
+        "temperature_c": 86.0,
+        "power_w": 80.61,
+        "utilization_percent": 90.0
+      }
+    },
+    {
+      "id": "course-03",
+      "question": "What is the role of a domain name?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "1-Introduction.pdf (Slide 24)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.598,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.598,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "A domain name is a memorable name for an Internet node, which is the primary purpose of domain names.",
+            "correct": true
+          },
+          "B": {
+            "why": "A CSS class selector is used to select HTML elements, not domain names.",
+            "correct": false
+          },
+          "C": {
+            "why": "A JavaScript loop is used to iterate over data, not domain names.",
+            "correct": false
+          },
+          "D": {
+            "why": "An HTML closing tag is used to close HTML elements, not domain names.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 1990.0,
+        "temperature_c": 87.0,
+        "power_w": 80.4,
+        "utilization_percent": 24.0
+      }
+    },
+    {
+      "id": "course-04",
+      "question": "Which protocol is used for communication between a Web client and Web server?",
+      "expected": "D",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "1-Introduction.pdf (Slide 43)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.068,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.068,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "CSS is a style sheet language used for describing the appearance of HTML documents, not a protocol.",
+            "correct": false
+          },
+          "B": {
+            "why": "HTML is a markup language used for describing the structure and content of Web documents, not a protocol.",
+            "correct": false
+          },
+          "C": {
+            "why": "SQL is a programming language used for managing and manipulating data in a relational database, not a protocol.",
+            "correct": false
+          },
+          "D": {
+            "why": "HTTP is the protocol used for communication between a Web client and Web server.",
+            "correct": true
+          }
+        },
+        "source": 5
+      },
+      "gpu": {
+        "memory_mib": 2030.0,
+        "temperature_c": 87.0,
+        "power_w": 70.14,
+        "utilization_percent": 41.0
+      }
+    },
+    {
+      "id": "course-05",
+      "question": "Which is a markup language rather than a communication protocol?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 1)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.666,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.666,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "IP is a communication protocol, not a markup language.",
+            "correct": false
+          },
+          "B": {
+            "why": "HTTP is a communication protocol, not a markup language.",
+            "correct": false
+          },
+          "C": {
+            "why": "HTML is a markup language, not a communication protocol.",
+            "correct": true
+          },
+          "D": {
+            "why": "TCP is a communication protocol, not a markup language.",
+            "correct": false
+          }
+        },
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2008.0,
+        "temperature_c": 86.0,
+        "power_w": 69.94,
+        "utilization_percent": 9.0
+      }
+    },
+    {
+      "id": "course-06",
+      "question": "A web browser normally acts as which participant in the client-server model?",
+      "expected": "D",
+      "result": {
+        "error": "Chưa đủ chắc chắn để chọn đáp án. Kiểm tra đề hoặc nhấn v xem OCR."
+      },
+      "correct": false,
+      "seconds": 6.037,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "IP is a communication protocol, not a markup language.",
+            "correct": false
+          },
+          "B": {
+            "why": "HTTP is a communication protocol, not a markup language.",
+            "correct": false
+          },
+          "C": {
+            "why": "HTML is a markup language, not a communication protocol.",
+            "correct": true
+          },
+          "D": {
+            "why": "TCP is a communication protocol, not a markup language.",
+            "correct": false
+          }
+        },
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2010.0,
+        "temperature_c": 87.0,
+        "power_w": 66.64,
+        "utilization_percent": 56.0
+      }
+    },
+    {
+      "id": "course-07",
+      "question": "What does URL stand for?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 24)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.877,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 5.877,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The excerpt states that URLs are 'Uniform Resource Locators', which directly answers the question.",
+            "correct": true
+          },
+          "B": {
+            "why": "The excerpt does not mention 'Unified Rendering Layer' or 'Universal Routing Language'.",
+            "correct": false
+          },
+          "C": {
+            "why": "The excerpt does not mention 'Universal Routing Language'.",
+            "correct": false
+          },
+          "D": {
+            "why": "The excerpt does not mention 'User Request List'.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 87.0,
+        "power_w": 70.07,
+        "utilization_percent": 78.0
+      }
+    },
+    {
+      "id": "course-08",
+      "question": "Which statement distinguishes Web 2.0 in the lecture?",
+      "expected": "A",
+      "result": {
+        "best_choice": "D",
+        "matched_source": "9-Database.pdf (Slide 7)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.209,
+        "multi": false,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 6.209,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "This statement is not directly related to the lecture on Web 2.0.",
+            "correct": false
+          },
+          "B": {
+            "why": "This statement is incorrect because the lecture does not mention PDFs.",
+            "correct": false
+          },
+          "C": {
+            "why": "This statement is incorrect because the lecture does not mention users being restricted to reading static content.",
+            "correct": false
+          },
+          "D": {
+            "why": "This statement is correct because the lecture discusses the replacement of HTTP with SQL in Web 2.0.",
+            "correct": true
+          }
+        },
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 88.0,
+        "power_w": 67.89,
+        "utilization_percent": 93.0
+      }
+    },
+    {
+      "id": "course-09",
+      "question": "Where is the DOCTYPE declaration placed in an HTML document?",
+      "expected": "D",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "2-HTML.pdf (Slide 7)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.01,
+        "multi": false,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 6.011,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The DOCTYPE declaration is placed at the beginning of the HTML document.",
+            "correct": true
+          },
+          "B": {
+            "why": "The DOCTYPE declaration is not placed inside a CSS file.",
+            "correct": false
+          },
+          "C": {
+            "why": "The DOCTYPE declaration is not placed inside the last paragraph.",
+            "correct": false
+          },
+          "D": {
+            "why": "The DOCTYPE declaration is not placed at the beginning.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 87.0,
+        "power_w": 63.8,
+        "utilization_percent": 57.0
+      }
+    },
+    {
+      "id": "course-10",
+      "question": "Select all direct children of the html element in the basic document structure.",
+      "expected": "A, B",
+      "result": {
+        "best_choice": "A, B, C, D",
+        "matched_source": "2-HTML.pdf (Slide 6)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.925,
+        "multi": true,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 5.925,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The <html> element has only one direct child: <head>",
+            "correct": true
+          },
+          "B": {
+            "why": "The <html> element has only one direct child: <head>",
+            "correct": true
+          },
+          "C": {
+            "why": "The <html> element has only one direct child: <head>",
+            "correct": true
+          },
+          "D": {
+            "why": "The <html> element has only one direct child: <head>",
+            "correct": true
+          }
+        },
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 88.0,
+        "power_w": 64.83,
+        "utilization_percent": 43.0
+      }
+    },
+    {
+      "id": "course-11",
+      "question": "How many levels of HTML headings are available?",
+      "expected": "C",
+      "result": {
+        "best_choice": "C",
+        "matched_source": "2-HTML.pdf (Slide 11)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.007,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.007,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The excerpt states 'HTML offers six levels of headings, which use the elements <h1>, <h2>, <h3>, <h4>, <h5>, and <h6>'",
+            "correct": false
+          },
+          "B": {
+            "why": "The excerpt explicitly states 'HTML offers six levels of headings'",
+            "correct": false
+          },
+          "C": {
+            "why": "The excerpt directly states 'HTML offers six levels of headings'",
+            "correct": true
+          },
+          "D": {
+            "why": "The excerpt states 'HTML offers six levels of headings'",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 88.0,
+        "power_w": 67.6,
+        "utilization_percent": 92.0
+      }
+    },
+    {
+      "id": "course-12",
+      "question": "Which HTML element inserts a line break?",
+      "expected": "A",
+      "result": {
+        "error": "Chưa đủ chắc chắn để chọn đáp án. Kiểm tra đề hoặc nhấn v xem OCR."
+      },
+      "correct": false,
+      "seconds": 6.149,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The excerpt states 'HTML offers six levels of headings, which use the elements <h1>, <h2>, <h3>, <h4>, <h5>, and <h6>'",
+            "correct": false
+          },
+          "B": {
+            "why": "The excerpt explicitly states 'HTML offers six levels of headings'",
+            "correct": false
+          },
+          "C": {
+            "why": "The excerpt directly states 'HTML offers six levels of headings'",
+            "correct": true
+          },
+          "D": {
+            "why": "The excerpt states 'HTML offers six levels of headings'",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 88.0,
+        "power_w": 65.14,
+        "utilization_percent": 60.0
+      }
+    },
+    {
+      "id": "course-13",
+      "question": "Select all formal HTML list categories named in the lecture.",
+      "expected": "A, C, D",
+      "result": {
+        "best_choice": "A, C",
+        "matched_source": "Exercise1.pdf (Slide 1)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 5.775,
+        "multi": true,
+        "cached": false
+      },
+      "correct": false,
+      "seconds": 5.775,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The lecture explicitly states that <ul> is an unordered list.",
+            "correct": true
+          },
+          "B": {
+            "why": "The lecture does not mention linear lists.",
+            "correct": false
+          },
+          "C": {
+            "why": "The lecture explicitly states that <ul> is an unordered list.",
+            "correct": true
+          },
+          "D": {
+            "why": "The lecture does not mention description lists.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 2006.0,
+        "temperature_c": 89.0,
+        "power_w": 71.05,
+        "utilization_percent": 92.0
+      }
+    },
+    {
+      "id": "course-14",
+      "question": "Which HTML tag defines a list item in ordered and unordered lists?",
+      "expected": "D",
+      "result": {
+        "error": "Chưa đủ chắc chắn để chọn đáp án. Kiểm tra đề hoặc nhấn v xem OCR."
+      },
+      "correct": false,
+      "seconds": 6.061,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The lecture explicitly states that <ul> is an unordered list.",
+            "correct": true
+          },
+          "B": {
+            "why": "The lecture does not mention linear lists.",
+            "correct": false
+          },
+          "C": {
+            "why": "The lecture explicitly states that <ul> is an unordered list.",
+            "correct": true
+          },
+          "D": {
+            "why": "The lecture does not mention description lists.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 1992.0,
+        "temperature_c": 88.0,
+        "power_w": 64.09,
+        "utilization_percent": 24.0
+      }
+    },
+    {
+      "id": "course-15",
+      "question": "Which HTML element creates a hyperlink?",
+      "expected": "D",
+      "result": {
+        "error": "Chưa đủ chắc chắn để chọn đáp án. Kiểm tra đề hoặc nhấn v xem OCR."
+      },
+      "correct": false,
+      "seconds": 6.455,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The lecture explicitly states that <ul> is an unordered list.",
+            "correct": true
+          },
+          "B": {
+            "why": "The lecture does not mention linear lists.",
+            "correct": false
+          },
+          "C": {
+            "why": "The lecture explicitly states that <ul> is an unordered list.",
+            "correct": true
+          },
+          "D": {
+            "why": "The lecture does not mention description lists.",
+            "correct": false
+          }
+        },
+        "source": 1
+      },
+      "gpu": {
+        "memory_mib": 1991.0,
+        "temperature_c": 89.0,
+        "power_w": 63.38,
+        "utilization_percent": 86.0
+      }
+    },
+    {
+      "id": "course-16",
+      "question": "Thuộc tính nào của thẻ a chỉ định địa chỉ liên kết?",
+      "expected": "B",
+      "result": {
+        "best_choice": "B",
+        "matched_source": "study_guide_lesson1_2.html (HTML)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.915,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.915,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The `src` attribute is used to specify the URL of the image.",
+            "correct": false
+          },
+          "B": {
+            "why": "The `href` attribute is used to specify the URL of the link.",
+            "correct": true
+          },
+          "C": {
+            "why": "The `class` attribute is used to specify a class for the element.",
+            "correct": false
+          },
+          "D": {
+            "why": "The `alt` attribute is used to provide alternative text for the image.",
+            "correct": false
+          }
+        },
+        "source": 4
+      },
+      "gpu": {
+        "memory_mib": 1991.0,
+        "temperature_c": 89.0,
+        "power_w": 64.0,
+        "utilization_percent": 93.0
+      }
+    },
+    {
+      "id": "course-17",
+      "question": "Which attribute specifies the source file of an img element?",
+      "expected": "A",
+      "result": {
+        "best_choice": "A",
+        "matched_source": "3-CSS.pdf (Slide 30)",
+        "method": "Local Qwen + course BM25",
+        "seconds": 6.586,
+        "multi": false,
+        "cached": false
+      },
+      "correct": true,
+      "seconds": 6.587,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The `src` attribute specifies the source file of an `img` element.",
+            "correct": true
+          },
+          "B": {
+            "why": "The `lang` attribute specifies the language of the paragraph.",
+            "correct": false
+          },
+          "C": {
+            "why": "The `target` attribute specifies the target window or frame for the link.",
+            "correct": false
+          },
+          "D": {
+            "why": "The `href` attribute specifies the URL of the link.",
+            "correct": false
+          }
+        },
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2104.0,
+        "temperature_c": 87.0,
+        "power_w": 55.73,
+        "utilization_percent": 11.0
+      }
+    },
+    {
+      "id": "course-18",
+      "question": "Which HTML element represents a row in a table?",
+      "expected": "A",
+      "result": {
+        "error": "Chưa đủ chắc chắn để chọn đáp án. Kiểm tra đề hoặc nhấn v xem OCR."
+      },
+      "correct": false,
+      "seconds": 6.46,
+      "model_output": {
+        "options": {
+          "A": {
+            "why": "The `src` attribute specifies the source file of an `img` element.",
+            "correct": true
+          },
+          "B": {
+            "why": "The `lang` attribute specifies the language of the paragraph.",
+            "correct": false
+          },
+          "C": {
+            "why": "The `target` attribute specifies the target window or frame for the link.",
+            "correct": false
+          },
+          "D": {
+            "why": "The `href` attribute specifies the URL of the link.",
+            "correct": false
+          }
+        },
+        "source": 3
+      },
+      "gpu": {
+        "memory_mib": 2107.0,
+        "temperature_c": 88.0,
+        "power_w": 62.7,
+        "utilization_percent": 59.0
+      }
+    }
+  ]
+}
