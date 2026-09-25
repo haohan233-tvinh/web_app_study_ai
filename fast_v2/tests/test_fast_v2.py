@@ -399,6 +399,24 @@ class FastTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             broken.dispatch('mouse_left', True, frozenset())
 
+    def test_mouse_diagnostic_shows_xbutton_without_model_or_ocr(self):
+        from check_mouse_buttons import MouseCheck
+        with (patch('check_mouse_buttons.MouseHook.start'),
+              patch('check_mouse_buttons.MouseHook.stop'),
+              patch('keyboard.hook', return_value='keyboard-handle'),
+              patch('keyboard.unhook')):
+            window = MouseCheck()
+            try:
+                self.assertTrue(window.on_mouse('mouse_x1', True, frozenset()))
+                self.assertTrue(window.on_mouse('mouse_x1', False, frozenset()))
+                self.assertFalse(window.on_mouse('mouse_left', True, frozenset()))
+                self.app.processEvents()
+                self.assertIn('mouse_x1', window.mouse_result.text())
+                window.show_keyboard('alt+left')
+                self.assertIn('cả XBUTTON và phím điều hướng', window.verdict.text())
+            finally:
+                window.close()
+
     def test_bare_badge_labels_need_complete_ordered_run(self):
         question = '28. Tên biến nào KHÔNG hợp lệ trong JavaScript?'
         lines = [question, 'A $price', 'B _total', 'c 2students', 'D userName']
