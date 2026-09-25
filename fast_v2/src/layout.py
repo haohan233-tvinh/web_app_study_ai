@@ -13,6 +13,15 @@ class ManualCapture:
     crops: tuple
 
 
+@dataclass(frozen=True)
+class DomCapture:
+    screenshot: object
+    boxes: tuple
+    tab_url: str = ''
+    sections: tuple = ()
+    regions: tuple = ()
+
+
 def _text_rows(boxes):
     rows = []
     for box in sorted(boxes, key=lambda item: (item['cy'], item['left'])):

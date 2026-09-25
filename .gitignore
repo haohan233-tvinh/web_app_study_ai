@@ -33,6 +33,7 @@ fast_v2/*.exe
 fast_v2/logs/
 fast_v2/artifacts/
 fast_v2/ui_settings.json
+fast_v2/browser_extension/bridge-config.json
 
 # Audit test logs
 network_audit_*.json

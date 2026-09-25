@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 import time
+import psutil
 
 os.environ.setdefault('OMP_NUM_THREADS', '2')
 os.environ.setdefault('HF_HUB_OFFLINE', '1')
@@ -24,8 +25,9 @@ from PyQt6.QtWidgets import (QApplication, QCheckBox, QColorDialog, QComboBox,
 from clipboard_solver import ExamSolver, ROOT
 from debug_ui import CaptureBorder, DebugPanel, StatusDot, exclude_from_capture, region_to_qrect
 from prefetch import PrefetchEngine
-from src.layout import ManualCapture
+from src.layout import DomCapture, ManualCapture
 from src.mouse_hotkeys import MouseHook, mouse_chord
+from web_bridge import WebBridge
 
 UI_FILE = ROOT / 'ui_settings.json'
 DEFAULTS = {'corner_key': 'grave', 'solve_key': 'ctrl+enter',
@@ -40,6 +42,7 @@ DEFAULTS = {'corner_key': 'grave', 'solve_key': 'ctrl+enter',
             'status_dot_visible': True, 'startup': True,
             'region': None, 'manual_regions': None, 'reading_mode': 'auto',
             'mode': 'auto', 'expected_options': 4,
+            'web_dom_enabled': True,
             'debug_mode': False}
 
 
@@ -107,6 +110,18 @@ def current_cursor():
     return point.x, point.y
 
 
+def foreground_browser():
+    """Use DOM only while the browser itself owns the foreground window."""
+    try:
+        hwnd = ctypes.windll.user32.GetForegroundWindow()
+        pid = wintypes.DWORD()
+        ctypes.windll.user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+        return psutil.Process(pid.value).name().casefold() in {
+            'chrome.exe', 'msedge.exe', 'brave.exe', 'opera.exe'}
+    except (OSError, psutil.Error, AttributeError):
+        return False
+
+
 def region_from_corners(a, b, min_width=80, min_height=50):
     left, top, right, bottom = min(a[0], b[0]), min(a[1], b[1]), max(a[0], b[0]), max(a[1], b[1])
     if right-left < min_width or bottom-top < min_height:
@@ -117,7 +132,11 @@ def region_from_corners(a, b, min_width=80, min_height=50):
 def image_signature(image):
     # Full-resolution hash: a one-letter change must invalidate prefetched OCR.
     digest = hashlib.blake2b(digest_size=16)
-    if isinstance(image, ManualCapture):
+    if isinstance(image, DomCapture):
+        digest.update(json.dumps([(b['text'], b['left'], b['top'], b['right'], b['bottom'])
+                                  for b in image.boxes], ensure_ascii=False).encode('utf-8'))
+        digest.update(json.dumps(image.sections, ensure_ascii=False).encode('utf-8'))
+    elif isinstance(image, ManualCapture):
         for region, crop in zip(image.regions, image.crops):
             digest.update(bytes(str(region), 'ascii'))
             digest.update(crop.convert('L').tobytes())
@@ -311,6 +330,8 @@ class SettingsDialog(QDialog):
         self.selection_mode.setCurrentIndex(max(0, self.selection_mode.findData(settings['mode'])))
         self.status_dot = QCheckBox('Hiện chấm trạng thái ở góc dưới phải')
         self.status_dot.setChecked(settings.get('status_dot_visible', True))
+        self.web_dom = QCheckBox('Ưu tiên lấy chữ trực tiếp từ trang web khi extension kết nối')
+        self.web_dom.setChecked(settings.get('web_dom_enabled', True))
         self.option_count = QSpinBox()
         self.option_count.setRange(2, 8)
         self.option_count.setValue(settings['expected_options'])
@@ -337,6 +358,7 @@ class SettingsDialog(QDialog):
         form.addRow('Màu khung:', self.color_row(self.border_color))
         form.addRow('Độ mờ khung (0.1–1):', self.border_opacity)
         form.addRow('Số phương án (2–8):', self.option_count)
+        form.addRow(self.web_dom)
         form.addRow(self.status_dot)
         legend = QLabel('Chấm: xám nạp model · xanh dương chờ vùng · xanh ngọc OCR · '
                         'tím sẵn sàng · cam đang giải · xanh lá xong · '
@@ -427,6 +449,7 @@ class SettingsDialog(QDialog):
                 'border_mode': self.border_mode.currentData(),
                 'reading_mode': self.reading_mode.currentData(),
                 'mode': self.selection_mode.currentData(),
+                'web_dom_enabled': self.web_dom.isChecked(),
                 'status_dot_visible': self.status_dot.isChecked(),
                 'startup': self.startup.isChecked(),
                 'expected_options': self.option_count.value()}
@@ -491,6 +514,12 @@ class TrayApp(QObject):
         self.prefetched_signature = None
         self.log_path = ROOT / 'logs' / 'fast-v2.jsonl'
         self.log_path.parent.mkdir(exist_ok=True)
+        try:
+            self.web_bridge = WebBridge()
+        except OSError as error:
+            self.web_bridge = None
+            self.record({'event': 'web_bridge_error', 'message': str(error)})
+        self.sync_web_region()
         self.solver = ExamSolver()
         self.solver.settings['expected_options'] = self.settings['expected_options']
         self.engine = PrefetchEngine(self.solver)
@@ -519,6 +548,13 @@ class TrayApp(QObject):
         item['at'] = time.strftime('%Y-%m-%d %H:%M:%S')
         with self.log_path.open('a', encoding='utf-8') as out:
             out.write(json.dumps(item, ensure_ascii=False) + '\n')
+
+    def sync_web_region(self):
+        if not self.web_bridge:
+            return
+        regions = self.active_regions() if (self.settings.get('web_dom_enabled', True) and
+                                           not self.redraw_active) else []
+        self.web_bridge.set_regions(regions)
 
     def notify(self, message, state='error'):
         self.set_status(state, message)
@@ -687,6 +723,7 @@ class TrayApp(QObject):
                 self.settings['manual_display'] = display_signature()
                 self.settings['reading_mode'] = 'manual'
                 self.redraw_active = False
+                self.sync_web_region()
                 self.draft_regions = []
                 save_ui_settings(self.settings)
                 self.bind_keys()
@@ -704,6 +741,7 @@ class TrayApp(QObject):
             return
         self.settings['region'] = region
         save_ui_settings(self.settings)
+        self.sync_web_region()
         self.solve_pending = False
         self.needs_resolve = True
         self.engine.invalidate()
@@ -721,7 +759,10 @@ class TrayApp(QObject):
     def start_redraw(self):
         if self.editing:
             return
+        if self.web_bridge:
+            self.web_bridge.set_regions(None)
         self.redraw_active = True
+        self.sync_web_region()
         self.first_corner = None
         self.draft_regions = []
         self.engine.invalidate()
@@ -747,6 +788,7 @@ class TrayApp(QObject):
         if not self.redraw_active:
             return
         self.redraw_active = False
+        self.sync_web_region()
         self.first_corner = None
         self.draft_regions = []
         self.bind_keys()
@@ -759,7 +801,10 @@ class TrayApp(QObject):
         if self.redraw_active:
             self.cancel_redraw()
         target = 'manual' if self.settings.get('reading_mode') == 'auto' else 'auto'
+        if target == 'manual' and self.web_bridge:
+            self.web_bridge.set_regions(None)
         self.settings['reading_mode'] = target
+        self.sync_web_region()
         self.engine.invalidate()
         self.latest_signature = None
         self.latest_image = None
@@ -785,6 +830,9 @@ class TrayApp(QObject):
         from PIL import ImageGrab
         regions = self.active_regions()
         if not regions or self.redraw_active:
+            bridge = getattr(self, 'web_bridge', None)
+            if bridge:
+                bridge.set_regions(None)
             return None
         left = min(region[0] for region in regions)
         top = min(region[1] for region in regions)
@@ -813,11 +861,27 @@ class TrayApp(QObject):
             border.hide()
         try:
             if self.settings.get('reading_mode') == 'manual':
+                bridge = getattr(self, 'web_bridge', None)
                 image = ImageGrab.grab(bbox=(left, top, right, bottom), all_screens=True)
                 crops = tuple(image.crop((r[0]-left, r[1]-top, r[2]-left, r[3]-top))
                               for r in regions)
+                if bridge and self.settings.get('web_dom_enabled', True) and foreground_browser():
+                    bridge.set_regions(regions)
+                    snapshot = bridge.get_snapshot(regions)
+                    if snapshot and len(snapshot.get('sections', ())) == len(regions):
+                        return DomCapture(image, tuple(snapshot['boxes']),
+                                          snapshot['tab_url'], tuple(snapshot['sections']),
+                                          tuple(tuple(region) for region in regions))
                 return ManualCapture(tuple(tuple(r) for r in regions), crops)
-            return ImageGrab.grab(bbox=tuple(regions[0]), all_screens=True)
+            image = ImageGrab.grab(bbox=tuple(regions[0]), all_screens=True)
+            bridge = getattr(self, 'web_bridge', None)
+            if bridge:
+                bridge.set_regions(regions if self.settings.get('web_dom_enabled', True) else None)
+                if self.settings.get('web_dom_enabled', True) and foreground_browser():
+                    snapshot = bridge.get_snapshot(regions)
+                    if snapshot:
+                        return DomCapture(image, tuple(snapshot['boxes']), snapshot['tab_url'])
+            return image
         finally:
             if dot_hidden and self.settings.get('status_dot_visible', True):
                 self.status_dot.show()
@@ -852,7 +916,8 @@ class TrayApp(QObject):
             self.overlay.update()
             if self.debug_panel.isVisible():
                 self.debug_panel.show_capture(image)
-                self.debug_panel.set_stage('Đã chụp ảnh. Đang chờ OCR / model…')
+                source = 'DOM trang web' if isinstance(image, DomCapture) else 'OCR ảnh'
+                self.debug_panel.set_stage(f'Đã lấy vùng. Đang chờ {source} / model…')
         except Exception as error:
             self.notify('Không chụp được vùng: ' + str(error))
 
@@ -916,7 +981,9 @@ class TrayApp(QObject):
                             suffix += ' · từng ô: ' + ', '.join(f'{x:.2f}s' for x in parts)
                         if event.get('weak_layout'):
                             suffix += ' · ranh giới cần kiểm tra'
-                        self.debug_panel.set_stage(f'OCR xong ({event["ocr_seconds"]:.2f} giây){suffix}.')
+                        source = event.get('capture_source', 'OCR')
+                        self.debug_panel.set_stage(
+                            f'{source} xong ({event["ocr_seconds"]:.2f} giây){suffix}.')
                 else:
                     self.set_status('solving')
                     if self.debug_panel.isVisible():
@@ -1007,7 +1074,8 @@ class TrayApp(QObject):
             self.set_status('ocr')
             if self.debug_panel.isVisible():
                 self.debug_panel.show_capture(image)
-                self.debug_panel.set_stage('Ảnh mới trong vùng chụp. Chuẩn bị OCR…', record=False)
+                source = 'Chữ HTML' if isinstance(image, DomCapture) else 'Ảnh'
+                self.debug_panel.set_stage(f'{source} mới trong vùng. Đang chuẩn bị…', record=False)
         if self.latest_image is not None and self.prefetched_signature != signature and now-self.changed_at >= .45:
             self.engine.submit(self.latest_image, signature, self.changed_at)
             self.prefetched_signature = signature
@@ -1033,10 +1101,12 @@ class TrayApp(QObject):
             try:
                 values = dialog.validated_values or dialog.values()
                 self.settings.update(values)
+                self.sync_web_region()
                 self.solver.settings['expected_options'] = self.settings['expected_options']
                 if (old['expected_options'] != self.settings['expected_options'] or
                     old.get('reading_mode') != self.settings['reading_mode'] or
-                    old.get('mode') != self.settings['mode']):
+                    old.get('mode') != self.settings['mode'] or
+                    old.get('web_dom_enabled') != self.settings['web_dom_enabled']):
                     self.engine.invalidate()
                     self.prefetched_signature = None
                     self.latest_signature = None
@@ -1082,6 +1152,9 @@ class TrayApp(QObject):
     def quit(self):
         self.timer.stop()
         self.unbind_keys()
+        if self.web_bridge:
+            self.web_bridge.close()
+            self.web_bridge = None
         self.engine.close()
         self.solver.close()
         self.debug_panel.hide()

@@ -102,6 +102,7 @@ class PrefetchEngine:
                                      'reread': value.get('reread', False),
                                      'section_ocr_seconds': value.get('section_ocr_seconds'),
                                      'layout_method': value.get('layout_method'),
+                                     'capture_source': value.get('capture_source', 'OCR'),
                                      'weak_layout': value.get('weak_layout', False)})
                     self.cv.notify_all()
 

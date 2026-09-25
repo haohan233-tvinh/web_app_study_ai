@@ -8,6 +8,8 @@ Công cụ đọc ảnh câu hỏi từ Clipboard Windows, tìm nội dung trong
 2. Khi còn Internet, mở **`setup_windows.bat`**. Script kiểm tra/cài Python 3.12 x64 qua `winget` nếu cần, tạo `.venv`, cài thư viện Python, tải **Qwen2.5-3B Q4_K_M** và **llama.cpp b11159** từ nguồn chính thức, kiểm tra SHA-256 rồi chạy `doctor.py`. Mạng bị ngắt giữa chừng thì chạy lại để tiếp tục tải. Cần khoảng 5 GiB ổ trống cho lần cài CUDA; model khoảng 2.1 GB.
 3. Mở `fast_v2\run_fast_solver_visible.bat` để xem cửa sổ kiểm thử, chọn lại vùng câu hỏi trên màn hình của bạn. Bản chạy nền là `fast_v2\run_fast_solver.bat`.
 
+Nếu muốn bỏ OCR cho chữ trên trang web, cài thêm [extension Chrome/Edge](fast_v2/browser_extension/README.md). Mở ứng dụng một lần trước khi tải extension; sau đó chỉ cần cho phép extension đọc trang bài tập và vẽ vùng như cũ. Khi không lấy được HTML, V2 tự dùng OCR ảnh.
+
 Script tự chọn CUDA nếu thấy GPU NVIDIA; nếu không sẽ dùng CPU (chậm hơn). Có thể chọn rõ bằng `setup_windows.bat -Backend cpu` hoặc `-Backend cuda`. Chạy `powershell -NoProfile -ExecutionPolicy Bypass -File .\setup_windows.ps1 -VerifyOnly` để **chỉ kiểm tra**, không cài/tải. Nếu máy thiếu `winget`, cài Python 3.12 x64 từ [python.org](https://www.python.org/downloads/windows/) rồi chạy lại. Lần cài đầu cần Internet; lúc giải câu hỏi thì toàn bộ model, OCR và tài liệu đều ở máy. File cấu hình vùng/phím `fast_v2/ui_settings.json` là cục bộ, không được chia sẻ qua Git.
 
 ## Dùng ngay trên máy này

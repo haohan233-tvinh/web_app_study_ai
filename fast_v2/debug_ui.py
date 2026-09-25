@@ -257,6 +257,8 @@ class DebugPanel(QWidget):
         self.preview.setPixmap(pixmap)
 
     def show_capture(self, capture):
+        if hasattr(capture, 'screenshot'):
+            capture = capture.screenshot
         if not hasattr(capture, 'crops'):
             self.preview.setFixedHeight(150)
             self.show_image(capture)

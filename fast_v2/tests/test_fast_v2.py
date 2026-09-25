@@ -19,7 +19,7 @@ from clipboard_solver import ExamSolver, relevant_ocr_score
 from debug_ui import CaptureBorder, DebugPanel, StatusDot, region_to_qrect
 from prefetch import PrefetchEngine
 from src.question_parser import parse_question
-from src.layout import ManualCapture, group_auto
+from src.layout import DomCapture, ManualCapture, group_auto
 from src.ocr import OCR
 from src.mouse_hotkeys import MouseHook, mouse_chord
 from src.ordered_concepts import box_model_order
@@ -62,6 +62,53 @@ class FastTests(unittest.TestCase):
     def test_signature_ignores_identical_frames(self):
         image = Image.new('RGB', (800, 500), 'white')
         self.assertEqual(image_signature(image), image_signature(image.copy()))
+
+    def test_dom_capture_uses_page_text_without_ocr(self):
+        from PIL import ImageDraw
+        image = Image.new('RGB', (600, 330), 'white')
+        draw = ImageDraw.Draw(image)
+        for top, bottom in ((50, 103), (108, 162), (167, 235), (240, 317)):
+            draw.rectangle((12, top, 588, bottom), outline='#dbe5f2', width=1)
+        def box(text, x, y):
+            return {'text': text, 'score': 1.0, 'left': x, 'right': x+170,
+                    'top': y, 'bottom': y+15, 'cy': y+7.5, 'height': 15}
+        boxes = (box('17. Trong CSS Box Model, thứ tự nào đúng?', 16, 10),
+                 box('Margin → Border → Padding → Content', 50, 70),
+                 box('Padding → Border → Margin → Content', 50, 127),
+                 box('Border → Margin → Padding → Content', 50, 180),
+                 box('Content → Padding → Border → Margin', 50, 261))
+        capture = DomCapture(image, boxes, 'https://example.test/quiz')
+        solver = ExamSolver()
+        try:
+            prepared = solver.prepare_image(capture)
+            self.assertEqual(prepared['capture_source'], 'DOM')
+            self.assertEqual(prepared['ocr_seconds'], 0)
+            self.assertEqual(prepared['structured'].options['A'],
+                             'Margin → Border → Padding → Content')
+            altered = DomCapture(image, boxes[:-1] + (box('changed answer', 50, 261),))
+            self.assertNotEqual(image_signature(capture), image_signature(altered))
+        finally:
+            solver.close()
+
+    def test_dom_manual_regions_keep_drawn_option_order(self):
+        image = Image.new('RGB', (400, 250), 'white')
+        sections = (('Trong CSS Box Model, thứ tự từ lớp ngoài vào lớp trong?',),
+                    ('Margin → Border → Padding → Content',),
+                    ('Padding → Border → Margin → Content',),
+                    ('Border → Margin → Padding → Content',),
+                    ('Content → Padding → Border → Margin',))
+        regions = tuple((0, i*50, 400, i*50+50) for i in range(5))
+        capture = DomCapture(image, (), 'https://example.test', sections, regions)
+        solver = ExamSolver()
+        try:
+            prepared = solver.prepare_image(capture)
+            self.assertEqual(prepared['capture_source'], 'DOM')
+            self.assertEqual(prepared['layout_method'], 'dom_manual_regions')
+            self.assertEqual(prepared['structured'].options['D'],
+                             'Content → Padding → Border → Margin')
+            self.assertEqual(prepared['ocr_seconds'], 0)
+        finally:
+            solver.close()
 
     def test_ocr_box_coordinates_map_back_to_original_capture(self):
         result = [([[42, 52], [142, 52], [142, 72], [42, 72]], 'example', .96)]
@@ -363,6 +410,28 @@ class FastTests(unittest.TestCase):
         self.assertTrue(dot.isVisible())
         dot.hide()
 
+    def test_capture_prefers_fresh_dom_only_with_browser_foreground(self):
+        region = [100, 100, 500, 300]
+        bridge = MagicMock()
+        bridge.get_snapshot.return_value = {'boxes': [
+            {'text': f'line {i}', 'score': 1.0, 'left': 10, 'top': i*20,
+             'right': 200, 'bottom': i*20+15, 'cy': i*20+7.5, 'height': 15}
+            for i in range(5)], 'tab_url': 'https://example.test/quiz'}
+        fake = SimpleNamespace(settings={**DEFAULTS, 'region': region},
+            overlay=Overlay(.4), debug_panel=DebugPanel(), status_dot=StatusDot(),
+            redraw_active=False, capture_border=CaptureBorder(), extra_borders=[],
+            active_regions=lambda: [region], update_border_visibility=lambda: None,
+            update_answer_visibility=lambda: None, web_bridge=bridge)
+        with (patch('PIL.ImageGrab.grab', return_value=Image.new('RGB', (400, 200), 'white')),
+              patch('tray_app.foreground_browser', return_value=True)):
+            capture = TrayApp.capture(fake)
+        self.assertIsInstance(capture, DomCapture)
+        bridge.set_regions.assert_called_with([region])
+        with (patch('PIL.ImageGrab.grab', return_value=Image.new('RGB', (400, 200), 'white')),
+              patch('tray_app.foreground_browser', return_value=False)):
+            fallback = TrayApp.capture(fake)
+        self.assertIsInstance(fallback, Image.Image)
+
     def test_capture_hides_overlapping_dot_only_when_affinity_unavailable(self):
         dot = StatusDot()
         dot.set_state('ready', [100, 100, 300, 200])
@@ -602,6 +671,7 @@ class FastTests(unittest.TestCase):
                    'show_key': 'backslash', 'opacity': .42, 'startup': False,
                    'expected_options': 4, 'region': None, 'mode': 'auto'}
         with (patch('tray_app.ExamSolver', Solver), patch('tray_app.PrefetchEngine', Engine),
+              patch('tray_app.WebBridge', return_value=MagicMock()),
               patch('tray_app.load_ui_settings', return_value=options.copy()),
               patch('tray_app.save_ui_settings'), patch('tray_app.set_restart_shortcut'),
               patch.object(TrayApp, 'bind_keys'),
@@ -680,6 +750,7 @@ class FastTests(unittest.TestCase):
         engine.sequence = 2
         with (patch('tray_app.ExamSolver', return_value=solver),
               patch('tray_app.PrefetchEngine', return_value=engine),
+              patch('tray_app.WebBridge', return_value=MagicMock()),
               patch('tray_app.load_ui_settings', return_value=settings.copy()),
               patch('tray_app.save_ui_settings') as save,
               patch('tray_app.set_restart_shortcut'),

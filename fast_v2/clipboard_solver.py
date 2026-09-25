@@ -16,7 +16,8 @@ os.environ.setdefault('HF_HUB_OFFLINE', '1')
 os.environ.setdefault('TRANSFORMERS_OFFLINE', '1')
 
 from src.question_parser import NUMBER, is_feedback_line, parse_question, structured_question
-from src.layout import ManualCapture, group_auto
+from src.layout import DomCapture, ManualCapture, group_auto
+from src.ocr import OCR
 from src.retrieval import CourseIndex
 from src.local_model import LocalModel
 from src.js_expression import solve_expression
@@ -120,6 +121,8 @@ class ExamSolver:
 
     def prepare_image(self, image):
         start = time.perf_counter()
+        if isinstance(image, DomCapture):
+            return self._prepare_dom(image)
         if isinstance(image, ManualCapture):
             return self._prepare_manual(image, start)
         lines, boxes = self._ocr().read(image)
@@ -158,6 +161,7 @@ class ExamSolver:
         selected_layout = layout if layout and q is layout['question'] else None
         return {'lines': lines, 'boxes': boxes, 'ocr_seconds': round(time.perf_counter() - start, 3),
                 'reread': reread, 'structured': q if selected_layout else None,
+                'capture_source': 'OCR',
                 'vietnamese_ocr_seconds': vi_seconds,
                 'weak_layout': bool(selected_layout and selected_layout['weak']),
                 'layout_method': selected_layout['method'] if selected_layout else 'labels'}
@@ -197,8 +201,52 @@ class ExamSolver:
                 'sections': sections, 'boxes': all_boxes, 'structured': q,
                 'weak_layout': False, 'layout_method': 'manual_regions',
                 'section_ocr_seconds': timings,
+                'capture_source': 'OCR',
                 'vietnamese_ocr_seconds': round(vi_total, 3),
                 'ocr_seconds': round(time.perf_counter() - start, 3), 'reread': reread}
+
+    def _prepare_dom(self, capture):
+        if capture.sections:
+            expected = self.settings['expected_options']
+            values = ['\n'.join(section).strip() for section in capture.sections]
+            if len(values) == expected + 1 and all(values):
+                options = {chr(65 + i): values[i + 1] for i in range(expected)}
+                q = structured_question(values[0], options, expected)
+                if not q.errors:
+                    return {'lines': ['Q: ' + values[0]] +
+                            [f'{letter}: {answer}' for letter, answer in options.items()],
+                            'boxes': [], 'sections': values, 'structured': q,
+                            'ocr_seconds': 0.0, 'reread': False,
+                            'vietnamese_ocr_seconds': 0.0,
+                            'capture_source': 'DOM', 'weak_layout': False,
+                            'layout_method': 'dom_manual_regions'}
+            if capture.regions:
+                left = min(region[0] for region in capture.regions)
+                top = min(region[1] for region in capture.regions)
+                crops = tuple(capture.screenshot.crop((region[0]-left, region[1]-top,
+                    region[2]-left, region[3]-top)) for region in capture.regions)
+                fallback = self.prepare_image(ManualCapture(capture.regions, crops))
+                fallback['capture_source'] = 'OCR (DOM thiếu chữ trong ô)'
+                return fallback
+        lines = OCR._lines(capture.boxes)
+        expected = self.settings['expected_options']
+        if sum(bool(NUMBER.match(line)) for line in lines) > 1:
+            fallback = self.prepare_image(capture.screenshot)
+            fallback['capture_source'] = 'OCR (nhiều câu trong vùng DOM)'
+            return fallback
+        layout = group_auto(capture.screenshot, capture.boxes, expected)
+        parsed = parse_question(lines, expected)
+        chosen = layout['question'] if layout and not layout['question'].errors and (
+            not layout['weak'] or parsed.errors) else parsed
+        if chosen.errors or (layout and layout['weak'] and parsed.errors):
+            fallback = self.prepare_image(capture.screenshot)
+            fallback['capture_source'] = 'OCR (DOM chưa tách đủ đáp án)'
+            return fallback
+        selected_layout = layout if layout and chosen is layout['question'] else None
+        return {'lines': lines, 'boxes': list(capture.boxes), 'structured': chosen if selected_layout else None,
+                'ocr_seconds': 0.0, 'reread': False, 'vietnamese_ocr_seconds': 0.0,
+                'capture_source': 'DOM', 'weak_layout': False,
+                'layout_method': 'dom_' + (selected_layout['method'] if selected_layout else 'labels')}
 
     def solve_prepared(self, prepared, mode='auto'):
         start = time.perf_counter()
@@ -209,6 +257,7 @@ class ExamSolver:
              parse_question(lines, self.settings['expected_options'], mode))
         self.last_diagnostic = {'ocr_lines': lines, 'boxes': boxes, 'question': q.text,
                                 'options': q.options, 'multi': q.multi, 'errors': q.errors,
+                                'capture_source': prepared.get('capture_source', 'OCR'),
                                 'layout_method': prepared.get('layout_method'),
                                 'weak_layout': prepared.get('weak_layout', False)}
         if q.errors:
@@ -216,6 +265,7 @@ class ExamSolver:
                     'reread': prepared['reread']}
         result = self.solve(q.text, q.options, q.multi, q.count)
         result['ocr_seconds'] = prepared['ocr_seconds']
+        result['capture_source'] = prepared.get('capture_source', 'OCR')
         result['vietnamese_ocr_seconds'] = prepared.get('vietnamese_ocr_seconds', 0.0)
         result['reread'] = prepared['reread']
         result['weak_layout'] = prepared.get('weak_layout', False)

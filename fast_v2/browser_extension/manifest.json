@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Web MCQ Fast — đọc chữ trong vùng",
+  "version": "0.1.0",
+  "description": "Đọc chữ HTML trong vùng đã vẽ và gửi tới ứng dụng Web MCQ Fast trên cùng máy.",
+  "permissions": ["tabs", "scripting"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_popup": "popup.html"}
+}
