@@ -146,9 +146,19 @@ class ExamSolver:
                     layout = retry_layout if retry is not retry_parsed else None
                 if not q.errors and relevant_ocr_score(boxes) >= .85:
                     break
+        vi_lines, vi_boxes, vi_seconds = self._ocr().refine_vietnamese(image, lines, boxes)
+        if vi_lines != lines:
+            vi_layout = group_auto(image, vi_boxes, expected)
+            vi_parsed = parse_question(vi_lines, expected)
+            vi_q = vi_layout['question'] if vi_layout and not vi_layout['question'].errors and (
+                not vi_layout['weak'] or vi_parsed.errors) else vi_parsed
+            if len(vi_q.errors) <= len(q.errors):
+                q, lines, boxes = vi_q, vi_lines, vi_boxes
+                layout = vi_layout if vi_q is not vi_parsed else None
         selected_layout = layout if layout and q is layout['question'] else None
         return {'lines': lines, 'boxes': boxes, 'ocr_seconds': round(time.perf_counter() - start, 3),
                 'reread': reread, 'structured': q if selected_layout else None,
+                'vietnamese_ocr_seconds': vi_seconds,
                 'weak_layout': bool(selected_layout and selected_layout['weak']),
                 'layout_method': selected_layout['method'] if selected_layout else 'labels'}
 
@@ -158,6 +168,7 @@ class ExamSolver:
             return {'error': 'Bộ ô chưa đủ; hãy vẽ lại toàn bộ Đề và các đáp án.',
                     'ocr_seconds': 0, 'reread': False}
         sections, timings, reread = [], [], False
+        vi_total = 0.0
         all_boxes = []
         for index, crop in enumerate(capture.crops):
             section_start = time.perf_counter()
@@ -173,6 +184,9 @@ class ExamSolver:
                         text = '\n'.join(lines).strip()
                     if text and min((b['score'] for b in boxes), default=0) >= .85:
                         break
+            lines, boxes, vi_seconds = self._ocr().refine_vietnamese(crop, lines, boxes)
+            vi_total += vi_seconds
+            text = '\n'.join(lines).strip()
             sections.append(text)
             all_boxes.extend(boxes)
             timings.append(round(time.perf_counter() - section_start, 3))
@@ -183,6 +197,7 @@ class ExamSolver:
                 'sections': sections, 'boxes': all_boxes, 'structured': q,
                 'weak_layout': False, 'layout_method': 'manual_regions',
                 'section_ocr_seconds': timings,
+                'vietnamese_ocr_seconds': round(vi_total, 3),
                 'ocr_seconds': round(time.perf_counter() - start, 3), 'reread': reread}
 
     def solve_prepared(self, prepared, mode='auto'):
@@ -201,6 +216,7 @@ class ExamSolver:
                     'reread': prepared['reread']}
         result = self.solve(q.text, q.options, q.multi, q.count)
         result['ocr_seconds'] = prepared['ocr_seconds']
+        result['vietnamese_ocr_seconds'] = prepared.get('vietnamese_ocr_seconds', 0.0)
         result['reread'] = prepared['reread']
         result['weak_layout'] = prepared.get('weak_layout', False)
         result['layout_method'] = prepared.get('layout_method')

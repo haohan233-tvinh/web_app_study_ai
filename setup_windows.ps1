@@ -23,6 +23,14 @@ function Find-Python312 {
     return $null
 }
 
+function Find-Tesseract {
+    $binary = Get-Command tesseract.exe -ErrorAction SilentlyContinue
+    if ($binary) { return $binary.Source }
+    $installed = Join-Path $env:ProgramFiles 'Tesseract-OCR\tesseract.exe'
+    if (Test-Path -LiteralPath $installed) { return $installed }
+    return $null
+}
+
 $python = Find-Python312
 if (-not $python -and -not $VerifyOnly) {
     $winget = Get-Command winget.exe -ErrorAction SilentlyContinue
@@ -36,6 +44,21 @@ if (-not $python -and -not $VerifyOnly) {
     $python = Find-Python312
 }
 if (-not $python) { throw 'Không tìm thấy Python 3.12 x64; cài Python rồi chạy lại.' }
+
+$tesseract = Find-Tesseract
+if (-not $tesseract -and -not $VerifyOnly) {
+    $winget = Get-Command winget.exe -ErrorAction SilentlyContinue
+    if (-not $winget) { throw 'Thiếu Tesseract OCR và winget; cài Tesseract OCR rồi chạy lại.' }
+    Write-Host '[Cài] Tesseract OCR cho tiếng Việt...'
+    & $winget.Source install --id UB-Mannheim.TesseractOCR --exact --silent `
+        --accept-source-agreements --accept-package-agreements
+    if ($LASTEXITCODE -ne 0) { throw "winget cài Tesseract thất bại (mã $LASTEXITCODE)." }
+    $tesseract = Find-Tesseract
+}
+if (-not $tesseract) { throw 'Không tìm thấy Tesseract OCR; cài rồi chạy lại.' }
+$tessdata = Join-Path (Split-Path $tesseract) 'tessdata\eng.traineddata'
+if (-not (Test-Path -LiteralPath $tessdata)) { throw 'Tesseract OCR thiếu gói ngôn ngữ eng.traineddata.' }
+Write-Host "[OK] Tesseract: $tesseract"
 
 $venvPython = Join-Path $project '.venv\Scripts\python.exe'
 if (-not $VerifyOnly -and -not (Test-Path -LiteralPath $venvPython)) {

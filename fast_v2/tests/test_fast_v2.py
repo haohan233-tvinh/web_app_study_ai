@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import queue
 import sys
+import tempfile
 import time
 from types import SimpleNamespace
 import unittest
@@ -178,6 +179,44 @@ class FastTests(unittest.TestCase):
                  {'text': 'X CHUA DUNG! Dap an chinh xac la A', 'score': .4}]
         self.assertEqual(relevant_ocr_score(boxes), .93)
 
+    def test_vietnamese_ocr_keeps_number_html_and_arrow_chain(self):
+        original = '16. De ap dung cung mot mau cht xanh cho ca <hl>, <h2> va <p>, cu phap gom nhom nao dung?'
+        recognized = '1ó. Để áp dụng cùng một màu chữ xanh cho cả <h]>, <h2> và <p>, cú pháp gom nhóm nào đúng?'
+        corrected = OCR._safe_vietnamese(original, recognized)
+        self.assertTrue(corrected.startswith('16. Để áp dụng cùng một màu chữ xanh'))
+        self.assertIn('<hl>, <h2> và <p>', corrected)
+        self.assertFalse(OCR._needs_vietnamese('Margin → Border → Padding → Content'))
+        self.assertIsNone(OCR._safe_vietnamese(original, 'Đáp án hoàn toàn khác'))
+
+    def test_secondary_ocr_repairs_only_damaged_css_brace(self):
+        with tempfile.TemporaryDirectory() as directory:
+            data = Path(directory)
+            (data / 'eng.traineddata').write_bytes(b'test')
+            engine = OCR.__new__(OCR)
+            engine.vietnamese_cmd = 'mock-tesseract'
+            engine.vietnamese_data = data
+            engine.english_data = data
+            engine.threads = 2
+            boxes = [
+                {'text': 'Trong CSS Box Model, thu tu tu lop ngoai vao lop trong?',
+                 'left': 0, 'top': 10, 'right': 400, 'bottom': 30, 'cy': 20, 'height': 20},
+                {'text': 'Margin → Border → Padding → Content',
+                 'left': 0, 'top': 60, 'right': 400, 'bottom': 80, 'cy': 70, 'height': 20},
+                {'text': 'h1, h2, p f color: blue; }',
+                 'left': 0, 'top': 110, 'right': 400, 'bottom': 130, 'cy': 120, 'height': 20},
+            ]
+            answers = {'vie': 'Trong CSS Box Model, thứ tự từ lớp ngoài vào lớp trong?',
+                       'eng': '| h1, h2, p { color: blue; }'}
+            with patch.object(engine, '_recognize_crop', side_effect=lambda _, __, lang, ___: answers[lang]) as call:
+                lines, refined, elapsed = engine.refine_vietnamese(
+                    Image.new('RGB', (500, 150), 'white'), [], boxes)
+            self.assertEqual(call.call_count, 2)
+            self.assertIn('thứ tự từ lớp ngoài', lines[0])
+            self.assertEqual(lines[1], 'Margin → Border → Padding → Content')
+            self.assertEqual(lines[2], 'h1, h2, p { color: blue; }')
+            self.assertEqual(boxes[2]['text'], 'h1, h2, p f color: blue; }')
+            self.assertGreaterEqual(elapsed, 0)
+
     def test_key_recorder_captures_chord(self):
         recorder = KeyRecorder('f8')
         recorder.keyPressEvent(QKeyEvent(QEvent.Type.KeyPress, Qt.Key.Key_R,
@@ -222,7 +261,7 @@ class FastTests(unittest.TestCase):
             self.assertFalse(parsed.errors, prepared['lines'])
             self.assertEqual(parsed.options, {'A': '$price', 'B': '_total',
                                               'C': '2students', 'D': 'userName'})
-            self.assertIn('KHONG HOP LE', parsed.text)
+            self.assertIn('KHÔNG HỢP LỆ', parsed.text)
         finally:
             solver.close()
 
@@ -250,6 +289,9 @@ class FastTests(unittest.TestCase):
 
             def read_quality(self, image, enhanced=True):
                 return self.read(image)
+
+            def refine_vietnamese(self, image, lines, boxes):
+                return lines, boxes, 0.0
 
         solver = ExamSolver()
         solver.ocr = OCR()

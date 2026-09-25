@@ -25,5 +25,13 @@
       "source":"https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF",
       "usage":"pre-existing baseline model retained"
     }
-  ]
+  ],
+  "ocr": {
+    "file": "models/ocr/tessdata/vie.traineddata",
+    "source": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/vie.traineddata",
+    "revision": "87416418657359cb625c412a48b6e1d6d41c29bd",
+    "bytes": 531275,
+    "sha256": "79df64caf7bcfb2a27df5042ecb6121e196eada34da774956995747636d5bfa1",
+    "verified": true
+  }
 }

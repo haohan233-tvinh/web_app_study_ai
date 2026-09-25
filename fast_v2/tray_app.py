@@ -909,6 +909,8 @@ class TrayApp(QObject):
                                                           event.get('error', 'Không đọc được chữ.'))
                         self.debug_panel.sections.setPlainText('\n\n'.join(event.get('lines', [])))
                         suffix = ' · đã đọc lại chất lượng cao' if event['reread'] else ''
+                        if event.get('vietnamese_ocr_seconds'):
+                            suffix += f' · tiếng Việt: {event["vietnamese_ocr_seconds"]:.2f}s'
                         parts = event.get('section_ocr_seconds')
                         if parts:
                             suffix += ' · từng ô: ' + ', '.join(f'{x:.2f}s' for x in parts)

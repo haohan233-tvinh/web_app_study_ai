@@ -98,6 +98,7 @@ class PrefetchEngine:
                                      'lines': value.get('lines', []),
                                      'error': value.get('error'),
                                      'ocr_seconds': value.get('ocr_seconds'),
+                                     'vietnamese_ocr_seconds': value.get('vietnamese_ocr_seconds', 0),
                                      'reread': value.get('reread', False),
                                      'section_ocr_seconds': value.get('section_ocr_seconds'),
                                      'layout_method': value.get('layout_method'),

@@ -158,17 +158,21 @@ def set_backend(backend: str, root: Path) -> None:
 def install(root: Path, backend: str, check_only: bool = False, keep_archives: bool = False) -> None:
     manifest = json.loads((root / 'artifacts' / 'download-manifest.json').read_text(encoding='utf-8'))
     model = next(item for item in manifest['models'] if Path(item['file']).name == MODEL_NAME)
+    ocr = manifest['ocr']
+    ocr_file = root / ocr['file']
     release = manifest['llama_cpp']['release']
     archive_items = {item['file']: item for item in manifest['llama_cpp']['assets']}
     names = CUDA_ARCHIVES if backend == 'cuda' else CPU_ARCHIVES
     model_file = root / model['file']
     runtime_dir = root / 'runtime' / backend
     if check_only:
+        if not matches(ocr_file, ocr):
+            raise SetupError(f'Thiếu hoặc sai SHA-256 dữ liệu OCR tiếng Việt: {ocr_file}')
         if not matches(model_file, model):
             raise SetupError(f'Thiếu hoặc sai SHA-256 model: {model_file}')
         if not runtime_ready(runtime_dir, backend, release):
             raise SetupError(f'Thiếu hoặc sai phiên bản llama.cpp: {runtime_dir}')
-        print(f'[OK] Model và llama.cpp {release} ({backend}) đã sẵn sàng.')
+        print(f'[OK] OCR tiếng Việt, model và llama.cpp {release} ({backend}) đã sẵn sàng.')
         return
 
     free = shutil.disk_usage(root).free
@@ -178,6 +182,7 @@ def install(root: Path, backend: str, check_only: bool = False, keep_archives: b
                (2 * 2**30 if backend == 'cuda' else 200 * 2**20) if needs_runtime else 0)
     if free < minimum:
         raise SetupError(f'Cần ít nhất {minimum / 2**30:.1f} GiB trống trước khi tải model và runtime.')
+    download_verified(ocr['source'], ocr_file, ocr)
     model_url = (f"https://huggingface.co/{model['repository']}/resolve/"
                  f"{model['revision']}/{MODEL_NAME}?download=true")
     download_verified(model_url, model_file, model)
