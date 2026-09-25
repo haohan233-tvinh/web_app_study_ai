@@ -332,6 +332,21 @@ class FastTests(unittest.TestCase):
         self.assertTrue(html_improved)
         self.assertTrue(any(line.lstrip() == '<h1>Hello</h1>' and line != line.lstrip()
                             for line in html_fixed))
+        crops = [image]
+        for label in ('First answer', 'Second answer', 'Third answer', 'Fourth answer'):
+            option = Image.new('RGB', (300, 80), 'white')
+            ImageDraw.Draw(option).text((15, 15), label, font=font, fill='black')
+            crops.append(option)
+        solver = ExamSolver()
+        try:
+            prepared = solver.prepare_image(ManualCapture(
+                tuple((0, 0, crop.width, crop.height) for crop in crops),
+                tuple(crops)))
+            self.assertTrue(prepared['code_reread'])
+            self.assertIn('        return names[0];', prepared['structured'].text)
+            self.assertEqual(prepared['structured'].errors, [])
+        finally:
+            solver.close()
 
     def test_assigned_side_button_never_navigates_browser(self):
         emitted = []
