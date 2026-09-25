@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (QApplication, QCheckBox, QColorDialog, QComboBox,
     QMessageBox, QPushButton, QSpinBox, QWidget)
 
 from clipboard_solver import ExamSolver, ROOT
-from debug_ui import CaptureBorder, DebugPanel, StatusDot, region_to_qrect
+from debug_ui import CaptureBorder, DebugPanel, StatusDot, exclude_from_capture, region_to_qrect
 from prefetch import PrefetchEngine
 from src.layout import ManualCapture
 from src.mouse_hotkeys import MouseHook, mouse_chord
@@ -160,7 +160,12 @@ class Overlay(QWidget):
         self.opacity = opacity
         self.color = QColor(color)
         self.anchor = None
+        self.capture_excluded = False
         self.resize(330, 55)
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.capture_excluded = exclude_from_capture(self)
 
     def show_answer(self):
         if not self.answer:
@@ -170,11 +175,6 @@ class Overlay(QWidget):
         self.move(geo.x() + (geo.width()-self.width())//2,
                   geo.y() + int(geo.height()*.78))
         self.show()
-        # Exclude from screen capture where supported; capture also hides it.
-        try:
-            ctypes.windll.user32.SetWindowDisplayAffinity(int(self.winId()), 0x11)
-        except (OSError, AttributeError):
-            pass
         self.raise_()
 
     def paintEvent(self, event):
@@ -786,21 +786,26 @@ class TrayApp(QObject):
         regions = self.active_regions()
         if not regions or self.redraw_active:
             return None
-        visible = self.overlay.isVisible()
-        panel_visible = self.debug_panel.isVisible()
         left = min(region[0] for region in regions)
         top = min(region[1] for region in regions)
         right = max(region[2] for region in regions)
         bottom = max(region[3] for region in regions)
         capture_rect = region_to_qrect((left, top, right, bottom))
+        overlay_hidden = (self.overlay.isVisible() and
+                          not self.overlay.capture_excluded and
+                          self.overlay.geometry().intersects(capture_rect))
+        panel_hidden = (self.debug_panel.isVisible() and
+                        not self.debug_panel.capture_excluded and
+                        self.debug_panel.geometry().intersects(capture_rect))
         dot_hidden = (self.status_dot.isVisible() and
                       not self.status_dot.capture_excluded and
                       self.status_dot.geometry().intersects(capture_rect))
         visible_borders = [border for border in [self.capture_border] + self.extra_borders
-                           if border.isVisible()]
-        if visible:
+                           if border.isVisible() and not border.capture_excluded and
+                           border.geometry().intersects(capture_rect)]
+        if overlay_hidden:
             self.overlay.hide()
-        if panel_visible:
+        if panel_hidden:
             self.debug_panel.hide()
         if dot_hidden:
             self.status_dot.hide()
@@ -816,11 +821,12 @@ class TrayApp(QObject):
         finally:
             if dot_hidden and self.settings.get('status_dot_visible', True):
                 self.status_dot.show()
-            if panel_visible:
+            if panel_hidden:
                 self.debug_panel.show()
-            if visible:
+            if overlay_hidden:
                 self.update_answer_visibility()
-            self.update_border_visibility()
+            if visible_borders:
+                self.update_border_visibility()
 
     def solve(self):
         if self.editing:

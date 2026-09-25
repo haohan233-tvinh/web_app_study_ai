@@ -14,13 +14,15 @@ from PyQt6.QtWidgets import QApplication
 from PyQt6.QtCore import Qt, QEvent
 from PyQt6.QtGui import QKeyEvent
 from PIL import Image
-from clipboard_solver import ExamSolver
+from clipboard_solver import ExamSolver, relevant_ocr_score
 from debug_ui import CaptureBorder, DebugPanel, StatusDot, region_to_qrect
 from prefetch import PrefetchEngine
 from src.question_parser import parse_question
 from src.layout import ManualCapture, group_auto
 from src.ocr import OCR
 from src.mouse_hotkeys import MouseHook, mouse_chord
+from src.ordered_concepts import box_model_order
+from src.question_parser import is_feedback_line
 from tray_app import DEFAULTS, KeyRecorder, Overlay, SettingsDialog, TrayApp, image_signature, region_from_corners
 
 
@@ -136,6 +138,45 @@ class FastTests(unittest.TestCase):
         layout = group_auto(Image.new('RGB', (400, 300), 'white'), boxes, 4)
         self.assertTrue(layout['weak'])
         self.assertEqual(layout['question'].options['D'], 'fourth line\nmore fourth')
+
+    def test_box_model_arrow_order_and_result_panel(self):
+        def box(text, x, y):
+            return {'text': text, 'score': .95, 'left': x, 'right': x+260,
+                    'top': y, 'bottom': y+16, 'cy': y+8, 'height': 16}
+        boxes = [box('CSS', 25, 5),
+                 box('17. Trong CSS Box Model, thứ tự từ LỚP NGOÀI CÙNG vào LỚP TRONG CÙNG?', 28, 52),
+                 box('A Margin → Border → Padding → Content', 48, 110),
+                 box('B Padding → Border → Margin → Content', 48, 172),
+                 box('C Border → Margin → Padding → Content', 48, 234),
+                 box('D Content → Padding → Border → Margin', 48, 296),
+                 box('CHƯA ĐÚNG! Đáp án chính xác là A', 45, 365),
+                 box('Từ ngoài vào trong: Margin → Border → Padding → Content', 45, 390)]
+        layout = group_auto(Image.new('RGB', (900, 440), 'white'), boxes, 4)
+        question = layout['question']
+        self.assertFalse(question.errors)
+        self.assertTrue(question.text.startswith('Trong CSS Box Model'))
+        self.assertEqual(question.options['A'], 'Margin → Border → Padding → Content')
+        self.assertEqual(question.options['D'], 'Content → Padding → Border → Margin')
+        self.assertEqual(box_model_order(question.text, question.options), 'A')
+        self.assertTrue(is_feedback_line('❌ CHƯA ĐÚNG! Đáp án chính xác là A'))
+
+    def test_box_model_direction_guardrails(self):
+        options = {'A': 'Margin -> Border -> Padding -> Content',
+                   'B': 'Padding -> Border -> Margin -> Content',
+                   'C': 'Border -> Margin -> Padding -> Content',
+                   'D': 'Content -> Padding -> Border -> Margin'}
+        self.assertEqual(box_model_order('Trong CSS Box Model, từ lớp ngoài vào lớp trong?', options), 'A')
+        self.assertEqual(box_model_order('CSS Box Model: from inner layer to outer layer?', options), 'D')
+        self.assertIsNone(box_model_order('CSS Box Model có mấy lớp?', options))
+        self.assertIsNone(box_model_order('CSS Box Model: thứ tự nào KHÔNG đúng từ ngoài vào trong?', options))
+        self.assertIsNone(box_model_order('CSS Box Model: từ ngoài vào trong?', {**options, 'D': 'Content'}))
+
+    def test_ocr_confidence_ignores_low_score_topic_badge(self):
+        boxes = [{'text': 'CSS', 'score': .61},
+                 {'text': '17. Trong CSS Box Model?', 'score': .93},
+                 {'text': 'Margin → Border → Padding → Content', 'score': .97},
+                 {'text': 'X CHUA DUNG! Dap an chinh xac la A', 'score': .4}]
+        self.assertEqual(relevant_ocr_score(boxes), .93)
 
     def test_key_recorder_captures_chord(self):
         recorder = KeyRecorder('f8')
@@ -301,6 +342,33 @@ class FastTests(unittest.TestCase):
                    or Image.new('RGB', (200, 100), 'white')):
             TrayApp.capture(fake)
         dot.hide()
+
+    def test_visible_panel_stays_shown_during_repeated_capture(self):
+        panel = DebugPanel()
+        panel.setGeometry(120, 120, 450, 640)
+        panel.show()
+        panel.capture_excluded = True
+        border = CaptureBorder()
+        border.set_region([100, 100, 700, 700])
+        border.capture_excluded = True
+        fake = SimpleNamespace(settings={**DEFAULTS, 'region': [100, 100, 700, 700]},
+            overlay=Overlay(.4), debug_panel=panel, status_dot=StatusDot(),
+            redraw_active=False, capture_border=border, extra_borders=[],
+            active_regions=lambda: [[100, 100, 700, 700]],
+            update_border_visibility=lambda: None,
+            update_answer_visibility=lambda: None)
+        try:
+            with (patch.object(panel, 'hide', wraps=panel.hide) as hide_panel,
+                  patch.object(border, 'hide', wraps=border.hide) as hide_border,
+                  patch('PIL.ImageGrab.grab', return_value=Image.new('RGB', (600, 600), 'white'))):
+                for _ in range(3):
+                    TrayApp.capture(fake)
+                    self.assertTrue(panel.isVisible())
+                hide_panel.assert_not_called()
+                hide_border.assert_not_called()
+        finally:
+            panel.hide()
+            border.hide()
 
     def test_manual_capture_uses_one_union_screenshot_and_crop_order(self):
         regions = [[100, 100, 190, 160], [310, 100, 400, 160]]

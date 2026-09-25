@@ -46,6 +46,17 @@ def region_to_qrect(region):
     return QRect(left, top, right-left, bottom-top)
 
 
+def exclude_from_capture(widget):
+    """Exclude one of our top-level windows from Windows screen capture."""
+    try:
+        user = ctypes.windll.user32
+        user.SetWindowDisplayAffinity.argtypes = [wintypes.HWND, wintypes.DWORD]
+        user.SetWindowDisplayAffinity.restype = wintypes.BOOL
+        return bool(user.SetWindowDisplayAffinity(int(widget.winId()), 0x11))
+    except (OSError, AttributeError, TypeError):
+        return False
+
+
 class CaptureBorder(QWidget):
     def __init__(self):
         super().__init__(None, Qt.WindowType.Tool | Qt.WindowType.FramelessWindowHint |
@@ -58,6 +69,11 @@ class CaptureBorder(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
         self.color = QColor('#00b4b9')
         self.opacity = .85
+        self.capture_excluded = False
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.capture_excluded = exclude_from_capture(self)
 
     def configure(self, color, opacity):
         self.color = QColor(color)
@@ -69,9 +85,15 @@ class CaptureBorder(QWidget):
         if rect is None:
             self.hide()
             return
-        self.setGeometry(rect.x()-5, rect.y()-5, rect.width()+10, rect.height()+10)
-        self.show()
-        self.raise_()
+        target = QRect(rect.x()-5, rect.y()-5, rect.width()+10, rect.height()+10)
+        moved = self.geometry() != target
+        if moved:
+            self.setGeometry(target)
+        if not self.isVisible():
+            self.show()
+            self.raise_()
+        elif moved:
+            self.raise_()
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -111,13 +133,7 @@ class StatusDot(QWidget):
 
     def showEvent(self, event):
         super().showEvent(event)
-        try:
-            user = ctypes.windll.user32
-            user.SetWindowDisplayAffinity.argtypes = [wintypes.HWND, wintypes.DWORD]
-            user.SetWindowDisplayAffinity.restype = wintypes.BOOL
-            self.capture_excluded = bool(user.SetWindowDisplayAffinity(int(self.winId()), 0x11))
-        except (OSError, AttributeError, TypeError):
-            self.capture_excluded = False
+        self.capture_excluded = exclude_from_capture(self)
 
     def set_state(self, state, region=None):
         if state not in self.COLORS:
@@ -153,8 +169,13 @@ class DebugPanel(QWidget):
         super().__init__(None, Qt.WindowType.Tool | Qt.WindowType.WindowStaysOnTopHint)
         self.setWindowTitle('Web MCQ Fast — Kiểm thử')
         self.setMinimumWidth(440)
+        self.capture_excluded = False
         self.set_answer_color('#b82020')
         self.setup_contents()
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.capture_excluded = exclude_from_capture(self)
 
     def set_answer_color(self, answer_color):
         self.setStyleSheet('''

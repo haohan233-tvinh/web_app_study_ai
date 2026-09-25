@@ -6,6 +6,7 @@ import itertools
 import json
 import os
 from pathlib import Path
+import re
 import sys
 import subprocess
 import time
@@ -14,13 +15,24 @@ os.environ.setdefault('OMP_NUM_THREADS', '2')
 os.environ.setdefault('HF_HUB_OFFLINE', '1')
 os.environ.setdefault('TRANSFORMERS_OFFLINE', '1')
 
-from src.question_parser import parse_question, structured_question
+from src.question_parser import NUMBER, is_feedback_line, parse_question, structured_question
 from src.layout import ManualCapture, group_auto
 from src.retrieval import CourseIndex
 from src.local_model import LocalModel
 from src.js_expression import solve_expression
+from src.ordered_concepts import box_model_order
 
 ROOT = Path(sys.executable).resolve().parent if getattr(sys, 'frozen', False) else Path(__file__).resolve().parent
+
+
+def relevant_ocr_score(boxes):
+    """Judge the question and answers, ignoring topic badges and result panels."""
+    first_question = next((i for i, box in enumerate(boxes)
+                           if NUMBER.match(box['text'])), 0)
+    relevant = boxes[first_question:]
+    feedback = next((i for i, box in enumerate(relevant)
+                     if is_feedback_line(box['text'])), len(relevant))
+    return min((box['score'] for box in relevant[:feedback]), default=0)
 
 
 class ExamSolver:
@@ -117,7 +129,7 @@ class ExamSolver:
         q = layout['question'] if layout and not layout['question'].errors and (
             not layout['weak'] or parsed.errors) else parsed
         reread = False
-        if q.errors or (boxes and min(b['score'] for b in boxes) < .85):
+        if q.errors or (boxes and relevant_ocr_score(boxes) < .85):
             reread = True
             for enhanced in (True, False):
                 retry_lines, retry_boxes = self._ocr().read_quality(image, enhanced=enhanced)
@@ -125,14 +137,14 @@ class ExamSolver:
                 retry_parsed = parse_question(retry_lines, expected)
                 retry = retry_layout['question'] if retry_layout and not retry_layout['question'].errors and (
                     not retry_layout['weak'] or retry_parsed.errors) else retry_parsed
-                old_score = min((b['score'] for b in boxes), default=0)
-                new_score = min((b['score'] for b in retry_boxes), default=0)
+                old_score = relevant_ocr_score(boxes)
+                new_score = relevant_ocr_score(retry_boxes)
                 if (len(retry.errors) < len(q.errors) or
                         (not retry.errors and len(retry.errors) == len(q.errors)
                          and new_score > old_score)):
                     q, lines, boxes = retry, retry_lines, retry_boxes
                     layout = retry_layout if retry is not retry_parsed else None
-                if not q.errors and min((b['score'] for b in boxes), default=0) >= .85:
+                if not q.errors and relevant_ocr_score(boxes) >= .85:
                     break
         selected_layout = layout if layout and q is layout['question'] else None
         return {'lines': lines, 'boxes': boxes, 'ocr_seconds': round(time.perf_counter() - start, 3),
@@ -211,6 +223,20 @@ class ExamSolver:
         slides = self.index.search(question, options, self.settings['top_k'])
         if not slides:
             return {'error': 'Không tìm được phần tài liệu liên quan.'}
+        ordered_answer = box_model_order(question, options) if not is_multi_select else None
+        if ordered_answer:
+            source = next((slide for slide in slides if 'box model' in slide['text'].lower()
+                           and all(word in slide['text'].lower() for word in ('margin', 'border', 'padding', 'content'))), None)
+            if source:
+                result = {'best_choice': ordered_answer,
+                          'matched_source': source['source'] + f" (Slide {source['page']})",
+                          'method': 'CSS box-model layer order from course slide',
+                          'seconds': round(time.perf_counter() - start, 3),
+                          'inference_seconds': 0, 'cooling_seconds': 0,
+                          'multi': False, 'cached': False}
+                self.last_diagnostic.update({'model_output': None, 'retrieved': slides, 'result': result})
+                self.cache[key] = result
+                return result
         calculated = solve_expression(question, options) if not is_multi_select else None
         if calculated:
             answer, expression = calculated
@@ -250,6 +276,10 @@ class ExamSolver:
             'source = the most relevant excerpt number. '
             'Evaluate every option independently, including the last one. '
             'If information is insufficient or ambiguous, answer "?".')
+        if any(re.search(r'→|->|=>|⟶|➜', option) for option in options.values()):
+            system += (' Arrows specify direction and position, not an unordered set. '
+                       'Compare the first item and each adjacent pair against the direction '
+                       'asked in the question; reversed chains are different answers.')
         if self.settings.get('include_internal_check', False):
             schema['properties'] = {'check': {'type': 'string'}, **schema['properties']}
             schema['required'].insert(0, 'check')

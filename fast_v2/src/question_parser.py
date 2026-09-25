@@ -1,5 +1,6 @@
 """Strict parser: never fabricate text for missing answer labels."""
 import re
+import unicodedata
 from dataclasses import dataclass, field
 
 LABEL = re.compile(r'(?<!\S)[\(\[]?([A-H])[\)\].:]\s*')
@@ -8,6 +9,16 @@ FOOTER = re.compile(r'^(?:correct\s*answers?\s*:|explanation\s*:|answer\s*:|feed
 CHROME = re.compile(r'^(?:not yet answered|marked out of|flag question|clear my choice|question\s+\d+\s*$)', re.I)
 BARE_LABEL = re.compile(r'^\s*([A-Ha-h])\s+\S')
 START_LABEL = re.compile(r'^\s*[\(\[]?([A-H])[\)\].:]', re.I)
+
+
+def is_feedback_line(text):
+    """Recognize quiz-result panels without interpreting their answer letter as an option."""
+    plain = ''.join(char for char in unicodedata.normalize('NFD', text.casefold())
+                    if unicodedata.category(char) != 'Mn').replace('đ', 'd')
+    return bool(re.match(
+        r'^\s*(?:[x✓✔✗✘✅❌]\s*)?'
+        r'(?:chinh\s*xac|chua\s*dung|dap\s*an\s*(?:chinh\s*xac|dung)'
+        r'|correct\b|incorrect\b|your\s*answer\b)', plain))
 
 
 def _promote_badge_labels(lines, expected_options):
@@ -63,7 +74,7 @@ def parse_question(lines, expected_options=4, mode='auto'):
                       lambda m: m[1] + m[2].upper() + m[3], line)
         if not line or CHROME.match(line):
             continue
-        if FOOTER.match(line):
+        if FOOTER.match(line) or (current and is_feedback_line(line)):
             break
         matches = list(LABEL.finditer(line))
         # A sentence beginning with "A ..." is never an option without punctuation.

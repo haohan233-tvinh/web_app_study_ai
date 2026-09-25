@@ -4,7 +4,7 @@ import re
 
 import numpy as np
 
-from .question_parser import structured_question
+from .question_parser import NUMBER, is_feedback_line, structured_question
 
 
 @dataclass(frozen=True)
@@ -29,6 +29,22 @@ def _text_rows(boxes):
         row['boxes'].sort(key=lambda box: box['left'])
         row['text'] = ' '.join(box['text'] for box in row['boxes'])
     return rows
+
+
+def _feedback_cutoff(rows, expected):
+    """Ignore result/explanation panels below the question's answer cards."""
+    for index, row in enumerate(rows):
+        if index >= expected + 1 and is_feedback_line(row['text']):
+            return row['top']
+    return float('inf')
+
+
+def _question_text(rows):
+    """Drop a quiz topic header when a numbered question follows it."""
+    first_number = next((i for i, row in enumerate(rows) if NUMBER.match(row['text'])), None)
+    if first_number is not None:
+        rows = rows[first_number:]
+    return '\n'.join(row['text'] for row in rows).strip()
 
 
 def _card_borders(image):
@@ -66,8 +82,10 @@ def _remove_badge(text, expected, row, width):
 
 
 def _group_card_rows(image, boxes, expected):
-    borders = _card_borders(image)
     rows = _text_rows(boxes)
+    cutoff = _feedback_cutoff(rows, expected)
+    rows = [row for row in rows if row['cy'] < cutoff]
+    borders = [y for y in _card_borders(image) if y < cutoff]
     cards = []
     for top, bottom in zip(borders, borders[1:]):
         if bottom - top < 27 or bottom - top > max(250, image.height * .45):
@@ -77,7 +95,7 @@ def _group_card_rows(image, boxes, expected):
             cards.append((top, bottom, inside))
     # Consecutive card top/bottom strokes leave a short gap between cards.
     if len(cards) > expected:
-        cards = cards[-expected:]
+        cards = cards[:expected]
     if len(cards) != expected:
         return None
     options = {}
@@ -85,12 +103,14 @@ def _group_card_rows(image, boxes, expected):
         lines = [_remove_badge(row['text'], chr(65 + index), row, image.width)
                  if row is inside[0] else row['text'] for row in inside]
         options[chr(65 + index)] = '\n'.join(line for line in lines if line.strip()).strip()
-    question = '\n'.join(row['text'] for row in rows if row['cy'] < cards[0][0]).strip()
+    question = _question_text([row for row in rows if row['cy'] < cards[0][0]])
     q = structured_question(question, options, expected)
     return {'question': q, 'method': 'card_borders', 'weak': False}
 
 
 def _group_radio_rows(image, boxes, expected):
+    rows = _text_rows(boxes)
+    cutoff = _feedback_cutoff(rows, expected)
     rgb = np.asarray(image.convert('RGB'))
     if rgb.shape[0] < 60 or rgb.shape[1] < 100:
         return None
@@ -120,10 +140,12 @@ def _group_radio_rows(image, boxes, expected):
         marks.append((sum(run) / len(run), float(np.median(xs))))
     if len(marks) < expected:
         return None
-    marks = marks[-expected:]
+    marks = [(cy, x) for cy, x in marks if cy < cutoff][-expected:]
+    if len(marks) < expected:
+        return None
     if max(x for _, x in marks) - min(x for _, x in marks) > 20:
         return None
-    rows = _text_rows(boxes)
+    rows = [row for row in rows if row['cy'] < cutoff]
     options = {}
     first_y = marks[0][0]
     for index, (cy, x) in enumerate(marks):
@@ -133,14 +155,16 @@ def _group_radio_rows(image, boxes, expected):
         options[chr(65 + index)] = '\n'.join(
             _remove_badge(row['text'], chr(65 + index), row, image.width)
             if row is inside[0] else row['text'] for row in inside).strip() if inside else ''
-    question = '\n'.join(row['text'] for row in rows if row['cy'] < first_y - 25)
+    question = _question_text([row for row in rows if row['cy'] < first_y - 25])
     q = structured_question(question, options, expected)
     return {'question': q, 'method': 'radio_markers', 'weak': False}
 
 
-def _group_indent_rows(boxes, expected):
+def _group_indent_rows(image, boxes, expected):
     """Last resort for themes with no cards or labels; never invent text."""
     rows = _text_rows(boxes)
+    cutoff = _feedback_cutoff(rows, expected)
+    rows = [row for row in rows if row['cy'] < cutoff]
     if len(rows) < expected + 1:
         return None
     # Large spacing often marks the question/answer boundary. Wrapped lines
@@ -164,8 +188,12 @@ def _group_indent_rows(boxes, expected):
     options = {}
     for index, begin in enumerate(starts):
         end = starts[index + 1] if index + 1 < expected else len(answer_rows)
-        options[chr(65 + index)] = '\n'.join(row['text'] for row in answer_rows[begin:end])
-    question = '\n'.join(row['text'] for row in rows[:start])
+        letter = chr(65 + index)
+        options[letter] = '\n'.join(
+            _remove_badge(row['text'], letter, row, image.width)
+            if i == begin else row['text']
+            for i, row in enumerate(answer_rows[begin:end], begin))
+    question = _question_text(rows[:start])
     return {'question': structured_question(question, options, expected),
             'method': 'line_indent', 'weak': True}
 
@@ -177,4 +205,4 @@ def group_auto(image, boxes, expected):
     radio = _group_radio_rows(image, boxes, expected)
     if radio and not radio['question'].errors:
         return radio
-    return _group_indent_rows(boxes, expected) or card or radio
+    return _group_indent_rows(image, boxes, expected) or card or radio
