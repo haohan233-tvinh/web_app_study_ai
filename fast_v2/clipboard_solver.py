@@ -158,11 +158,26 @@ class ExamSolver:
             if len(vi_q.errors) <= len(q.errors):
                 q, lines, boxes = vi_q, vi_lines, vi_boxes
                 layout = vi_layout if vi_q is not vi_parsed else None
+        code_lines, code_boxes, code_seconds, code_reread = self._ocr().refine_code(
+            image, lines, boxes)
+        if code_reread:
+            code_layout = group_auto(image, code_boxes, expected)
+            code_parsed = parse_question(code_lines, expected)
+            code_q = (code_layout['question'] if code_layout and
+                      not code_layout['question'].errors and
+                      (not code_layout['weak'] or code_parsed.errors) else code_parsed)
+            if len(code_q.errors) <= len(q.errors):
+                q, lines, boxes = code_q, code_lines, code_boxes
+                layout = code_layout if code_q is not code_parsed else None
+            else:
+                code_reread = False
         selected_layout = layout if layout and q is layout['question'] else None
         return {'lines': lines, 'boxes': boxes, 'ocr_seconds': round(time.perf_counter() - start, 3),
-                'reread': reread, 'structured': q if selected_layout else None,
+                'reread': reread or code_reread, 'structured': q if selected_layout else None,
                 'capture_source': 'OCR',
                 'vietnamese_ocr_seconds': vi_seconds,
+                'code_ocr_seconds': code_seconds,
+                'code_reread': code_reread,
                 'weak_layout': bool(selected_layout and selected_layout['weak']),
                 'layout_method': selected_layout['method'] if selected_layout else 'labels'}
 

@@ -348,6 +348,37 @@ class FastTests(unittest.TestCase):
         finally:
             solver.close()
 
+    def test_auto_region_rereads_code_without_losing_answer_cards(self):
+        from PIL import ImageDraw, ImageFont
+        if not Path(r'C:\Windows\Fonts\consola.ttf').is_file():
+            self.skipTest('Consolas is unavailable')
+        image = Image.new('RGB', (850, 670), 'white')
+        draw = ImageDraw.Draw(image)
+        font = ImageFont.truetype(r'C:\Windows\Fonts\consola.ttf', 22)
+        question = ('17. What does this code return?', 'const names = ["A", "B"];',
+                    'function pick(value) {', '    if (value === "A") {',
+                    '        return names[0];', '    }', '    return null;', '}')
+        for index, line in enumerate(question):
+            draw.text((25, 14 + index * 35), line, font=font, fill='black')
+        for index, line in enumerate(('A. A', 'B. B', 'C. null', 'D. undefined')):
+            top = 310 + index * 85
+            draw.rectangle((20, top, 820, top + 70), outline=(208, 221, 245), width=2)
+            draw.text((55, top + 20), line, font=font, fill='black')
+        solver = ExamSolver()
+        try:
+            if not solver._ocr().tesseract_cmd:
+                self.skipTest('Tesseract is unavailable')
+            prepared = solver.prepare_image(image)
+            self.assertTrue(prepared['code_reread'])
+            self.assertEqual(prepared['layout_method'], 'card_borders')
+            self.assertIn('        return names[0];', prepared['structured'].text)
+            self.assertEqual(set(prepared['structured'].options), {'A', 'B', 'C', 'D'})
+            for letter, value in (('A', 'A'), ('B', 'B'), ('C', 'null'),
+                                  ('D', 'undefined')):
+                self.assertTrue(prepared['structured'].options[letter].endswith(value))
+        finally:
+            solver.close()
+
     def test_assigned_side_button_never_navigates_browser(self):
         emitted = []
         signal = SimpleNamespace(emit=lambda *args: emitted.append(args))

@@ -2,7 +2,7 @@
 
 Trên máy mới, tải repository rồi chạy `setup_windows.bat` ở thư mục cha một lần khi còn Internet. Script cài Python/thư viện, tải model và runtime, kiểm tra checksum; sau đó tool chạy offline. Xem hướng dẫn cài trong `../README.md`.
 
-OCR tiếng Việt dùng Tesseract và gói `vie.traineddata` chính thức. Script cài đặt tải gói tiếng Việt có kiểm tra SHA-256 và cài Tesseract qua winget nếu máy chưa có. RapidOCR vẫn tách bố cục. Trong chế độ Vẽ từng ô, ô Đề hoặc đáp án có code nhiều dòng được đọc lại bằng Tesseract tiếng Anh với tọa độ từng dòng để khôi phục ngoặc, chỉ số và thụt lề. Chỉ nhận bản đọc lại khi đủ giống bản đầu và không mất dấu nháy hay mũi tên. Cửa sổ kiểm thử hiển thị thời gian đọc lại code. Nếu thiếu Tesseract, chương trình vẫn chạy với RapidOCR nhưng code dài có thể mất cấu trúc.
+OCR tiếng Việt dùng Tesseract và gói `vie.traineddata` chính thức. Script cài đặt tải gói tiếng Việt có kiểm tra SHA-256 và cài Tesseract qua winget nếu máy chưa có. RapidOCR vẫn tách bố cục. Cả chế độ Tự đọc cả vùng và Vẽ từng ô đều thử đọc lại khối code nhiều dòng bằng Tesseract tiếng Anh với tọa độ từng dòng để khôi phục ngoặc, chỉ số và thụt lề. Chỉ nhận bản đọc lại khi đủ giống bản đầu, không mất dấu nháy hay mũi tên và vẫn tách được các đáp án. Cửa sổ kiểm thử hiển thị thời gian đọc lại code. Nếu thiếu Tesseract, chương trình vẫn chạy với RapidOCR nhưng code dài có thể mất cấu trúc.
 
 Có thể cài thêm [extension Chrome/Edge](browser_extension/README.md) để lấy chữ HTML trực tiếp trong vùng đã vẽ. Ứng dụng tự ưu tiên DOM khi extension kết nối với trang đang mở; OCR ảnh vẫn tự chạy khi trang hoặc bố cục không hỗ trợ. Chế độ này vẫn hoạt động offline qua `127.0.0.1`.
 
