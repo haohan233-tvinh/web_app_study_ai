@@ -2,6 +2,14 @@
 
 Công cụ đọc ảnh câu hỏi từ Clipboard Windows, tìm nội dung trong bài giảng và trả lời bằng model GGUF chạy ngay trên máy. Màn hình kết quả chỉ hiện chữ cái, trạng thái copy và trang tài liệu tham khảo.
 
+## Cài trên máy Windows khác
+
+1. Tải ZIP repository hoặc `git clone`, giải nén vào thư mục bạn có quyền ghi.
+2. Khi còn Internet, mở **`setup_windows.bat`**. Script kiểm tra/cài Python 3.12 x64 qua `winget` nếu cần, tạo `.venv`, cài thư viện Python, tải **Qwen2.5-3B Q4_K_M** và **llama.cpp b11159** từ nguồn chính thức, kiểm tra SHA-256 rồi chạy `doctor.py`. Mạng bị ngắt giữa chừng thì chạy lại để tiếp tục tải. Cần khoảng 5 GiB ổ trống cho lần cài CUDA; model khoảng 2.1 GB.
+3. Mở `fast_v2\run_fast_solver_visible.bat` để xem cửa sổ kiểm thử, chọn lại vùng câu hỏi trên màn hình của bạn. Bản chạy nền là `fast_v2\run_fast_solver.bat`.
+
+Script tự chọn CUDA nếu thấy GPU NVIDIA; nếu không sẽ dùng CPU (chậm hơn). Có thể chọn rõ bằng `setup_windows.bat -Backend cpu` hoặc `-Backend cuda`. Chạy `powershell -NoProfile -ExecutionPolicy Bypass -File .\setup_windows.ps1 -VerifyOnly` để **chỉ kiểm tra**, không cài/tải. Nếu máy thiếu `winget`, cài Python 3.12 x64 từ [python.org](https://www.python.org/downloads/windows/) rồi chạy lại. Lần cài đầu cần Internet; lúc giải câu hỏi thì toàn bộ model, OCR và tài liệu đều ở máy. File cấu hình vùng/phím `fast_v2/ui_settings.json` là cục bộ, không được chia sẻ qua Git.
+
 ## Dùng ngay trên máy này
 
 1. Mở `run_exam_solver.bat`, đợi dòng **Sẵn sàng**.
@@ -70,14 +78,15 @@ $py = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
 
 Launcher dùng `.venv\Scripts\python.exe` nếu có; nếu không dùng Python 3.12 đã cài ở đường dẫn trên. Các phiên bản đã kiểm chứng được ghi trong `requirements.txt`. Máy hiện tại đã có đủ phụ thuộc; không cần cài lại để dùng.
 
-Nếu chuyển sang máy khác, tạo môi trường và cài phụ thuộc lúc còn Internet, rồi chép model và runtime đã tải:
+Nếu muốn cài thủ công thay cho `setup_windows.bat`, tạo môi trường và cài phụ thuộc lúc còn Internet, rồi chạy bộ tải tài nguyên:
 
 ```powershell
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe setup_assets.py --backend cuda
 .\.venv\Scripts\python.exe doctor.py --hash
 ```
 
-Không tự chạy `download_model.py` cũ: script đó tải model 1.5B ban đầu. Xem `artifacts/download-manifest.json` để biết chính xác nguồn và checksum bản được chọn. Bản mã ban đầu được giữ trong `backups/`.
+Không tự chạy `download_model.py` cũ: script đó tải model 1.5B ban đầu. `setup_assets.py` dùng `artifacts/download-manifest.json` để lấy đúng bản 3B và checksum. Bản mã ban đầu được giữ trong `backups/`.
 
 Bản Qwen2.5-3B được phát hành với giấy phép **qwen-research**; đây là mô hình có trọng số tải được, không được mô tả trong dự án này là giấy phép Apache hoặc mã nguồn mở OSI. [Model card chính thức](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF) · [llama.cpp b11159](https://github.com/ggml-org/llama.cpp/releases/tag/b11159).

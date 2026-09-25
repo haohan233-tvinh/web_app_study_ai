@@ -3,8 +3,9 @@
     "release": "b11159",
     "source": "https://github.com/ggml-org/llama.cpp/releases/tag/b11159",
     "assets": [
-      {"file":"llama-b11159-bin-win-cuda-12.4-x64.zip","sha256":"1cc7a3eaf5238cb2baaec7e918fe0b0d2dfc005c42698e960f5c8571dcd9d0ce","verified":true},
-      {"file":"cudart-llama-bin-win-cuda-12.4-x64.zip","sha256":"8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6","verified":true},
+      {"file":"llama-b11159-bin-win-cuda-12.4-x64.zip","bytes":254622096,"sha256":"1cc7a3eaf5238cb2baaec7e918fe0b0d2dfc005c42698e960f5c8571dcd9d0ce","verified":true},
+      {"file":"cudart-llama-bin-win-cuda-12.4-x64.zip","bytes":391443627,"sha256":"8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6","verified":true},
+      {"file":"llama-b11159-bin-win-cpu-x64.zip","bytes":18561299,"sha256":"bdcdcb938a78ec8b8b4fa491a0610f5fead2118137d8dc9f81fb732bb1e7c9f6","verified":true},
       {"file":"llama-b11159-bin-win-vulkan-x64.zip","sha256":"930a023c5039ea872ef72f999dd641951658f21963c76d4490626deb94ab247d","verified":true,"usage":"earlier Vulkan test; not selected runtime"}
     ]
   },

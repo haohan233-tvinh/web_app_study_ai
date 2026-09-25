@@ -32,9 +32,9 @@ fast_v2/_internal/
 fast_v2/*.exe
 fast_v2/logs/
 fast_v2/artifacts/
+fast_v2/ui_settings.json
 
 # Audit test logs
 network_audit_*.json
 network_audit_*.txt
 .network_cache.*
-

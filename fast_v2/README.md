@@ -1,5 +1,7 @@
 # Web MCQ Fast V2 — đọc ảnh offline
 
+Trên máy mới, tải repository rồi chạy `setup_windows.bat` ở thư mục cha một lần khi còn Internet. Script cài Python/thư viện, tải model và runtime, kiểm tra checksum; sau đó tool chạy offline. Xem hướng dẫn cài trong `../README.md`.
+
 Mở `run_fast_solver.bat` để chạy mã Python ở nền, không cần đóng gói `.exe`. Bản thường chỉ hiện **ô vuông 5×5 px** sát mép dưới phải màn hình chứa câu hỏi; không có icon khay. Ô vuông được loại khỏi ảnh chụp nên không phải nhấp nháy ẩn/hiện mỗi lần OCR. Mở `run_fast_solver_visible.bat` để xem ảnh chụp, OCR từng ô, tiến trình, thời gian và đáp án. Nếu bản nền đang chạy, launcher kiểm thử mở cửa sổ của chính phiên đó, không nạp model lần hai. Phím mặc định là **Ctrl+Alt+S** mở Cài đặt, **Ctrl+Alt+Q** thoát và **Ctrl+Alt+W** bật lại sau khi thoát. Khi đổi phím, cấu hình hiện tại được lưu trong `ui_settings.json`. Phím bật lại được lưu trong một lối tắt Start Menu trỏ tới mã Python, nên chỉ nhận tổ hợp Ctrl+Alt+chữ/số; không nhận nút chuột khi ứng dụng đã tắt.
 
 Các phím dưới đây là cấu hình mặc định; sau khi bạn đổi phím, xem `ui_settings.json` để biết tổ hợp đang dùng. Ở chế độ **Tự đọc cả vùng**, đưa chuột tới hai góc đối diện của câu hỏi và phương án, bấm phím **`** tại mỗi góc. Vùng được giữ cho các câu sau. Tool theo dõi ảnh mới và OCR trước; bấm **Ctrl+Enter** để giải. Đáp án được copy; giữ **\\** để hiện chữ đỏ mờ, thả để ẩn.

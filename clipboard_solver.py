@@ -29,7 +29,7 @@ class ExamSolver:
         if not self.index.chunks:
             raise RuntimeError('Kho tài liệu trống. Chạy build_knowledge trước.')
         self.slides = self.index.chunks
-        self.model = LocalModel(self.settings, cpu=not use_gpu)
+        self.model = LocalModel(self.settings, cpu=not use_gpu or self.settings.get('device') == 'CPU')
         self.ocr = None
         self.cache = {}
         self.last_diagnostic = {}
