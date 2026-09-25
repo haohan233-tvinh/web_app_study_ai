@@ -444,6 +444,56 @@ class FastTests(unittest.TestCase):
         self.assertIn('    return value;', result)
         self.assertIn('}', result)
 
+    def test_unbordered_code_question_uses_real_answer_labels(self):
+        from PIL import ImageDraw, ImageFont
+
+        if not Path(r'C:\Windows\Fonts\consola.ttf').is_file():
+            self.skipTest('Consolas is unavailable')
+        image = Image.new('RGB', (850, 660), 'white')
+        draw = ImageDraw.Draw(image)
+        code_font = ImageFont.truetype(r'C:\Windows\Fonts\consola.ttf', 21)
+        prose_font = ImageFont.truetype(r'C:\Windows\Fonts\arial.ttf', 20)
+        question = (
+            ('28. Đoạn mã sau in ra giá trị nào?', 25, 14, prose_font),
+            ('const data = {', 45, 55, code_font),
+            ('    count: 2,', 45, 88, code_font),
+            ('    nested: { active: true }', 45, 121, code_font),
+            ('};', 45, 154, code_font),
+            ('if (data.nested.active) {', 45, 187, code_font),
+            ('    console.log(data.count);', 45, 220, code_font),
+            ('}', 45, 253, code_font),
+            ('Chọn đáp án đúng khi hàm chạy', 25, 293, prose_font),
+            ('với dữ liệu trên.', 60, 325, prose_font),
+        )
+        for value, x, y, font in question:
+            draw.text((x, y), value, font=font, fill='black')
+        for index, value in enumerate(('A. 1', 'B. 2', 'C. true', 'D. undefined')):
+            draw.text((55, 380 + index * 65), value, font=code_font, fill='black')
+        solver = ExamSolver()
+        try:
+            if not solver._ocr().tesseract_cmd:
+                self.skipTest('Tesseract is unavailable')
+            prepared = solver.prepare_image(image)
+            parsed = prepared['structured']
+            self.assertEqual(prepared['layout_method'], 'ordered_labels')
+            self.assertFalse(parsed.errors)
+            self.assertIn('    count: 2,\n    nested: { active: true }\n};', parsed.text)
+            self.assertIn('if (data.nested.active) {\n    console.log(data.count);\n}', parsed.text)
+            self.assertTrue(parsed.text.endswith('với dữ liệu trên.'))
+            self.assertEqual(parsed.options, {'A': '1', 'B': '2',
+                                              'C': 'true', 'D': 'undefined'})
+        finally:
+            solver.close()
+
+    def test_overlapping_quality_ocr_does_not_duplicate_answer(self):
+        def rect(left, top, right, bottom):
+            return [[left, top], [right, top], [right, bottom], [left, bottom]]
+
+        lines, boxes = OCR._rows(((rect(51, 442, 107, 467), 'B.2', .99),
+                                  (rect(88, 446, 101, 465), '2', 1.0)))
+        self.assertEqual(lines, ['B.2'])
+        self.assertEqual(len(boxes), 1)
+
     def test_assigned_side_button_never_navigates_browser(self):
         emitted = []
         signal = SimpleNamespace(emit=lambda *args: emitted.append(args))

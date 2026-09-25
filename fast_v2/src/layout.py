@@ -4,7 +4,7 @@ import re
 
 import numpy as np
 
-from .question_parser import NUMBER, is_feedback_line, structured_question
+from .question_parser import NUMBER, START_LABEL, is_feedback_line, structured_question
 
 
 @dataclass(frozen=True)
@@ -171,6 +171,38 @@ def _group_radio_rows(image, boxes, expected):
             'question_bottom': first_y - 25}
 
 
+def _group_labeled_rows(boxes, expected):
+    """Use an ordered A-D run before guessing boundaries from line gaps.
+
+    OCR can lose the space after a badge (``C.true``). The label is still a
+    stronger boundary than indentation inside a code sample above it.
+    """
+    rows = _text_rows(boxes)
+    cutoff = _feedback_cutoff(rows, expected)
+    rows = [row for row in rows if row['cy'] < cutoff]
+    markers = [(index, match.group(1).upper()) for index, row in enumerate(rows)
+               if (match := START_LABEL.match(row['text']))]
+    required = list('ABCDEFGH'[:expected])
+    for offset in range(len(markers) - expected, -1, -1):
+        selected = markers[offset:offset + expected]
+        if ([letter for _, letter in selected] != required or
+                selected[0][0] == 0):
+            continue
+        starts = [index for index, _ in selected]
+        options = {}
+        for position, begin in enumerate(starts):
+            end = starts[position + 1] if position + 1 < expected else len(rows)
+            first = START_LABEL.sub('', rows[begin]['text'], count=1).strip()
+            options[required[position]] = '\n'.join(
+                [first] + [row['text'] for row in rows[begin + 1:end]]).strip()
+        question = _question_text(rows[:starts[0]])
+        q = structured_question(question, options, expected)
+        if not q.errors:
+            return {'question': q, 'method': 'ordered_labels', 'weak': False,
+                    'question_bottom': rows[starts[0]]['top']}
+    return None
+
+
 def _group_indent_rows(image, boxes, expected):
     """Last resort for themes with no cards or labels; never invent text."""
     rows = _text_rows(boxes)
@@ -217,4 +249,7 @@ def group_auto(image, boxes, expected):
     radio = _group_radio_rows(image, boxes, expected)
     if radio and not radio['question'].errors:
         return radio
+    labeled = _group_labeled_rows(boxes, expected)
+    if labeled:
+        return labeled
     return _group_indent_rows(image, boxes, expected) or card or radio

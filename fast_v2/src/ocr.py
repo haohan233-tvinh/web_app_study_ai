@@ -353,6 +353,17 @@ class OCR:
                               'top': min(ys), 'bottom': max(ys),
                               'cy': (min(ys) + max(ys)) / 2,
                               'height': max(ys) - min(ys)})
+        # The quality engine sometimes detects a whole answer and its last
+        # character twice (for example ``B.2`` plus a second ``2`` inside the
+        # same bounding box). Treat nested, identical text as one observation.
+        boxes = [box for box in boxes if not any(
+            other is not box and len(other['text']) > len(box['text']) and
+            box['text'].casefold() in other['text'].casefold() and
+            max(0, min(other['right'], box['right']) -
+                max(other['left'], box['left'])) >= .5 * (box['right'] - box['left']) and
+            max(0, min(other['bottom'], box['bottom']) -
+                max(other['top'], box['top'])) >= .7 * box['height']
+            for other in boxes)]
         lines = OCR._lines(boxes)
         if original_size and prepared_size:
             sx = original_size[0] / (prepared_size[0] - 2 * padding)

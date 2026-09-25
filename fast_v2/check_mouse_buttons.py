@@ -69,13 +69,15 @@ class MouseCheck(QWidget):
 
     def show_keyboard(self, chord):
         self.keyboard_seen.append(chord)
-        self.keyboard_result.setText('Phím điều hướng: ' + chord)
+        self.keyboard_result.setText('Phím điều hướng: ' + ', '.join(
+            dict.fromkeys(self.keyboard_seen)))
         self.update_verdict()
 
     def update_verdict(self):
         if self.mouse_seen and self.keyboard_seen:
-            self.verdict.setText('Nút hông gửi cả XBUTTON và phím điều hướng. Chặn '
-                                 'XBUTTON chưa đủ; hãy đổi cấu hình trong phần mềm chuột.')
+            self.verdict.setText('Nút hông gửi cả XBUTTON và phím điều hướng. Hãy dùng '
+                                 'phím bàn phím trong V2; muốn dùng nút hông, đổi macro '
+                                 'chuột thành F13/F14 trong phần mềm chuột trước.')
         elif self.mouse_seen:
             self.verdict.setText('Đã nhận XBUTTON. V2 có thể chặn nút này trước trình duyệt. '
                                  'Nếu Brave vẫn chuyển trang, hãy báo cả hai dòng kết quả.')
