@@ -20,3 +20,20 @@ artifacts/*.err.log
 !.env.example
 .vscode/
 .idea/
+
+# PyInstaller & build outputs
+build/
+dist/
+_internal/
+*.exe
+fast_v2/build/
+fast_v2/dist/
+fast_v2/_internal/
+fast_v2/*.exe
+fast_v2/logs/
+fast_v2/artifacts/
+
+# Audit test logs
+network_audit_*.json
+network_audit_*.txt
+

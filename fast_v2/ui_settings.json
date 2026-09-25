@@ -1,0 +1,81 @@
+{
+  "corner_key": "grave",
+  "solve_key": "ctrl+enter",
+  "redraw_key": "ctrl+alt+r",
+  "undo_key": "backspace",
+  "cancel_key": "esc",
+  "settings_key": "ctrl+alt+s",
+  "quit_key": "ctrl+alt+q",
+  "show_key": "backslash",
+  "border_key": "f8",
+  "opacity": 0.42,
+  "border_opacity": 0.85,
+  "answer_color": "#b82020",
+  "border_color": "#00b4b9",
+  "answer_mode": "hold",
+  "border_mode": "hold",
+  "status_dot_visible": true,
+  "startup": true,
+  "region": [
+    467,
+    336,
+    757,
+    387
+  ],
+  "manual_regions": [
+    [
+      993,
+      423,
+      1831,
+      458
+    ],
+    [
+      1056,
+      478,
+      1184,
+      512
+    ],
+    [
+      1055,
+      544,
+      1240,
+      576
+    ],
+    [
+      1058,
+      606,
+      1206,
+      640
+    ],
+    [
+      1061,
+      668,
+      1273,
+      705
+    ]
+  ],
+  "reading_mode": "manual",
+  "mode": "auto",
+  "expected_options": 4,
+  "debug_mode": true,
+  "manual_display": [
+    [
+      "DELL P2425H",
+      0,
+      -1080,
+      1920,
+      1080,
+      1.0
+    ],
+    [
+      "\\\\.\\DISPLAY1",
+      0,
+      0,
+      1920,
+      1080,
+      1.0
+    ]
+  ],
+  "toggle_reading_key": "ctrl+alt+m",
+  "restart_key": "ctrl+alt+w"
+}

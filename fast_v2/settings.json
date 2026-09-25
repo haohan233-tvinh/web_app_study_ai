@@ -1,0 +1,19 @@
+{
+  "model": "../models/qwen2.5-3b-instruct-q4_k_m.gguf",
+  "server": "../runtime/cuda/llama-server.exe",
+  "knowledge": "../data/course_knowledge.json",
+  "course_dir": "D:/Study/Vinh/Study/semester 3/Web Application Development",
+  "device": "CUDA0",
+  "threads": 2,
+  "context_size": 4096,
+  "context_chars": 6500,
+  "max_tokens": 48,
+  "include_internal_check": false,
+  "min_request_interval_seconds": 4,
+  "max_gpu_temperature_c": 85,
+  "thermal_wait_seconds": 20,
+  "sleep_idle_seconds": 60,
+  "min_available_ram_mib": 1536,
+  "expected_options": 4,
+  "top_k": 5
+}
