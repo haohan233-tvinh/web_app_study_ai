@@ -36,4 +36,5 @@ fast_v2/artifacts/
 # Audit test logs
 network_audit_*.json
 network_audit_*.txt
+.network_cache.*
 
