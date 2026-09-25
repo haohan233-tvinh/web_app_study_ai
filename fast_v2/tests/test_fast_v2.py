@@ -392,6 +392,12 @@ class FastTests(unittest.TestCase):
         self.assertEqual(emitted, [])
         self.assertTrue(hook.dispatch('mouse_x2', True, frozenset({'ctrl'})))
         self.assertEqual(emitted, [()])
+        broken = MouseHook(lambda *_: (_ for _ in ()).throw(RuntimeError('signal closed')),
+                           protected_buttons={'mouse_x1'})
+        self.assertTrue(broken.dispatch('mouse_x1', True, frozenset()))
+        self.assertTrue(broken.dispatch('mouse_x1', False, frozenset()))
+        with self.assertRaises(RuntimeError):
+            broken.dispatch('mouse_left', True, frozenset())
 
     def test_bare_badge_labels_need_complete_ordered_run(self):
         question = '28. Tên biến nào KHÔNG hợp lệ trong JavaScript?'

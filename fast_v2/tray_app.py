@@ -674,7 +674,9 @@ class TrayApp(QObject):
             if self.settings.get('border_mode', 'test_only') == 'hold':
                 self._bind_hold('border_key', self.signals.border_hold)
             if self.mouse_bindings:
-                self.mouse_hook = MouseHook(self._mouse_event)
+                protected = {mouse_chord(binding)[1] for binding in self.mouse_bindings
+                             if mouse_chord(binding)[1] in {'mouse_x1', 'mouse_x2'}}
+                self.mouse_hook = MouseHook(self._mouse_event, protected_buttons=protected)
                 self.mouse_hook.start()
         except Exception:
             self.unbind_keys()
@@ -998,6 +1000,9 @@ class TrayApp(QObject):
         now_display = time.monotonic()
         if now_display - self.last_display_check > 2:
             self.last_display_check = now_display
+            if self.mouse_hook and not self.mouse_hook.is_running():
+                self.unbind_keys()
+                self.notify('Bộ nhận nút hông đã dừng; mở Cài đặt và gắn lại phím trước khi dùng.')
             if (self.settings.get('manual_regions') and
                     self.settings.get('manual_display') != display_signature()):
                 self.settings['manual_regions'] = None

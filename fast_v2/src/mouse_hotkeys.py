@@ -41,8 +41,9 @@ class MouseHook:
     callback(button, pressed, modifiers) returns True to suppress the native
     mouse event. A matched down is also suppressed on release.
     """
-    def __init__(self, callback):
+    def __init__(self, callback, protected_buttons=()):
         self.callback = callback
+        self.protected_buttons = frozenset(protected_buttons)
         self.thread = None
         self.thread_id = None
         self.hook = None
@@ -53,13 +54,28 @@ class MouseHook:
 
     def dispatch(self, button, pressed, modifiers):
         if pressed:
-            consumed = bool(self.callback(button, True, modifiers))
+            try:
+                consumed = bool(self.callback(button, True, modifiers))
+            except Exception:
+                # A Qt signal or logging failure must not leak an assigned
+                # XBUTTON through to browser Back/Forward.
+                if button not in self.protected_buttons:
+                    raise
+                consumed = True
             if consumed:
                 self._consumed.add(button)
             return consumed
         was_consumed = button in self._consumed
         self._consumed.discard(button)
-        return bool(self.callback(button, False, modifiers)) or was_consumed
+        try:
+            return bool(self.callback(button, False, modifiers)) or was_consumed
+        except Exception:
+            if button not in self.protected_buttons:
+                raise
+            return True
+
+    def is_running(self):
+        return bool(self.thread and self.thread.is_alive() and self.hook)
 
     def start(self):
         if self.thread is not None:
