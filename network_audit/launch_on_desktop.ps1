@@ -62,7 +62,9 @@ if (-not ([System.Management.Automation.PSTypeName]'DesktopProcessLauncher').Typ
     Add-Type -TypeDefinition $typeDef -Language CSharp
 }
 
-$dir = "D:\pop\web_app_study_ai"
+$dir = $PSScriptRoot
+if (-not $dir) { $dir = (Get-Location).Path }
 $batPath = Join-Path $dir "run_network_audit.bat"
 $ret = [DesktopProcessLauncher]::Launch("cmd.exe", "/k `"$batPath`"", $dir)
 Write-Output "Launched process return code: $ret"
+

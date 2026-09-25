@@ -69,13 +69,8 @@ def set_startup(enabled):
     link.parent.mkdir(parents=True, exist_ok=True)
     shell = win32com.client.Dispatch('WScript.Shell')
     shortcut = shell.CreateShortcut(str(link))
-    packaged = ROOT / 'Web MCQ Fast.exe'
-    if getattr(sys, 'frozen', False) or packaged.is_file():
-        shortcut.TargetPath = str(packaged)
-        shortcut.Arguments = ''
-    else:
-        shortcut.TargetPath = str(Path(sys.executable).with_name('pythonw.exe'))
-        shortcut.Arguments = f'"{ROOT / "tray_app.py"}"'
+    shortcut.TargetPath = str(Path(sys.executable).with_name('pythonw.exe'))
+    shortcut.Arguments = f'"{ROOT / "tray_app.py"}"'
     shortcut.WorkingDirectory = str(ROOT)
     shortcut.Description = 'Offline Web MCQ Fast V2'
     shortcut.Save()
@@ -93,13 +88,8 @@ def set_restart_shortcut(hotkey):
     link.parent.mkdir(parents=True, exist_ok=True)
     shell = win32com.client.Dispatch('WScript.Shell')
     shortcut = shell.CreateShortcut(str(link))
-    packaged = ROOT / 'Web MCQ Fast.exe'
-    if getattr(sys, 'frozen', False) or packaged.is_file():
-        shortcut.TargetPath = str(packaged)
-        shortcut.Arguments = ''
-    else:
-        shortcut.TargetPath = str(Path(sys.executable).with_name('pythonw.exe'))
-        shortcut.Arguments = f'"{ROOT / "tray_app.py"}"'
+    shortcut.TargetPath = str(Path(sys.executable).with_name('pythonw.exe'))
+    shortcut.Arguments = f'"{ROOT / "tray_app.py"}"'
     shortcut.WorkingDirectory = str(ROOT)
     shortcut.Description = 'Start offline Web MCQ Fast V2'
     shortcut.Hotkey = hotkey.upper()
@@ -412,10 +402,10 @@ class SettingsDialog(QDialog):
             raise ValueError('Các phím chức năng không được trùng nhau.')
         if not re.fullmatch(r'ctrl\+alt\+[a-z0-9]', keys['restart_key']):
             raise ValueError('Phím bật lại cần Ctrl+Alt+chữ hoặc số; Windows giữ phím này khi app đã thoát.')
-        chords = [set(key.split('+')) for key in keys.values()]
-        for i, first in enumerate(chords):
-            if any(first < other or other < first for other in chords[i+1:]):
-                raise ValueError('Hai phím tắt đang chồng nhau; hãy chọn tổ hợp khác.')
+        # The keyboard hook matches the entire set of pressed keys. For
+        # example, Ctrl+Q and Ctrl+Alt+Q are separate shortcuts; only an
+        # identical chord is a conflict. Mouse chords also compare their
+        # modifier sets exactly in _mouse_event().
         show, border_key = keys['show_key'], keys['border_key']
         if '+' in show or '+' in border_key:
             raise ValueError('Phím giữ đáp án và khung phải là một phím đơn.')
