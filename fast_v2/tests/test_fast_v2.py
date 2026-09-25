@@ -1,4 +1,5 @@
 import os
+import json
 from pathlib import Path
 import queue
 import sys
@@ -21,11 +22,13 @@ from prefetch import PrefetchEngine
 from src.question_parser import parse_question
 from src.layout import DomCapture, ManualCapture, group_auto
 from src.ocr import OCR
-from src.mouse_hotkeys import MouseHook, mouse_chord
+from src.mouse_hotkeys import (MouseHook, mouse_chord,
+                               navigation_macro_detected, save_mouse_diagnostic)
 from src.ordered_concepts import box_model_order
 from src.question_parser import is_feedback_line
 from tray_app import (DEFAULTS, KeyRecorder, Overlay, SettingsDialog, TrayApp,
-                      bare_typing_key, migrate_typing_hotkeys, image_signature,
+                      bare_typing_key, migrate_typing_hotkeys,
+                      migrate_navigation_mouse_hotkeys, load_ui_settings, image_signature,
                       region_from_corners)
 
 
@@ -274,6 +277,9 @@ class FastTests(unittest.TestCase):
         self.assertEqual(recorder.text(), 'ctrl+alt+r')
         recorder._record_mouse('mouse_x2')
         self.assertEqual(recorder.text(), 'mouse_x2')
+        recorder.keyPressEvent(QKeyEvent(QEvent.Type.KeyPress, Qt.Key.Key_F13,
+                                       Qt.KeyboardModifier.NoModifier))
+        self.assertEqual(recorder.text(), 'f13')
 
     def test_typing_keys_cannot_be_global_hotkeys(self):
         self.assertTrue(bare_typing_key('2'))
@@ -516,7 +522,9 @@ class FastTests(unittest.TestCase):
 
     def test_mouse_diagnostic_shows_xbutton_without_model_or_ocr(self):
         from check_mouse_buttons import MouseCheck
-        with (patch('check_mouse_buttons.MouseHook.start'),
+        with (tempfile.TemporaryDirectory() as folder,
+              patch('src.mouse_hotkeys.DIAGNOSTIC_FILE', Path(folder) / 'mouse-check.json'),
+              patch('check_mouse_buttons.MouseHook.start'),
               patch('check_mouse_buttons.MouseHook.stop'),
               patch('keyboard.hook', return_value='keyboard-handle'),
               patch('keyboard.unhook')):
@@ -531,6 +539,48 @@ class FastTests(unittest.TestCase):
                 self.assertIn('cả XBUTTON và phím điều hướng', window.verdict.text())
             finally:
                 window.close()
+            self.assertTrue(navigation_macro_detected())
+            remapped = MouseCheck()
+            try:
+                remapped.show_safe_keyboard('f13')
+                self.assertIn('f13', remapped.safe_result.text())
+            finally:
+                remapped.close()
+            self.assertFalse(navigation_macro_detected())
+
+    def test_navigation_macro_disables_side_button_bindings(self):
+        with (tempfile.TemporaryDirectory() as folder,
+              patch('src.mouse_hotkeys.DIAGNOSTIC_FILE', Path(folder) / 'mouse-check.json')):
+            save_mouse_diagnostic(('mouse_x1', 'mouse_x2'), ('alt+tab', 'ctrl+tab'))
+            self.assertTrue(navigation_macro_detected())
+            settings = {**DEFAULTS, 'solve_key': 'mouse_x2',
+                        'show_key': 'mouse_x1'}
+            self.assertTrue(migrate_navigation_mouse_hotkeys(settings))
+            self.assertEqual(settings['solve_key'], 'ctrl+enter')
+            self.assertEqual(settings['show_key'], 'f7')
+            dialog = SettingsDialog({**DEFAULTS})
+            dialog.solve.setText('mouse_x2')
+            with self.assertRaisesRegex(ValueError, 'Alt\\+Tab'):
+                dialog.values()
+            save_mouse_diagnostic(('mouse_x1', 'mouse_x2'), ())
+            self.assertFalse(navigation_macro_detected())
+            self.assertEqual(dialog.values()['solve_key'], 'mouse_x2')
+
+    def test_startup_migrates_unsafe_side_buttons_from_saved_settings(self):
+        with tempfile.TemporaryDirectory() as folder:
+            ui_file = Path(folder) / 'ui_settings.json'
+            diagnostic = Path(folder) / 'mouse-check.json'
+            ui_file.write_text(json.dumps({'solve_key': 'mouse_x2',
+                                           'show_key': 'mouse_x1'}), encoding='utf-8')
+            with (patch('tray_app.UI_FILE', ui_file),
+                  patch('src.mouse_hotkeys.DIAGNOSTIC_FILE', diagnostic)):
+                save_mouse_diagnostic(('mouse_x1', 'mouse_x2'), ('alt+tab',))
+                loaded = load_ui_settings()
+            self.assertEqual(loaded['solve_key'], 'ctrl+enter')
+            self.assertEqual(loaded['show_key'], 'f7')
+            persisted = json.loads(ui_file.read_text(encoding='utf-8'))
+            self.assertEqual(persisted['solve_key'], 'ctrl+enter')
+            self.assertEqual(persisted['show_key'], 'f7')
 
     def test_bare_badge_labels_need_complete_ordered_run(self):
         question = '28. Tên biến nào KHÔNG hợp lệ trong JavaScript?'
@@ -805,7 +855,8 @@ class FastTests(unittest.TestCase):
         finally:
             engine.close()
 
-    def test_hotkey_conflicts_and_overlay_visibility(self):
+    @patch('tray_app.navigation_macro_detected', return_value=False)
+    def test_hotkey_conflicts_and_overlay_visibility(self, _diagnostic):
         settings = {**DEFAULTS, 'startup': False}
         dialog = SettingsDialog(settings)
         self.assertEqual(dialog.values()['solve_key'], 'ctrl+enter')

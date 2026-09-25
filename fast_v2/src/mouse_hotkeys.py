@@ -1,14 +1,35 @@
 """Small Windows low-level mouse hook for configurable X1/X2 and other buttons."""
 import ctypes
 from ctypes import wintypes
+import json
+from pathlib import Path
 import threading
 
 
 BUTTONS = ('mouse_left', 'mouse_right', 'mouse_middle', 'mouse_x1', 'mouse_x2')
+DIAGNOSTIC_FILE = Path(__file__).resolve().parents[1] / 'logs' / 'mouse-check.json'
 _DOWN = {0x0201: 'mouse_left', 0x0204: 'mouse_right', 0x0207: 'mouse_middle',
          0x020B: 'mouse_x'}
 _UP = {0x0202: 'mouse_left', 0x0205: 'mouse_right', 0x0208: 'mouse_middle',
        0x020C: 'mouse_x'}
+
+
+def navigation_macro_detected():
+    """True when this computer's side buttons also emit browser/OS shortcuts."""
+    try:
+        return bool(json.loads(DIAGNOSTIC_FILE.read_text(encoding='utf-8'))
+                    .get('navigation_keys'))
+    except (OSError, ValueError, TypeError):
+        return False
+
+
+def save_mouse_diagnostic(buttons, navigation_keys, safe_keys=()):
+    DIAGNOSTIC_FILE.parent.mkdir(parents=True, exist_ok=True)
+    DIAGNOSTIC_FILE.write_text(json.dumps({
+        'mouse_buttons': sorted(set(buttons)),
+        'navigation_keys': sorted(set(navigation_keys)),
+        'safe_keys': sorted(set(safe_keys)),
+    }, ensure_ascii=False, indent=2), encoding='utf-8')
 
 
 class _MouseData(ctypes.Structure):

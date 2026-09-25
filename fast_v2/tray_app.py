@@ -26,7 +26,7 @@ from clipboard_solver import ExamSolver, ROOT
 from debug_ui import CaptureBorder, DebugPanel, StatusDot, exclude_from_capture, region_to_qrect
 from prefetch import PrefetchEngine
 from src.layout import DomCapture, ManualCapture
-from src.mouse_hotkeys import MouseHook, mouse_chord
+from src.mouse_hotkeys import MouseHook, mouse_chord, navigation_macro_detected
 from web_bridge import WebBridge
 
 UI_FILE = ROOT / 'ui_settings.json'
@@ -80,13 +80,39 @@ def migrate_typing_hotkeys(settings):
     return changed
 
 
+def migrate_navigation_mouse_hotkeys(settings):
+    """Do not activate side buttons known to emit Alt+Tab/Ctrl+Tab too."""
+    if not navigation_macro_detected():
+        return False
+    changed = False
+    used = {str(settings.get(name, '')).lower() for name in KEY_FIELDS}
+    for name in KEY_FIELDS:
+        old = str(settings.get(name, '')).lower()
+        mouse = mouse_chord(old)
+        if not mouse or mouse[1] not in {'mouse_x1', 'mouse_x2'}:
+            continue
+        candidates = ((DEFAULTS[name], 'f9', 'f10', 'f11', 'f12')
+                      if name in HOLD_FIELDS else
+                      (DEFAULTS[name], 'ctrl+alt+f9', 'ctrl+alt+f10',
+                       'ctrl+alt+f11', 'ctrl+alt+f12'))
+        replacement = next((key for key in candidates if key not in used), None)
+        if replacement is None:
+            raise ValueError('Không tìm được phím thay thế an toàn cho ' + name)
+        settings[name] = replacement
+        used.add(replacement)
+        changed = True
+    return changed
+
+
 def load_ui_settings():
     try:
         loaded = json.loads(UI_FILE.read_text(encoding='utf-8'))
     except (OSError, ValueError):
         loaded = {}
     settings = {**DEFAULTS, **loaded}
-    if migrate_typing_hotkeys(settings):
+    typing_changed = migrate_typing_hotkeys(settings)
+    mouse_changed = migrate_navigation_mouse_hotkeys(settings)
+    if typing_changed or mouse_changed:
         save_ui_settings(settings)
     return settings
 
@@ -454,6 +480,11 @@ class SettingsDialog(QDialog):
                                  'Dùng Ctrl+Alt+tổ hợp, hoặc F7/F8 cho phím giữ.')
             mouse = mouse_chord(value)
             if mouse:
+                if (mouse[1] in {'mouse_x1', 'mouse_x2'} and
+                        navigation_macro_detected()):
+                    raise ValueError('Nút hông trên máy này còn phát Alt+Tab/Ctrl+Tab. '
+                                     'Hãy đổi macro chuột sang F13/F14, chạy lại '
+                                     'run_mouse_check.bat, rồi mới gán phím.')
                 if mouse[1] in {'mouse_left', 'mouse_right'} and not mouse[0]:
                     raise ValueError('Chuột trái/phải cần thêm Ctrl, Alt hoặc Shift để không khóa thao tác chuột.')
                 parsed.append(('mouse', tuple(sorted(mouse[0])), mouse[1]))

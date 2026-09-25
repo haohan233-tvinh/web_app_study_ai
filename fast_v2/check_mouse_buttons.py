@@ -4,16 +4,18 @@ import sys
 from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget
 
-from src.mouse_hotkeys import MouseHook
+from src.mouse_hotkeys import MouseHook, save_mouse_diagnostic
 
 
 NAV_KEYS = {'tab', 'left', 'right', 'page up', 'page down',
             'browser back', 'browser forward', 'back', 'forward'}
+SAFE_KEYS = {f'f{number}' for number in range(7, 25)}
 
 
 class Events(QObject):
     mouse = pyqtSignal(str)
     keyboard = pyqtSignal(str)
+    safe_keyboard = pyqtSignal(str)
 
 
 class MouseCheck(QWidget):
@@ -24,6 +26,7 @@ class MouseCheck(QWidget):
         self.events = Events(self)
         self.events.mouse.connect(self.show_mouse)
         self.events.keyboard.connect(self.show_keyboard)
+        self.events.safe_keyboard.connect(self.show_safe_keyboard)
         self.mouse_hook = MouseHook(self.on_mouse,
                                     protected_buttons={'mouse_x1', 'mouse_x2'})
         self.keyboard_hook = None
@@ -32,16 +35,19 @@ class MouseCheck(QWidget):
         layout.addWidget(QLabel('Không mở trang bài tập để thử; cửa sổ này chặn X1/X2.'))
         self.mouse_result = QLabel('XBUTTON: chưa nhận')
         self.keyboard_result = QLabel('Phím điều hướng: chưa nhận')
+        self.safe_result = QLabel('Phím riêng: chưa nhận')
         self.verdict = QLabel('Nếu chỉ thấy phím điều hướng, phần mềm chuột đã đổi nút hông thành phím.')
         self.verdict.setWordWrap(True)
         layout.addWidget(self.mouse_result)
         layout.addWidget(self.keyboard_result)
+        layout.addWidget(self.safe_result)
         layout.addWidget(self.verdict)
         close = QPushButton('Đóng')
         close.clicked.connect(self.close)
         layout.addWidget(close)
         self.mouse_seen = set()
         self.keyboard_seen = []
+        self.safe_seen = []
         try:
             self.mouse_hook.start()
             import keyboard
@@ -61,6 +67,8 @@ class MouseCheck(QWidget):
             modifiers = [name for name in ('ctrl', 'alt', 'shift')
                          if keyboard.is_pressed(name)]
             self.events.keyboard.emit('+'.join(modifiers + [event.name]))
+        elif event.event_type == 'down' and event.name in SAFE_KEYS:
+            self.events.safe_keyboard.emit(event.name)
 
     def show_mouse(self, button):
         self.mouse_seen.add(button)
@@ -71,6 +79,11 @@ class MouseCheck(QWidget):
         self.keyboard_seen.append(chord)
         self.keyboard_result.setText('Phím điều hướng: ' + ', '.join(
             dict.fromkeys(self.keyboard_seen)))
+        self.update_verdict()
+
+    def show_safe_keyboard(self, key):
+        self.safe_seen.append(key)
+        self.safe_result.setText('Phím riêng: ' + ', '.join(dict.fromkeys(self.safe_seen)))
         self.update_verdict()
 
     def update_verdict(self):
@@ -85,8 +98,17 @@ class MouseCheck(QWidget):
             self.verdict.setText('Chưa nhận XBUTTON. Có thể nút hông đang được đổi thành '
                                  'phím điều hướng; hãy gán đúng tổ hợp này trong V2 hoặc '
                                  'đổi cấu hình ở phần mềm chuột.')
+        elif self.safe_seen:
+            self.verdict.setText('Đã thấy phím riêng. Nếu bấm nút hông mà chỉ hiện '
+                                 'phím này, có thể gán nó trong V2.')
 
     def closeEvent(self, event):
+        if self.mouse_seen or self.keyboard_seen or self.safe_seen:
+            try:
+                save_mouse_diagnostic(self.mouse_seen, self.keyboard_seen,
+                                      self.safe_seen)
+            except OSError as error:
+                self.verdict.setText('Không lưu được kết quả kiểm tra: ' + str(error))
         if self.keyboard_hook is not None:
             import keyboard
             keyboard.unhook(self.keyboard_hook)
