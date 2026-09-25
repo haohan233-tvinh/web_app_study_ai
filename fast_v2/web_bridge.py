@@ -86,8 +86,10 @@ class WebBridge:
                     for raw in item['boxes']:
                         if not isinstance(raw, dict) or not isinstance(raw.get('text'), str):
                             raise ValueError('box')
-                        text = ' '.join(raw['text'].split())[:2000]
-                        if not text:
+                        code = raw.get('code') is True
+                        text = (raw['text'].rstrip() if code else
+                                ' '.join(raw['text'].split()))[:2000]
+                        if not text.strip():
                             continue
                         coords = [float(raw[k]) for k in ('left', 'top', 'right', 'bottom')]
                         if not all(-100 <= value <= 20000 for value in coords):
@@ -95,7 +97,7 @@ class WebBridge:
                         left, top, right, bottom = coords
                         if right <= left or bottom <= top:
                             continue
-                        boxes.append({'text': text, 'score': 1.0, 'left': left,
+                        boxes.append({'text': text, 'code': code, 'score': 1.0, 'left': left,
                                       'top': top, 'right': right, 'bottom': bottom,
                                       'cy': (top + bottom) / 2, 'height': bottom - top})
                     raw_sections = item.get('sections', [])
@@ -106,7 +108,7 @@ class WebBridge:
                         if not isinstance(section, list) or len(section) > 100 or any(
                                 not isinstance(line, str) for line in section):
                             raise ValueError('section')
-                        sections.append([' '.join(line.split())[:2000]
+                        sections.append([line.rstrip()[:2000]
                                          for line in section if line.strip()])
                     with bridge.lock:
                         if (item.get('generation') != bridge.generation or

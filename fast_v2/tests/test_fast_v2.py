@@ -24,7 +24,9 @@ from src.ocr import OCR
 from src.mouse_hotkeys import MouseHook, mouse_chord
 from src.ordered_concepts import box_model_order
 from src.question_parser import is_feedback_line
-from tray_app import DEFAULTS, KeyRecorder, Overlay, SettingsDialog, TrayApp, image_signature, region_from_corners
+from tray_app import (DEFAULTS, KeyRecorder, Overlay, SettingsDialog, TrayApp,
+                      bare_typing_key, migrate_typing_hotkeys, image_signature,
+                      region_from_corners)
 
 
 class FakeModel:
@@ -273,6 +275,19 @@ class FastTests(unittest.TestCase):
         recorder._record_mouse('mouse_x2')
         self.assertEqual(recorder.text(), 'mouse_x2')
 
+    def test_typing_keys_cannot_be_global_hotkeys(self):
+        self.assertTrue(bare_typing_key('2'))
+        self.assertTrue(bare_typing_key('grave'))
+        self.assertFalse(bare_typing_key('ctrl+alt+2'))
+        settings = {**DEFAULTS, 'show_key': '2', 'corner_key': 'grave'}
+        self.assertTrue(migrate_typing_hotkeys(settings))
+        self.assertEqual(settings['show_key'], 'f7')
+        self.assertEqual(settings['corner_key'], 'ctrl+alt+grave')
+        dialog = SettingsDialog(DEFAULTS)
+        dialog.show_key.setText('2')
+        with self.assertRaisesRegex(ValueError, 'chặn việc gõ'):
+            dialog.values()
+
     def test_mouse_chords_and_hold_release(self):
         self.assertEqual(mouse_chord('ctrl+mouse_x1'), (frozenset({'ctrl'}), 'mouse_x1'))
         self.assertIsNone(mouse_chord('mouse_x3'))
@@ -281,6 +296,56 @@ class FastTests(unittest.TestCase):
         self.assertTrue(hook.dispatch('mouse_x2', True, frozenset()))
         self.assertTrue(hook.dispatch('mouse_x2', False, frozenset()))
         self.assertEqual(seen, [('mouse_x2', True), ('mouse_x2', False)])
+
+    def test_code_reread_restores_braces_index_and_indent(self):
+        from PIL import ImageDraw, ImageFont
+        if not Path(r'C:\Windows\Fonts\consola.ttf').is_file():
+            self.skipTest('Consolas is unavailable')
+        image = Image.new('RGB', (650, 330), 'white')
+        draw = ImageDraw.Draw(image)
+        font = ImageFont.truetype(r'C:\Windows\Fonts\consola.ttf', 22)
+        source = ['Question: what is returned?', 'const names = ["A", "B"];',
+                  'function pick(value) {', '    if (value === "A") {',
+                  '        return names[0];', '    }', '    return null;', '}',
+                  'Choose one answer.']
+        for index, line in enumerate(source):
+            draw.text((15, 8 + index * 34), line, font=font, fill='black')
+        reader = OCR()
+        if not reader.tesseract_cmd:
+            self.skipTest('Tesseract is unavailable')
+        old, boxes = reader.read(image)
+        fixed, _, seconds, improved = reader.refine_code(image, old, boxes)
+        self.assertTrue(improved)
+        self.assertIn('    if (value === "A") {', fixed)
+        self.assertIn('        return names[0];', fixed)
+        self.assertIn('}', fixed)
+        self.assertGreater(seconds, 0)
+        self.assertTrue(any('Question:' in line for line in fixed))
+        self.assertTrue(any('Choose one' in line for line in fixed))
+        html = Image.new('RGB', (650, 220), 'white')
+        draw = ImageDraw.Draw(html)
+        for index, line in enumerate(('<div class="card">', '    <h1>Hello</h1>',
+                                      '    <p>Web</p>', '</div>')):
+            draw.text((15, 15 + index * 34), line, font=font, fill='black')
+        html_lines, html_boxes = reader.read(html)
+        html_fixed, _, _, html_improved = reader.refine_code(html, html_lines, html_boxes)
+        self.assertTrue(html_improved)
+        self.assertTrue(any(line.lstrip() == '<h1>Hello</h1>' and line != line.lstrip()
+                            for line in html_fixed))
+
+    def test_assigned_side_button_never_navigates_browser(self):
+        emitted = []
+        signal = SimpleNamespace(emit=lambda *args: emitted.append(args))
+        fake = SimpleNamespace(mouse_bindings={'ctrl+mouse_x2': ('action', signal)},
+                               mouse_held={})
+        fake._mouse_event = TrayApp._mouse_event.__get__(fake)
+        fake._report_mouse = lambda *args: None
+        hook = MouseHook(fake._mouse_event)
+        self.assertTrue(hook.dispatch('mouse_x2', True, frozenset()))
+        self.assertTrue(hook.dispatch('mouse_x2', False, frozenset()))
+        self.assertEqual(emitted, [])
+        self.assertTrue(hook.dispatch('mouse_x2', True, frozenset({'ctrl'})))
+        self.assertEqual(emitted, [()])
 
     def test_bare_badge_labels_need_complete_ordered_run(self):
         question = '28. Tên biến nào KHÔNG hợp lệ trong JavaScript?'
@@ -339,6 +404,9 @@ class FastTests(unittest.TestCase):
 
             def refine_vietnamese(self, image, lines, boxes):
                 return lines, boxes, 0.0
+
+            def refine_code(self, image, lines, boxes):
+                return lines, boxes, 0.0, False
 
         solver = ExamSolver()
         solver.ocr = OCR()
@@ -583,7 +651,7 @@ class FastTests(unittest.TestCase):
         dialog.quit_key.setText('ctrl+alt+q')
         self.assertEqual(dialog.values()['toggle_reading_key'], 'ctrl+q')
         self.assertEqual(dialog.values()['quit_key'], 'ctrl+alt+q')
-        dialog.corner.setText('grave')
+        dialog.corner.setText('ctrl+alt+grave')
         dialog.redraw_key.setText('ctrl+alt+r')
         dialog.toggle_reading_key.setText('ctrl+alt+m')
         dialog.solve.setText('mouse_x1')

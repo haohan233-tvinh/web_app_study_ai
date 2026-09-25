@@ -37,24 +37,34 @@ function extractRegions(regions) {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   let node;
   while ((node = walker.nextNode()) && boxes.length < 250) {
-    const text = node.textContent.replace(/\s+/g, ' ').trim();
-    if (!text || text.length > 2000) continue;
     const parent = node.parentElement;
     if (!parent || parent.closest('script,style,noscript,template,[aria-hidden="true"]')) continue;
     const style = getComputedStyle(parent);
     if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) continue;
-    const range = document.createRange();
-    range.selectNodeContents(node);
-    const rects = [...range.getClientRects()].filter(rect =>
-      rect.width > 1 && rect.height > 1 && rect.right > selection.left &&
-      rect.left < selection.right && rect.bottom > selection.top && rect.top < selection.bottom);
-    if (!rects.length) continue;
-    const left = Math.max(0, (Math.min(...rects.map(r => r.left)) - selection.left) * ratio);
-    const top = Math.max(0, (Math.min(...rects.map(r => r.top)) - selection.top) * ratio);
-    const right = Math.min(width, (Math.max(...rects.map(r => r.right)) - selection.left) * ratio);
-    const bottom = Math.min(height, (Math.max(...rects.map(r => r.bottom)) - selection.top) * ratio);
-    if (right <= left || bottom <= top) continue;
-    boxes.push({text, left, top, right, bottom});
+    const code = Boolean(parent.closest('pre')) || style.whiteSpace.startsWith('pre');
+    const raw = node.textContent;
+    const chunks = code && raw.includes('\n')
+      ? [...raw.matchAll(/[^\r\n]*(?:\r?\n|$)/g)]
+      : [{0: raw, index: 0}];
+    for (const chunk of chunks) {
+      const source = chunk[0].replace(/\r?\n$/, '');
+      const text = code ? source.replace(/\t/g, '    ').replace(/\s+$/, '')
+                        : source.replace(/\s+/g, ' ').trim();
+      if (!text.trim() || text.length > 2000) continue;
+      const range = document.createRange();
+      range.setStart(node, chunk.index);
+      range.setEnd(node, chunk.index + source.length);
+      const rects = [...range.getClientRects()].filter(rect =>
+        rect.width > 1 && rect.height > 1 && rect.right > selection.left &&
+        rect.left < selection.right && rect.bottom > selection.top && rect.top < selection.bottom);
+      if (!rects.length) continue;
+      const left = Math.max(0, (Math.min(...rects.map(r => r.left)) - selection.left) * ratio);
+      const top = Math.max(0, (Math.min(...rects.map(r => r.top)) - selection.top) * ratio);
+      const right = Math.min(width, (Math.max(...rects.map(r => r.right)) - selection.left) * ratio);
+      const bottom = Math.min(height, (Math.max(...rects.map(r => r.bottom)) - selection.top) * ratio);
+      if (right <= left || bottom <= top) continue;
+      boxes.push({text, code, left, top, right, bottom});
+    }
   }
   boxes.sort((a, b) => a.top - b.top || a.left - b.left);
   results.push(boxes);

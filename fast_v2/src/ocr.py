@@ -1,5 +1,6 @@
 """V2 OCR: direct image input and a real 960-pixel detection limit."""
 import io
+import csv
 import difflib
 import os
 from pathlib import Path
@@ -8,6 +9,7 @@ import shutil
 import subprocess
 import time
 import unicodedata
+from statistics import median
 from PIL import Image, ImageEnhance, ImageOps
 
 
@@ -33,6 +35,7 @@ class OCR:
             installed = Path(os.environ.get('ProgramFiles', r'C:\Program Files')) / 'Tesseract-OCR' / 'tesseract.exe'
             if installed.is_file():
                 tesseract = str(installed)
+        self.tesseract_cmd = tesseract
         self.vietnamese_cmd = tesseract if (bundled / 'vie.traineddata').is_file() else None
         self.vietnamese_data = bundled
         self.english_data = Path(tesseract).parent / 'tessdata' if tesseract else None
@@ -146,6 +149,122 @@ class OCR:
         if changed:
             lines = self._lines(boxes)
         return lines, boxes, round(time.perf_counter() - start, 3) if attempted else 0.0
+
+    @staticmethod
+    def _code_line(value):
+        return bool(re.search(
+            r'\b(?:const|let|var|function|return|if|else|for|while|class|def|'
+            r'console|import|export)\b|[{};]|=>|===|\[[0-9]+\]|'
+            r'</?[a-z][^>]{0,150}>', value, re.I))
+
+    def refine_code(self, image, lines, boxes):
+        """Re-read a multiline code run with English TSV OCR, retaining indentation."""
+        if (not self.tesseract_cmd or not self.english_data or
+                not (self.english_data / 'eng.traineddata').is_file()):
+            return lines, boxes, 0.0, False
+        code_boxes = sorted((box for box in boxes if self._code_line(box['text'])),
+                            key=lambda box: box['cy'])
+        if len(code_boxes) < 3:
+            return lines, boxes, 0.0, False
+        line_height = median(box['height'] for box in code_boxes)
+        runs = [[code_boxes[0]]]
+        for box in code_boxes[1:]:
+            if box['cy'] - runs[-1][-1]['cy'] > 2.7 * line_height:
+                runs.append([])
+            runs[-1].append(box)
+        code = max(runs, key=len)
+        if len(code) < 3 or code[-1]['cy'] - code[0]['cy'] < 2 * line_height:
+            return lines, boxes, 0.0, False
+        start = time.perf_counter()
+        height = median(box['height'] for box in code)
+        top = max(0, int(code[0]['top'] - height))
+        bottom = min(image.height, int(code[-1]['bottom'] + 4 * height))
+        crop = image.crop((0, top, image.width, bottom)).convert('RGB')
+        buffer = io.BytesIO()
+        crop.save(buffer, format='PNG')
+        try:
+            process = subprocess.run(
+                [self.tesseract_cmd, 'stdin', 'stdout', '--tessdata-dir',
+                 str(self.english_data), '-l', 'eng', '--oem', '1', '--psm', '6',
+                 '-c', 'preserve_interword_spaces=1', 'tsv'],
+                input=buffer.getvalue(), capture_output=True, timeout=6,
+                creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0),
+                env={**os.environ, 'OMP_THREAD_LIMIT': str(self.threads)})
+        except (OSError, subprocess.TimeoutExpired):
+            return lines, boxes, round(time.perf_counter() - start, 3), False
+        if process.returncode:
+            return lines, boxes, round(time.perf_counter() - start, 3), False
+        rows = {}
+        for word in csv.DictReader(io.StringIO(process.stdout.decode('utf-8', 'replace')),
+                                   delimiter='\t', quoting=csv.QUOTE_NONE):
+            value = (word.get('text') or '').strip()
+            if not value or word.get('level') != '5':
+                continue
+            try:
+                key = (word['block_num'], word['par_num'], word['line_num'])
+                item = (int(word['left']), int(word['top']) + top,
+                        int(word['width']), int(word['height']),
+                        max(0.0, float(word['conf']) / 100), value)
+            except (KeyError, ValueError):
+                continue
+            rows.setdefault(key, []).append(item)
+        if not rows:
+            return lines, boxes, round(time.perf_counter() - start, 3), False
+        cell_widths = [word[2] / len(word[5]) for words in rows.values()
+                       for word in words if len(word[5]) >= 2 and word[5].isalpha()]
+        cell = median(cell_widths) * 1.08 if cell_widths else max(5.0, height * .6)
+        baseline = min(min(word[0] for word in words) for words in rows.values())
+        candidates = []
+        for words in rows.values():
+            words.sort(key=lambda item: item[0])
+            indent = min(24, max(0, round((words[0][0] - baseline) / cell)))
+            parts, end = [' ' * indent], None
+            for left, y, width, word_height, confidence, value in words:
+                if end is not None:
+                    gap = max(0, int((left - end + 1) / cell))
+                    parts.append(' ' * min(12, gap))
+                parts.append(value)
+                end = left + width
+            text = ''.join(parts).rstrip()
+            candidates.append({'text': text, 'score': min(word[4] for word in words),
+                               'left': words[0][0], 'right': max(w[0]+w[2] for w in words),
+                               'top': min(w[1] for w in words),
+                               'bottom': max(w[1]+w[3] for w in words)})
+        candidates.sort(key=lambda box: box['top'])
+        indexes = [i for i, box in enumerate(candidates) if self._code_line(box['text'])]
+        if not indexes:
+            return lines, boxes, round(time.perf_counter() - start, 3), False
+        candidates = candidates[indexes[0]:indexes[-1]+1]
+        old = '\n'.join(box['text'] for box in code)
+        new = '\n'.join(box['text'] for box in candidates)
+        similarity = difflib.SequenceMatcher(
+            None, re.sub(r'\s+', '', old).casefold(),
+            re.sub(r'\s+', '', new).casefold()).ratio()
+        old_braces = old.count('{') + old.count('}')
+        new_braces = new.count('{') + new.count('}')
+        gained_indent = (any(line.startswith('  ') for line in new.splitlines()) and
+                         not any(line.startswith('  ') for line in old.splitlines()))
+        gained_index = (len(re.findall(r'\[[0-9]+\]', new)) >
+                        len(re.findall(r'\[[0-9]+\]', old)))
+        improved = (similarity >= .67 and len(candidates) >= len(code) and
+                    new_braces >= old_braces and
+                    new.count('"') >= old.count('"') and
+                    new.count("'") >= old.count("'") and
+                    new.count('=>') >= old.count('=>') and
+                    new.count('<') >= old.count('<') and
+                    new.count('>') >= old.count('>') and
+                    (len(candidates) > len(code) or new_braces > old_braces or
+                     gained_indent or gained_index))
+        elapsed = round(time.perf_counter() - start, 3)
+        if not improved:
+            return lines, boxes, elapsed, False
+        first, last = candidates[0]['top'], candidates[-1]['bottom']
+        kept = [dict(box) for box in boxes if not first-height*.5 <= box['cy'] <= last+height*.5]
+        for box in candidates:
+            box['cy'] = (box['top'] + box['bottom']) / 2
+            box['height'] = box['bottom'] - box['top']
+        result = kept + candidates
+        return self._lines(result), result, elapsed, True
 
     @staticmethod
     def preprocess(image):

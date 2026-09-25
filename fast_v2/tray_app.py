@@ -30,12 +30,12 @@ from src.mouse_hotkeys import MouseHook, mouse_chord
 from web_bridge import WebBridge
 
 UI_FILE = ROOT / 'ui_settings.json'
-DEFAULTS = {'corner_key': 'grave', 'solve_key': 'ctrl+enter',
+DEFAULTS = {'corner_key': 'ctrl+alt+grave', 'solve_key': 'ctrl+enter',
             'redraw_key': 'ctrl+alt+r', 'undo_key': 'backspace',
             'cancel_key': 'esc', 'settings_key': 'ctrl+alt+s',
             'quit_key': 'ctrl+alt+q', 'toggle_reading_key': 'ctrl+alt+m',
             'restart_key': 'ctrl+alt+w',
-            'show_key': 'backslash', 'border_key': 'f8',
+            'show_key': 'f7', 'border_key': 'f8',
             'opacity': .42, 'border_opacity': .85,
             'answer_color': '#b82020', 'border_color': '#00b4b9',
             'answer_mode': 'hold', 'border_mode': 'test_only',
@@ -45,13 +45,50 @@ DEFAULTS = {'corner_key': 'grave', 'solve_key': 'ctrl+enter',
             'web_dom_enabled': True,
             'debug_mode': False}
 
+KEY_FIELDS = ('corner_key', 'solve_key', 'redraw_key', 'toggle_reading_key',
+              'undo_key', 'cancel_key', 'settings_key', 'quit_key',
+              'restart_key', 'show_key', 'border_key')
+HOLD_FIELDS = ('show_key', 'border_key')
+TYPING_KEYS = {'space', 'tab', 'enter', 'grave', 'backslash', 'minus', 'equal',
+               'comma', 'period', 'slash', 'semicolon', 'apostrophe',
+               'left bracket', 'right bracket', 'caps lock'}
+
+
+def bare_typing_key(value):
+    value = value.strip().lower()
+    return '+' not in value and (len(value) == 1 and value.isprintable() or
+                                  value in TYPING_KEYS)
+
+
+def migrate_typing_hotkeys(settings):
+    """Old global bare typing keys cannot safely remain active on a web form."""
+    changed = False
+    used = {str(settings.get(name, '')).lower() for name in KEY_FIELDS}
+    for name in KEY_FIELDS:
+        old = str(settings.get(name, '')).lower()
+        if not bare_typing_key(old):
+            continue
+        candidates = (('f7', 'f9', 'f10', 'f11', 'f12') if name in HOLD_FIELDS else
+                      (f'ctrl+alt+{old}', f'ctrl+alt+shift+{old}',
+                       'ctrl+alt+f6', 'ctrl+alt+f9'))
+        replacement = next((key for key in candidates if key not in used), None)
+        if replacement is None:
+            raise ValueError('Không tìm được phím thay thế an toàn cho ' + name)
+        settings[name] = replacement
+        used.add(replacement)
+        changed = True
+    return changed
+
 
 def load_ui_settings():
     try:
         loaded = json.loads(UI_FILE.read_text(encoding='utf-8'))
     except (OSError, ValueError):
         loaded = {}
-    return {**DEFAULTS, **loaded}
+    settings = {**DEFAULTS, **loaded}
+    if migrate_typing_hotkeys(settings):
+        save_ui_settings(settings)
+    return settings
 
 
 def save_ui_settings(settings):
@@ -219,6 +256,7 @@ class Signals(QObject):
     settings = pyqtSignal()
     quit = pyqtSignal()
     toggle_reading = pyqtSignal()
+    mouse_info = pyqtSignal(str)
 
 
 class KeyRecorder(QLineEdit):
@@ -410,7 +448,10 @@ class SettingsDialog(QDialog):
                   self.restart_key, self.show_key, self.border_key)
         keys = dict(zip(names, (field.text().strip().lower() for field in fields)))
         parsed = []
-        for value in keys.values():
+        for name, value in keys.items():
+            if bare_typing_key(value):
+                raise ValueError(f'{name}: phím chữ/số đơn sẽ chặn việc gõ trong web. '
+                                 'Dùng Ctrl+Alt+tổ hợp, hoặc F7/F8 cho phím giữ.')
             mouse = mouse_chord(value)
             if mouse:
                 if mouse[1] in {'mouse_left', 'mouse_right'} and not mouse[0]:
@@ -494,6 +535,7 @@ class TrayApp(QObject):
         self.signals.settings.connect(self.open_settings)
         self.signals.quit.connect(self.quit)
         self.signals.toggle_reading.connect(self.toggle_reading_mode)
+        self.signals.mouse_info.connect(self.mouse_info)
         self.first_corner = None
         self.draft_regions = []
         self.redraw_active = False
@@ -665,15 +707,34 @@ class TrayApp(QObject):
                 signal.emit(False)
                 return True
             return False
+        assigned = any(mouse_chord(setting)[1] == button
+                       for setting in self.mouse_bindings)
         for setting, (kind, signal) in self.mouse_bindings.items():
             if mouse_chord(setting) == (modifiers, button):
+                if button in {'mouse_x1', 'mouse_x2'}:
+                    self._report_mouse(button, True)
                 if kind == 'hold':
                     self.mouse_held[button] = signal
                     signal.emit(True)
                 else:
                     signal.emit()
                 return True
-        return False
+        # An XBUTTON configured as a hotkey must never reach browser Back/Forward,
+        # including a press whose modifier snapshot changed during the click.
+        if assigned and button in {'mouse_x1', 'mouse_x2'}:
+            self._report_mouse(button, False)
+        return assigned and button in {'mouse_x1', 'mouse_x2'}
+
+    def _report_mouse(self, button, matched):
+        signals = getattr(self, 'signals', None)
+        signal = getattr(signals, 'mouse_info', None)
+        if signal:
+            signal.emit(f'{button}:{"matched" if matched else "modifiers_changed"}')
+
+    def mouse_info(self, message):
+        self.record({'event': 'mouse_button', 'detail': message, 'suppressed': True})
+        if self.debug_panel.isVisible():
+            self.debug_panel.set_stage('Nút hông đã nhận và chặn điều hướng: ' + message)
 
     def bind_redraw_keys(self):
         for name, signal in (('undo_key', self.signals.undo),
@@ -976,6 +1037,10 @@ class TrayApp(QObject):
                         suffix = ' · đã đọc lại chất lượng cao' if event['reread'] else ''
                         if event.get('vietnamese_ocr_seconds'):
                             suffix += f' · tiếng Việt: {event["vietnamese_ocr_seconds"]:.2f}s'
+                        if event.get('code_ocr_seconds'):
+                            suffix += f' · code: {event["code_ocr_seconds"]:.2f}s'
+                            if event.get('code_reread'):
+                                suffix += ' (đã đọc lại)'
                         parts = event.get('section_ocr_seconds')
                         if parts:
                             suffix += ' · từng ô: ' + ', '.join(f'{x:.2f}s' for x in parts)

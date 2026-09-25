@@ -173,6 +173,8 @@ class ExamSolver:
                     'ocr_seconds': 0, 'reread': False}
         sections, timings, reread = [], [], False
         vi_total = 0.0
+        code_total = 0.0
+        code_reread = False
         all_boxes = []
         for index, crop in enumerate(capture.crops):
             section_start = time.perf_counter()
@@ -190,6 +192,9 @@ class ExamSolver:
                         break
             lines, boxes, vi_seconds = self._ocr().refine_vietnamese(crop, lines, boxes)
             vi_total += vi_seconds
+            lines, boxes, code_seconds, improved = self._ocr().refine_code(crop, lines, boxes)
+            code_total += code_seconds
+            code_reread |= improved
             text = '\n'.join(lines).strip()
             sections.append(text)
             all_boxes.extend(boxes)
@@ -203,7 +208,10 @@ class ExamSolver:
                 'section_ocr_seconds': timings,
                 'capture_source': 'OCR',
                 'vietnamese_ocr_seconds': round(vi_total, 3),
-                'ocr_seconds': round(time.perf_counter() - start, 3), 'reread': reread}
+                'code_ocr_seconds': round(code_total, 3),
+                'code_reread': code_reread,
+                'ocr_seconds': round(time.perf_counter() - start, 3),
+                'reread': reread or code_reread}
 
     def _prepare_dom(self, capture):
         if capture.sections:

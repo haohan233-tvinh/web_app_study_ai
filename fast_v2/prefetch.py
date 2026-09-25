@@ -99,6 +99,8 @@ class PrefetchEngine:
                                      'error': value.get('error'),
                                      'ocr_seconds': value.get('ocr_seconds'),
                                      'vietnamese_ocr_seconds': value.get('vietnamese_ocr_seconds', 0),
+                                     'code_ocr_seconds': value.get('code_ocr_seconds', 0),
+                                     'code_reread': value.get('code_reread', False),
                                      'reread': value.get('reread', False),
                                      'section_ocr_seconds': value.get('section_ocr_seconds'),
                                      'layout_method': value.get('layout_method'),

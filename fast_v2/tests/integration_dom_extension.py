@@ -25,7 +25,14 @@ body{font:20px Arial;margin:20px}.card{border:1px solid #ccd;padding:14px;margin
 <div class="card">A Margin → Border → Padding → Content</div>
 <div class="card">B Padding → Border → Margin → Content</div>
 <div class="card">C Border → Margin → Padding → Content</div>
-<div class="card">D Content → Padding → Border → Margin</div>'''
+<div class="card">D Content → Padding → Border → Margin</div>
+<pre id="snippet">const names = ["A", "B"];
+function pick(value) {
+    if (value === "A") {
+        return names[0];
+    }
+    return null;
+}</pre>'''
 
 
 class PageHandler(BaseHTTPRequestHandler):
@@ -130,6 +137,31 @@ def main():
                         print('manual_options', manual_prepared['structured'].options)
                         if manual_prepared['capture_source'] != 'DOM':
                             raise RuntimeError('Manual DOM regions fell back to OCR')
+                        page.locator('#snippet').scroll_into_view_if_needed()
+                        code_region = page.evaluate('''() => {
+                            const r = document.querySelector('#snippet').getBoundingClientRect();
+                            const scale = devicePixelRatio || 1;
+                            const side = Math.min(16, Math.max(0, (outerWidth-innerWidth)/2));
+                            const ch = Math.max(0, outerHeight-innerHeight);
+                            const bottom = ch > 24 ? Math.min(8, ch/5) : 0;
+                            const x = (screenX+side)*scale, y=(screenY+ch-bottom)*scale;
+                            return [x+(r.left-2)*scale,y+(r.top-2)*scale,
+                                    x+(r.right+2)*scale,y+(r.bottom+2)*scale].map(Math.round);
+                        }''')
+                        bridge.set_regions([code_region])
+                        deadline = time.monotonic() + 5
+                        code_snapshot = None
+                        while time.monotonic() < deadline:
+                            code_snapshot = bridge.get_snapshot([code_region])
+                            if code_snapshot:
+                                break
+                            time.sleep(.2)
+                        if not code_snapshot:
+                            raise RuntimeError('Code DOM region did not arrive')
+                        code_lines = [box['text'] for box in code_snapshot['boxes']]
+                        print('code_lines', code_lines)
+                        if '    if (value === "A") {' not in code_lines or '}' not in code_lines:
+                            raise RuntimeError('Code indentation or closing brace was lost')
                     finally:
                         solver.close()
                 finally:
