@@ -379,6 +379,71 @@ class FastTests(unittest.TestCase):
         finally:
             solver.close()
 
+    def test_wrapped_vietnamese_question_and_nested_code_punctuation(self):
+        from PIL import ImageDraw, ImageFont
+
+        if not Path(r'C:\Windows\Fonts\consola.ttf').is_file():
+            self.skipTest('Consolas is unavailable')
+        image = Image.new('RGB', (850, 720), 'white')
+        draw = ImageDraw.Draw(image)
+        code_font = ImageFont.truetype(r'C:\Windows\Fonts\consola.ttf', 21)
+        prose_font = ImageFont.truetype(r'C:\Windows\Fonts\arial.ttf', 20)
+        question = (
+            ('28. Đoạn mã sau in ra giá trị nào?', 25, 14, prose_font),
+            ('const data = {', 45, 55, code_font),
+            ('    count: 2,', 45, 88, code_font),
+            ('    nested: { active: true }', 45, 121, code_font),
+            ('};', 45, 154, code_font),
+            ('if (data.nested.active) {', 45, 187, code_font),
+            ('    console.log(data.count);', 45, 220, code_font),
+            ('}', 45, 253, code_font),
+            ('Chọn đáp án đúng khi hàm chạy', 25, 293, prose_font),
+            ('với dữ liệu trên.', 60, 325, prose_font),
+        )
+        for value, x, y, font in question:
+            draw.text((x, y), value, font=font, fill='black')
+        for index, value in enumerate(('A. 1', 'B. 2', 'C. true', 'D. undefined')):
+            top = 365 + index * 85
+            draw.rectangle((20, top, 820, top + 70),
+                           outline=(208, 221, 245), width=2)
+            draw.text((55, top + 20), value, font=code_font, fill='black')
+        solver = ExamSolver()
+        try:
+            if not solver._ocr().tesseract_cmd:
+                self.skipTest('Tesseract is unavailable')
+            prepared = solver.prepare_image(image)
+            text = prepared['structured'].text
+            self.assertEqual(prepared['layout_method'], 'card_borders')
+            self.assertEqual(prepared['structured'].errors, [])
+            self.assertIn('    count: 2,\n    nested: { active: true }\n};', text)
+            self.assertIn('    console.log(data.count);\n}', text)
+            self.assertTrue(text.endswith('Chọn đáp án đúng khi hàm chạy\nvới dữ liệu trên.'))
+            self.assertEqual(set(prepared['structured'].options), {'A', 'B', 'C', 'D'})
+        finally:
+            solver.close()
+
+    def test_code_reread_with_only_two_first_pass_code_lines(self):
+        from PIL import ImageDraw, ImageFont
+
+        if not Path(r'C:\Windows\Fonts\consola.ttf').is_file():
+            self.skipTest('Consolas is unavailable')
+        image = Image.new('RGB', (500, 180), 'white')
+        font = ImageFont.truetype(r'C:\Windows\Fonts\consola.ttf', 21)
+        draw = ImageDraw.Draw(image)
+        for index, value in enumerate(('function f() {', '    value = 2;',
+                                       '    return value;', '}')):
+            draw.text((35, 10 + index * 34), value, font=font, fill='black')
+        reader = OCR()
+        if not reader.tesseract_cmd:
+            self.skipTest('Tesseract is unavailable')
+        _, boxes = reader.read(image)
+        limited = sorted(boxes, key=lambda item: item['top'])[:2]
+        result, _, _, improved = reader.refine_code(
+            image, [box['text'] for box in limited], limited)
+        self.assertTrue(improved)
+        self.assertIn('    return value;', result)
+        self.assertIn('}', result)
+
     def test_assigned_side_button_never_navigates_browser(self):
         emitted = []
         signal = SimpleNamespace(emit=lambda *args: emitted.append(args))

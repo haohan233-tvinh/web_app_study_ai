@@ -83,6 +83,9 @@ class OCR:
                 return None
             for match, tag in reversed(list(zip(found, tags))):
                 candidate = candidate[:match.start()] + tag + candidate[match.end():]
+        ending = re.search(r'[.,?!:]$', original.rstrip())
+        if ending:
+            candidate = re.sub(r'[.,?!:]*$', '', candidate.rstrip()) + ending.group()
         return candidate
 
     @classmethod
@@ -99,7 +102,7 @@ class OCR:
             return None
         return candidate
 
-    def _recognize_crop(self, image, box, lang, tessdata):
+    def _recognize_crop(self, image, box, lang, tessdata, whitelist=None):
         left = max(0, int(box['left']) - 8)
         top = max(0, int(box['top']) - 8)
         right = min(image.width, int(box['right']) + 8)
@@ -111,10 +114,13 @@ class OCR:
         crop = ImageOps.expand(crop, border=20, fill='white')
         buffer = io.BytesIO()
         crop.save(buffer, format='PNG')
+        command = [self.tesseract_cmd, 'stdin', 'stdout', '--tessdata-dir',
+                   str(tessdata), '-l', lang, '--oem', '1', '--psm', '7']
+        if whitelist:
+            command += ['-c', f'tessedit_char_whitelist={whitelist}']
         try:
             process = subprocess.run(
-                [self.vietnamese_cmd, 'stdin', 'stdout', '--tessdata-dir',
-                 str(tessdata), '-l', lang, '--oem', '1', '--psm', '7'],
+                command,
                 input=buffer.getvalue(), capture_output=True, timeout=5,
                 creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0),
                 env={**os.environ, 'OMP_THREAD_LIMIT': str(self.threads)})
@@ -130,10 +136,22 @@ class OCR:
         changed = False
         attempted = False
         boxes = [dict(box) for box in boxes]
-        for box in boxes:
+        ordered = sorted(boxes, key=lambda box: (box['cy'], box['left']))
+        for index, box in enumerate(ordered):
             original = box['text']
             improved = None
-            if self._needs_vietnamese(original):
+            previous = next((other for other in reversed(ordered[:index])
+                             if other['cy'] < box['cy'] - .4 * box['height']), None)
+            continuation = bool(
+                previous and 10 <= len(original) < 24 and
+                box['top'] - previous['bottom'] <= 3 * max(box['height'], previous['height']) and
+                self._needs_vietnamese(previous['text']) and
+                not re.search(r'[`$→{};=<>]|->|=>', original) and
+                (self._accent_count(original) or
+                 set(re.findall(r'[a-z]+', self._plain(original))) &
+                 {'trong', 'ngoai', 'dung', 'khong', 'voi', 'duoc', 'nhung', 'tren',
+                  'sau', 'day', 'khi', 'neu', 'cho', 'cua'}))
+            if self._needs_vietnamese(original) or continuation:
                 attempted = True
                 improved = self._safe_vietnamese(original, self._recognize_crop(
                     image, box, 'vie', self.vietnamese_data))
@@ -155,16 +173,19 @@ class OCR:
         return bool(re.search(
             r'\b(?:const|let|var|function|return|if|else|for|while|class|def|'
             r'console|import|export)\b|[{};]|=>|===|\[[0-9]+\]|'
-            r'</?[a-z][^>]{0,150}>', value, re.I))
+            r'</?[a-z][^>]{0,150}>|'
+            r'^\s*[a-z_$][\w$]*\s*:\s*[^?]+[,;]\s*$', value, re.I))
 
-    def refine_code(self, image, lines, boxes):
+    def refine_code(self, image, lines, boxes, region_bottom=None):
         """Re-read a multiline code run with English TSV OCR, retaining indentation."""
         if (not self.tesseract_cmd or not self.english_data or
                 not (self.english_data / 'eng.traineddata').is_file()):
             return lines, boxes, 0.0, False
-        code_boxes = sorted((box for box in boxes if self._code_line(box['text'])),
+        eligible = [box for box in boxes if region_bottom is None or
+                    box['cy'] < region_bottom]
+        code_boxes = sorted((box for box in eligible if self._code_line(box['text'])),
                             key=lambda box: box['cy'])
-        if len(code_boxes) < 3:
+        if len(code_boxes) < 2:
             return lines, boxes, 0.0, False
         line_height = median(box['height'] for box in code_boxes)
         runs = [[code_boxes[0]]]
@@ -173,12 +194,14 @@ class OCR:
                 runs.append([])
             runs[-1].append(box)
         code = max(runs, key=len)
-        if len(code) < 3 or code[-1]['cy'] - code[0]['cy'] < 2 * line_height:
+        if len(code) < 2 or code[-1]['cy'] - code[0]['cy'] < 1.3 * line_height:
             return lines, boxes, 0.0, False
         start = time.perf_counter()
         height = median(box['height'] for box in code)
-        top = max(0, int(code[0]['top'] - height))
-        bottom = min(image.height, int(code[-1]['bottom'] + 4 * height))
+        top = max(0, int(code[0]['top'] - (3 if len(code) == 2 else 1) * height))
+        bottom = min(image.height, int(code[-1]['bottom'] + 6 * height))
+        if region_bottom is not None:
+            bottom = min(bottom, int(region_bottom))
         crop = image.crop((0, top, image.width, bottom)).convert('RGB')
         buffer = io.BytesIO()
         crop.save(buffer, format='PNG')
@@ -235,6 +258,28 @@ class OCR:
         if not indexes:
             return lines, boxes, round(time.perf_counter() - start, 3), False
         candidates = candidates[indexes[0]:indexes[-1]+1]
+        # Tesseract may put an indented line into a separate TSV block. Its
+        # first word then becomes that block's own baseline and loses spaces.
+        # Rebase every line against the left edge of this code run instead.
+        code_left = min(box['left'] for box in candidates)
+        for candidate in candidates:
+            indent = min(24, max(0, round((candidate['left'] - code_left) / cell)))
+            candidate['text'] = ' ' * indent + candidate['text'].lstrip()
+        # Tesseract's language model often changes a short punctuation-only
+        # line such as `};` into `33`. A second pass limited to code punctuation
+        # can recover the glyphs without rewriting identifiers or prose.
+        for candidate in candidates:
+            value = candidate['text'].strip()
+            if len(value) > 4 or not re.fullmatch(r'[\d{}();\[\] ]+', value):
+                continue
+            if not any(char.isdigit() for char in value):
+                continue
+            glyphs = self._recognize_crop(image, candidate, 'eng', self.english_data,
+                                          whitelist='{}();[]').strip()
+            if glyphs and re.fullmatch(r'[{}();\[\]]+', glyphs) and (
+                    any(char in glyphs for char in '{}()[]') or len(glyphs) >= 2):
+                candidate['text'] = candidate['text'][:len(candidate['text']) -
+                                                    len(candidate['text'].lstrip())] + glyphs
         old = '\n'.join(box['text'] for box in code)
         new = '\n'.join(box['text'] for box in candidates)
         similarity = difflib.SequenceMatcher(
@@ -264,6 +309,14 @@ class OCR:
             box['cy'] = (box['top'] + box['bottom']) / 2
             box['height'] = box['bottom'] - box['top']
         result = kept + candidates
+        code_top = min(code[0]['top'], candidates[0]['top'])
+        code_bottom = max(code[-1]['bottom'], candidates[-1]['bottom'])
+        code_rows = [box for box in result if code_top <= box['cy'] <= code_bottom]
+        if code_rows:
+            base_left = min(box['left'] for box in code_rows)
+            for box in code_rows:
+                indent = min(24, max(0, round((box['left'] - base_left) / cell)))
+                box['text'] = ' ' * indent + box['text'].lstrip()
         return self._lines(result), result, elapsed, True
 
     @staticmethod

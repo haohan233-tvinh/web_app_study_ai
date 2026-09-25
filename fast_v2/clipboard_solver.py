@@ -159,7 +159,7 @@ class ExamSolver:
                 q, lines, boxes = vi_q, vi_lines, vi_boxes
                 layout = vi_layout if vi_q is not vi_parsed else None
         code_lines, code_boxes, code_seconds, code_reread = self._ocr().refine_code(
-            image, lines, boxes)
+            image, lines, boxes, region_bottom=layout.get('question_bottom') if layout else None)
         if code_reread:
             code_layout = group_auto(image, code_boxes, expected)
             code_parsed = parse_question(code_lines, expected)

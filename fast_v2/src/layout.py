@@ -114,7 +114,8 @@ def _group_card_rows(image, boxes, expected):
         options[chr(65 + index)] = '\n'.join(line for line in lines if line.strip()).strip()
     question = _question_text([row for row in rows if row['cy'] < cards[0][0]])
     q = structured_question(question, options, expected)
-    return {'question': q, 'method': 'card_borders', 'weak': False}
+    return {'question': q, 'method': 'card_borders', 'weak': False,
+            'question_bottom': cards[0][0]}
 
 
 def _group_radio_rows(image, boxes, expected):
@@ -166,7 +167,8 @@ def _group_radio_rows(image, boxes, expected):
             if row is inside[0] else row['text'] for row in inside).strip() if inside else ''
     question = _question_text([row for row in rows if row['cy'] < first_y - 25])
     q = structured_question(question, options, expected)
-    return {'question': q, 'method': 'radio_markers', 'weak': False}
+    return {'question': q, 'method': 'radio_markers', 'weak': False,
+            'question_bottom': first_y - 25}
 
 
 def _group_indent_rows(image, boxes, expected):
@@ -204,7 +206,8 @@ def _group_indent_rows(image, boxes, expected):
             for i, row in enumerate(answer_rows[begin:end], begin))
     question = _question_text(rows[:start])
     return {'question': structured_question(question, options, expected),
-            'method': 'line_indent', 'weak': True}
+            'method': 'line_indent', 'weak': True,
+            'question_bottom': answer_rows[0]['top']}
 
 
 def group_auto(image, boxes, expected):
