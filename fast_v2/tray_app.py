@@ -1083,8 +1083,10 @@ class TrayApp(QObject):
                         if event.get('weak_layout'):
                             suffix += ' · ranh giới cần kiểm tra'
                         source = event.get('capture_source', 'OCR')
-                        self.debug_panel.set_stage(
-                            f'{source} xong ({event["ocr_seconds"]:.2f} giây){suffix}.')
+                        stage = (f'{source} chưa dùng được: {event["error"]}'
+                                 if event.get('error') else
+                                 f'{source} xong ({event["ocr_seconds"]:.2f} giây){suffix}.')
+                        self.debug_panel.set_stage(stage)
                 else:
                     self.set_status('solving')
                     if self.debug_panel.isVisible():

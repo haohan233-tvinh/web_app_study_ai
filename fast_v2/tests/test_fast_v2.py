@@ -855,6 +855,50 @@ class FastTests(unittest.TestCase):
         finally:
             engine.close()
 
+    def test_unusable_prefetch_reports_error_without_running_solver(self):
+        class UnusableSolver(FakeSolver):
+            def validate_prepared(self, prepared):
+                return 'Thiếu hoặc trống một phương án. Hãy vẽ lại bộ ô.'
+
+        fake = UnusableSolver()
+        engine = PrefetchEngine(fake)
+        try:
+            engine.submit('blank-answers', b'blank-answers', solve=True)
+            events = []
+            deadline = time.monotonic() + 2
+            while time.monotonic() < deadline and not any(
+                    event['type'] == 'result' for event in events):
+                try:
+                    events.append(engine.events.get(timeout=.1))
+                except queue.Empty:
+                    pass
+            ready = next(event for event in events if event['type'] == 'ocr_ready')
+            result = next(event for event in events if event['type'] == 'result')
+            self.assertIn('Thiếu hoặc trống', ready['error'])
+            self.assertEqual(result['result']['error'], ready['error'])
+            self.assertFalse(any(event['type'] == 'solve_started' for event in events))
+            self.assertEqual(fake.solved, [])
+        finally:
+            engine.close()
+
+    def test_blank_manual_answer_regions_are_unusable_after_ocr(self):
+        source = Path(__file__).parent / 'assets' / 'badge-labels-identifier.png'
+        blank = Image.new('RGB', (180, 52), 'white')
+        with Image.open(source) as image:
+            question = image.crop((0, 0, image.width, 42))
+        crops = (question, blank, blank.copy(), blank.copy(), blank.copy())
+        regions = tuple((0, index * 60, crop.width, index * 60 + crop.height)
+                        for index, crop in enumerate(crops))
+        solver = ExamSolver()
+        try:
+            prepared = solver.prepare_image(ManualCapture(regions, crops))
+            self.assertEqual(prepared['layout_method'], 'manual_regions')
+            self.assertTrue(all(not prepared['structured'].options[key]
+                                for key in 'ABCD'))
+            self.assertIn('Thiếu hoặc trống', solver.validate_prepared(prepared))
+        finally:
+            solver.close()
+
     @patch('tray_app.navigation_macro_detected', return_value=False)
     def test_hotkey_conflicts_and_overlay_visibility(self, _diagnostic):
         settings = {**DEFAULTS, 'startup': False}

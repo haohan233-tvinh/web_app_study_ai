@@ -89,14 +89,17 @@ class PrefetchEngine:
                     self.events.put({'type': 'ocr_started', 'sequence': seq})
             try:
                 value = self.solver.prepare_image(image)
+                validator = getattr(self.solver, 'validate_prepared', None)
+                value['validation_error'] = validator(value) if validator else value.get('error')
             except Exception as error:
-                value = {'error': 'OCR: ' + str(error), 'ocr_seconds': 0, 'reread': False}
+                value = {'error': 'OCR: ' + str(error), 'ocr_seconds': 0,
+                         'reread': False, 'validation_error': 'OCR: ' + str(error)}
             with self.cv:
                 if not self.closed and seq == self.sequence:
                     self.prepared = (seq, value)
                     self.events.put({'type': 'ocr_ready', 'sequence': seq,
                                      'lines': value.get('lines', []),
-                                     'error': value.get('error'),
+                                     'error': value.get('validation_error'),
                                      'ocr_seconds': value.get('ocr_seconds'),
                                      'vietnamese_ocr_seconds': value.get('vietnamese_ocr_seconds', 0),
                                      'code_ocr_seconds': value.get('code_ocr_seconds', 0),
@@ -119,14 +122,22 @@ class PrefetchEngine:
                 prepared = self.prepared[1]
                 image_time = self.image_time
                 self.requested = None
-            self.warm_ready.wait()
+            if not prepared.get('validation_error'):
+                self.warm_ready.wait()
             with self.cv:
                 if self.closed or seq != self.sequence:
                     continue
-                self.events.put({'type': 'solve_started', 'sequence': seq})
+                if not prepared.get('validation_error'):
+                    self.events.put({'type': 'solve_started', 'sequence': seq})
             try:
-                result = (prepared if 'error' in prepared else
-                          self.solver.solve_prepared(prepared, mode))
+                if prepared.get('validation_error'):
+                    result = {'error': prepared['validation_error'],
+                              'ocr_seconds': prepared.get('ocr_seconds', 0),
+                              'reread': prepared.get('reread', False)}
+                elif 'error' in prepared:
+                    result = prepared
+                else:
+                    result = self.solver.solve_prepared(prepared, mode)
             except Exception as error:
                 result = {'error': str(error)}
             finished = time.perf_counter()

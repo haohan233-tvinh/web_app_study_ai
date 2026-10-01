@@ -297,6 +297,14 @@ class ExamSolver:
         result['total_seconds'] = round(time.perf_counter() - start + prepared['ocr_seconds'], 3)
         return result
 
+    def validate_prepared(self, prepared):
+        """Tell the UI whether a prefetched capture can be solved at all."""
+        if prepared.get('error'):
+            return prepared['error']
+        q = prepared.get('structured') or parse_question(
+            prepared.get('lines', []), self.settings['expected_options'])
+        return ' '.join(dict.fromkeys(q.errors)) if q.errors else None
+
     def solve(self, question, options, is_multi_select=False, count=None):
         if not question.strip() or len(options) < 2 or any(not value.strip() for value in options.values()):
             return {'error': 'Thiếu câu hỏi hoặc phương án.'}
